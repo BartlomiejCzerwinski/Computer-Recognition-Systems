@@ -2,6 +2,8 @@ package org.example;
 
 import org.w3c.dom.Text;
 
+import java.util.HashSet;
+import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -19,6 +21,19 @@ public class FeaturesExtractor {
         } else {
             return null;
         }
+    }
+
+    public double extractRelativeNumberOfUniqueWords(String text) {
+        String[] words = text.trim().split("\\s+");
+
+        Set<String> uniqueWords = new HashSet<>();
+        for (String word : words) {
+            if (word.matches("[a-zA-Z]+")) {
+                uniqueWords.add(word.toLowerCase());
+            }
+        }
+
+        return (double) uniqueWords.size() / getNumberOfWordsInText(text);
     }
 
     public double extractRelativeNumberOfWordsLongerThan9Signs(String text) {
