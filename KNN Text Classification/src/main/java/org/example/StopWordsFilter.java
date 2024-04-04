@@ -1,12 +1,26 @@
 package org.example;
 
 import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class StopWordsFilter {
     private static Set<String> STOP_WORDS = new HashSet<>();
 
-    public String filter(String textToFilter) {
-        return null;
+    public static String filter(String textToFilter) {
+        StringBuilder patternBuilder = new StringBuilder();
+        for (String word : STOP_WORDS) {
+            patternBuilder.append("\\b").append(Pattern.quote(word)).append("\\b|");
+        }
+        patternBuilder.deleteCharAt(patternBuilder.length() - 1);
+        Pattern pattern = Pattern.compile(patternBuilder.toString(), Pattern.CASE_INSENSITIVE);
+
+        Matcher matcher = pattern.matcher(textToFilter);
+        String filteredText = matcher.replaceAll("");
+
+        filteredText = filteredText.trim().replaceAll("\\s{2,}", " ");
+
+        return filteredText;
     }
 
     public StopWordsFilter() {
