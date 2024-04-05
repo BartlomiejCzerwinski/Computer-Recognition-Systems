@@ -14,7 +14,7 @@ public class FeaturesExtractor {
         return null;
     }
 
-    public static String extractMostCommonBigLettersSeriesInText(String text) {
+    public String extractMostCommonBigLettersSeriesInText(String text) {
         Map<String, Integer> wordCounts = new HashMap<>();
 
         Pattern pattern = Pattern.compile("\\b[A-Z][a-zA-Z]*(?:\\s+[A-Z][a-zA-Z]*)+\\b");
