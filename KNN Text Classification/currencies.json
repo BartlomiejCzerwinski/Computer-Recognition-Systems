@@ -1,0 +1,17 @@
+{
+  "u.s. dollar": "USD",
+  "$": "USD",
+
+  "euro": "EUR",
+  "€": "EUR",
+
+  "pound sterling": "GBP",
+  "£": "GBP",
+
+  "ca$": "CAD",
+  "can$": "CAD",
+  "canadian dollar": "CAD",
+
+  "japanese yen": "JPY",
+  "¥": "JPY"
+}
