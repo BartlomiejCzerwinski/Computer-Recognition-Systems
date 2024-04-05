@@ -25,7 +25,9 @@ public class TextVectorsLoader {
                     "CURRENCY_PLACEHOLDER",
                     "COUNTRY_PLACEHOLDER",
                     "CONTINENT_PLACEHOLDER");
+            textVectors.add(textVector);
         }
+        return textVectors;
     }
 
 }
