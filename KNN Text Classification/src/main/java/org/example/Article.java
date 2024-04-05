@@ -22,4 +22,15 @@ public class Article {
                 .toString();
     }
 
+    public String getTitle() {
+        return title;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public String getBody() {
+        return body;
+    }
 }
