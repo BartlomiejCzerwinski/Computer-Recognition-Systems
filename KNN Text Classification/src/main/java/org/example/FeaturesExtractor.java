@@ -14,6 +14,42 @@ public class FeaturesExtractor {
         return null;
     }
 
+    public static String extractMostCommonBigLettersSeriesInText(String text) {
+        Map<String, Integer> wordCounts = new HashMap<>();
+
+        Pattern pattern = Pattern.compile("\\b[A-Z][a-zA-Z]*(?:\\s+[A-Z][a-zA-Z]*)+\\b");
+        Matcher matcher = pattern.matcher(text);
+
+        while (matcher.find()) {
+            String words = matcher.group();
+            System.out.println("words: " + words);
+            wordCounts.put(words, wordCounts.getOrDefault(words, 0) + 1);
+        }
+
+        String mostFrequentWords = "";
+        int maxCount = 0;
+        for (Map.Entry<String, Integer> entry : wordCounts.entrySet()) {
+            if (entry.getValue() > maxCount) {
+                mostFrequentWords = entry.getKey();
+                maxCount = entry.getValue();
+            }
+        }
+
+        return mostFrequentWords;
+    }
+
+    public double extractRelativeNumberOfNumbers(String text) {
+        Pattern pattern = Pattern.compile("-?\\d+(?:[.,]\\d+)?(?:-\\d+)*");
+        Matcher matcher = pattern.matcher(text);
+
+        int count = 0;
+        while (matcher.find()) {
+            count++;
+        }
+
+        return (double)count / getNumberOfWordsInText(text);
+    }
+
     public String extractMostCommonBigLetterWordInFirstXPercent(String text, double percentage) {
         String[] words = text.trim().split("\\s+");
         int numberOfWords = getNumberOfWordsInText(text);
