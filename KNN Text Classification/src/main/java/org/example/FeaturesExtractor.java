@@ -22,7 +22,6 @@ public class FeaturesExtractor {
 
         while (matcher.find()) {
             String words = matcher.group();
-            System.out.println("words: " + words);
             wordCounts.put(words, wordCounts.getOrDefault(words, 0) + 1);
         }
 
@@ -61,7 +60,7 @@ public class FeaturesExtractor {
         Map<String, Integer> wordCounts = new HashMap<>();
         for (int i = 0; i < numberOfWordsToConsider; i++) {
             String word = words[i];
-            if (Character.isUpperCase(word.charAt(0))) {
+            if ( word.length() > 0 && Character.isUpperCase(word.charAt(0))) {
                 wordCounts.put(word, wordCounts.getOrDefault(word, 0) + 1);
                 if (wordCounts.size() == 1) {
                     maxCount += 1;

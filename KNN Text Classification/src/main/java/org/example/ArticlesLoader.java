@@ -14,6 +14,7 @@ public class ArticlesLoader {
         ArrayList<Article> articles = new ArrayList<>();
         File file = new File("reuters21578");
         ReutersParser reutersParser = new ReutersParser(file);
+        StopWordsFilter stopWordsFilter = new StopWordsFilter();
         for(ReutersArticle a : reutersParser) {
             String title = a.getTag("TITLE");
             String places = a.getTag("PLACES");
@@ -22,11 +23,11 @@ public class ArticlesLoader {
             while (matcher.find()) {
                 String country = matcher.group(1);
                 String body = a.getTag("BODY");
+                body = stopWordsFilter.filter(body);
                 articles.add(new Article(country, title, body));
                 break;
             }
         }
-        System.out.println(articles.get(0).getTitle().toString());
         return articles;
     }
 }

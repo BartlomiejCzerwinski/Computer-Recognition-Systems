@@ -7,7 +7,7 @@ import java.util.regex.Pattern;
 public class StopWordsFilter {
     private static Set<String> STOP_WORDS = new HashSet<>();
 
-    public static String filter(String textToFilter) {
+    public String filter(String textToFilter) {
         StringBuilder patternBuilder = new StringBuilder();
         for (String word : STOP_WORDS) {
             patternBuilder.append("\\b").append(Pattern.quote(word)).append("\\b|");

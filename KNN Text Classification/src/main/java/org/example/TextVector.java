@@ -38,4 +38,23 @@ public class TextVector {
         this.mostCommonCountryFromDict = mostCommonCountryFromDict;
         this.mostCommonContinentFromDict = mostCommonContinentFromDict;
     }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("TextVector{");
+        sb.append("country='").append(country).append('\'');
+        sb.append(", firstBigLettersSeries='").append(firstBigLettersSeries).append('\'');
+        sb.append(", relativeNumberOfWordsLongerThan9Signs=").append(relativeNumberOfWordsLongerThan9Signs);
+        sb.append(", relativeNumberOfUniqueWords=").append(relativeNumberOfUniqueWords);
+        sb.append(", mostCommonBigLetterWordInFirst20Percent='").append(mostCommonBigLetterWordInFirst20Percent).append('\'');
+        sb.append(", mostCommonBigLetterWordInFirst50Percent='").append(mostCommonBigLetterWordInFirst50Percent).append('\'');
+        sb.append(", mostCommonBigLetterWordInFirst100Percent='").append(mostCommonBigLetterWordInFirst100Percent).append('\'');
+        sb.append(", relativeNumberOfNumbers=").append(relativeNumberOfNumbers);
+        sb.append(", mostCommonBigLettersSeriesInFirst100Percent='").append(mostCommonBigLettersSeriesInFirst100Percent).append('\'');
+        sb.append(", mostCommonCurrencyFromDict='").append(mostCommonCurrencyFromDict).append('\'');
+        sb.append(", mostCommonCountryFromDict='").append(mostCommonCountryFromDict).append('\'');
+        sb.append(", mostCommonContinentFromDict='").append(mostCommonContinentFromDict).append('\'');
+        sb.append('}');
+        return sb.toString();
+    }
 }
