@@ -1,17 +1,29 @@
 {
   "u.s. dollar": "USD",
+  "dlr": "USD",
   "$": "USD",
+  "USD": "USD",
+  "usd": "USD",
 
   "euro": "EUR",
+  "eur": "EUR",
   "€": "EUR",
+  "EUR": "EUR",
 
   "pound sterling": "GBP",
   "£": "GBP",
+  "GBP": "GBP",
+  "gbp": "GBP",
 
   "ca$": "CAD",
   "can$": "CAD",
   "canadian dollar": "CAD",
+  "CAD": "CAD",
+  "cad": "CAD",
 
   "japanese yen": "JPY",
-  "¥": "JPY"
+  "yen": "JPY",
+  "¥": "JPY",
+  "JPY": "JPY",
+  "jpy": "JPY"
 }
