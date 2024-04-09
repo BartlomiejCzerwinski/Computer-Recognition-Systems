@@ -19,8 +19,9 @@ public class ArticlesLoader {
             String title = a.getTag("TITLE");
             String places = a.getTag("PLACES");
             Pattern pattern = Pattern.compile("<D>(west-germany|usa|france|uk|canada|japan)</D>");
+            int count = places.split("<D>").length - 1;
             Matcher matcher = pattern.matcher(places);
-            while (matcher.find()) {
+            while (matcher.find() && count == 1) {
                 String country = matcher.group(1);
                 String body = a.getTag("BODY");
                 body = stopWordsFilter.filter(body);
