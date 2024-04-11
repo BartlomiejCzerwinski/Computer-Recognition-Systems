@@ -1,5 +1,6 @@
 package org.example;
 
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,7 +9,7 @@ public class TextVectorsLoader {
     public TextVectorsLoader() {
     }
 
-    public List<TextVector> loadTextVectors(List<Article> articles) {
+    public List<TextVector> loadTextVectors(List<Article> articles) throws FileNotFoundException {
         List<TextVector> textVectors = new ArrayList<>();
         FeaturesExtractor featuresExtractor = new FeaturesExtractor();
         for (Article a : articles) {
@@ -22,7 +23,7 @@ public class TextVectorsLoader {
                     featuresExtractor.extractMostCommonBigLetterWordInFirstXPercent(body, 1.00),
                     featuresExtractor.extractRelativeNumberOfNumbers(body),
                     featuresExtractor.extractMostCommonBigLettersSeriesInText(body),
-                    "CURRENCY_PLACEHOLDER",
+                    featuresExtractor.extractMostCommonCurrencyInText(body),
                     "COUNTRY_PLACEHOLDER",
                     "CONTINENT_PLACEHOLDER");
             textVectors.add(textVector);
