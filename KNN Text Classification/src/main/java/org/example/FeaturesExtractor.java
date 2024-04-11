@@ -1,17 +1,64 @@
 package org.example;
 
-import org.w3c.dom.Text;
-
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.io.*;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import com.google.gson.Gson;
 
 public class FeaturesExtractor {
+    private static String CURRENCIES_DIC = "currencies.json";
+    Map<String, String> currencies;
+
+    public FeaturesExtractor() throws FileNotFoundException {
+        this.currencies = loadDictionary(CURRENCIES_DIC);
+    }
+
     public TextVector extract(Article article) {
         return null;
+    }
+
+    public String extractMostCommonCurrencyInText(String text) throws FileNotFoundException {
+        StringBuilder regexBuilder = new StringBuilder();
+        for (String currency : currencies.keySet()) {
+            if (regexBuilder.length() > 0) {
+                regexBuilder.append("|");
+            }
+            regexBuilder.append(Pattern.quote(currency));
+        }
+        Pattern pattern = Pattern.compile(regexBuilder.toString(), Pattern.CASE_INSENSITIVE);
+
+        Map<String, Integer> currencyCounts = new HashMap<>();
+        Matcher matcher = pattern.matcher(text);
+        while (matcher.find()) {
+            String currency = matcher.group().toLowerCase();
+            currencyCounts.put(currency, currencyCounts.getOrDefault(currency, 0) + 1);
+        }
+        Map<String, Integer> currencyCountsTotal = new HashMap<>();
+        for (Map.Entry<String, Integer> entry : currencyCounts.entrySet()) {
+            currencyCountsTotal.put(currencies.get(entry.getKey()), currencyCountsTotal.getOrDefault(currencies.get(entry.getKey()), 0) + entry.getValue());
+        }
+        String mostCommonCurrency = null;
+        int maxCount = 0;
+        for (Map.Entry<String, Integer> entry : currencyCountsTotal.entrySet()) {
+            if (entry.getValue() > maxCount) {
+                mostCommonCurrency = entry.getKey();
+                maxCount = entry.getValue();
+            }
+        }
+
+        if (mostCommonCurrency != null && currencies.containsKey(mostCommonCurrency)) {
+            return currencies.get(mostCommonCurrency);
+        } else {
+            return "";
+        }
+    }
+
+    public HashMap<String, String> loadDictionary(String filePath) throws FileNotFoundException {
+        Gson gson = new Gson();
+        HashMap<String, String> hashMap = gson.fromJson(new FileReader(filePath), HashMap.class);
+
+        return hashMap;
     }
 
     public String extractMostCommonBigLettersSeriesInText(String text) {
