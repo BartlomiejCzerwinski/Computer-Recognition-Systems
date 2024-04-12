@@ -86,4 +86,8 @@ public class TextVector {
         sb.append('}');
         return sb.toString();
     }
+
+    public String getCountry() {
+        return country;
+    }
 }
