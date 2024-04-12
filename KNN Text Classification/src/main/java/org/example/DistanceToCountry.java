@@ -1,6 +1,6 @@
 package org.example;
 
-public class DistanceToCountry {
+public class DistanceToCountry implements Comparable<DistanceToCountry> {
     private String country;
     private double distance;
 
@@ -15,5 +15,10 @@ public class DistanceToCountry {
 
     public double getDistance() {
         return distance;
+    }
+
+    @Override
+    public int compareTo(DistanceToCountry o) {
+        return Double.compare(this.distance, o.distance);
     }
 }
