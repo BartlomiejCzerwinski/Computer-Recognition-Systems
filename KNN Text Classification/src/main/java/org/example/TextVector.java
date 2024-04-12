@@ -39,6 +39,35 @@ public class TextVector {
         this.mostCommonContinentFromDict = mostCommonContinentFromDict;
     }
 
+    public Object get(int index) {
+        switch (index) {
+            case 0:
+                return firstBigLettersSeries;
+            case 1:
+                return relativeNumberOfWordsLongerThan9Signs;
+            case 2:
+                return relativeNumberOfUniqueWords;
+            case 3:
+                return mostCommonBigLetterWordInFirst20Percent;
+            case 4:
+                return mostCommonBigLetterWordInFirst50Percent;
+            case 5:
+                return mostCommonBigLetterWordInFirst100Percent;
+            case 6:
+                return relativeNumberOfNumbers;
+            case 7:
+                return mostCommonBigLettersSeriesInFirst100Percent;
+            case 8:
+                return mostCommonCurrencyFromDict;
+            case 9:
+                return mostCommonCountryFromDict;
+            case 10:
+                return mostCommonContinentFromDict;
+            default:
+                return false;
+        }
+    }
+
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("TextVector{");

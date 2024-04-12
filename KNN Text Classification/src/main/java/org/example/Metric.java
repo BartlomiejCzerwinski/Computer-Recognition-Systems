@@ -3,11 +3,13 @@ package org.example;
 import java.util.List;
 
 public abstract class Metric {
-    private List<Integer> featuresList;
+    protected List<Integer> featuresList;
 
     public Metric(List<Integer> featuresList) {
         this.featuresList = featuresList;
     }
+
+    public abstract double calculateDistance(TextVector vector1, TextVector vector2);
 
     public float calculateTextsDistance(String text1, String text2) {
         return 1.0f - calculateGeneralizedNGramMeasure(text1, text2);
