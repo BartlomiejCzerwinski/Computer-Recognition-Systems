@@ -102,7 +102,7 @@ public class FeaturesExtractor {
         int numberOfWordsToConsider = (int)(numberOfWords * percentage);
 
         int maxCount = 0;
-        String mostFrequentWord = null;
+        String mostFrequentWord = "";
 
         Map<String, Integer> wordCounts = new HashMap<>();
         for (int i = 0; i < numberOfWordsToConsider; i++) {
@@ -160,7 +160,7 @@ public class FeaturesExtractor {
         if (matcher.find()) {
             return matcher.group();
         } else {
-            return null;
+            return "";
         }
     }
 
