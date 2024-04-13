@@ -16,4 +16,8 @@ public class PredictedRealPair {
     public String getReal() {
         return real;
     }
+
+    public boolean isCorrectlyClassified() {
+        return predicted.equals(real);
+    }
 }
