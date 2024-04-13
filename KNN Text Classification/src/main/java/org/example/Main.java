@@ -1,9 +1,6 @@
 package org.example;
 
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
+import org.w3c.dom.*;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -11,27 +8,38 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Main {
     public static void main(String[] args) throws ParserConfigurationException, IOException, SAXException {
-        ArrayList<Article> articles = new ArrayList<>();
-        File file = new File("reuters21578");
-        ReutersParser reutersParser = new ReutersParser(file);
-        for(ReutersArticle a : reutersParser) {
-            String title = a.getTag("TITLE");
-            String places = a.getTag("PLACES");
-            Pattern pattern = Pattern.compile("<D>(west-germany|usa|france|uk|canada|japan)</D>");
-            Matcher matcher = pattern.matcher(places);
-            while (matcher.find()) {
-                String country = matcher.group(1);
-                String body = a.getTag("BODY");
-                articles.add(new Article(country, title, body));
-                break;
-            }
-        }
-        System.out.println(articles.toString());
+        ArticlesLoader articlesLoader = new ArticlesLoader();
+        List<Article> articleList = articlesLoader.loadArticles();
+        TextVectorsLoader textVectorsLoader = new TextVectorsLoader();
+        List<TextVector> textVectors = textVectorsLoader.loadTextVectors(articleList);
+        textVectors = textVectors.subList(0, 5000); //only part of the dataset!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        List<Integer> featuresList = new ArrayList<>();
+        List<Integer> list = Arrays.asList(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+        Metric metric = new ManhattanMetric(list);
+        KNNClassifier knnClassifier = new KNNClassifier(300, 0.5, featuresList, metric, textVectors);
+        List<PredictedRealPair> predictedRealPairs = knnClassifier.classify();
+        ClassificationQualityMeasure classificationQualityMeasure = new ClassificationQualityMeasure(predictedRealPairs);
+        System.out.println("Total");
+        System.out.println("ACC: " + classificationQualityMeasure.calculateTotalAccuracy());
+        System.out.println("west-germany:");
+        System.out.println("ACC: " + classificationQualityMeasure.calculateCountryAccuracy("west-germany"));
+        System.out.println("usa:");
+        System.out.println("ACC: " + classificationQualityMeasure.calculateCountryAccuracy("usa"));
+        System.out.println("france:");
+        System.out.println("ACC: " + classificationQualityMeasure.calculateCountryAccuracy("france"));
+        System.out.println("uk:");
+        System.out.println("ACC: " + classificationQualityMeasure.calculateCountryAccuracy("uk"));
+        System.out.println("japan:");
+        System.out.println("ACC: " + classificationQualityMeasure.calculateCountryAccuracy("japan"));
     }
+
 }
