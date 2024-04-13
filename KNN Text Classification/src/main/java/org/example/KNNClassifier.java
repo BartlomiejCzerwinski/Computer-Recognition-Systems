@@ -20,8 +20,9 @@ public class KNNClassifier {
         splitData(textVectors);
     }
 
-    public void classify() {
+    public List<PredictedRealPair> classify() {
         List<PredictedRealPair> predictedRealPairs = new ArrayList<>();
+        int i = 1;
         for (TextVector testVector : testVectors) {
             List<DistanceToCountry> distancesToCountries = new ArrayList<>();
             for (TextVector trainVector : trainVectors) {
@@ -29,11 +30,10 @@ public class KNNClassifier {
             }
             Collections.sort(distancesToCountries);
             predictedRealPairs.add(new PredictedRealPair(predictCountry(distancesToCountries), testVector.getCountry()));
+            System.out.println((((double) i / (double) testVectors.size())*100.0) + "%");
+            i++;
         }
-        for (PredictedRealPair predictedRealPair : predictedRealPairs) {
-            System.out.println(predictedRealPair.getPredicted() + " , " + predictedRealPair.getReal());
-        }
-        System.out.println(predictedRealPairs.size());
+        return predictedRealPairs;
     }
 
     public String predictCountry(List<DistanceToCountry> distancesToCountries) {
@@ -85,10 +85,5 @@ public class KNNClassifier {
         for (int i = trainingSize; i < textVectors.size(); i++) {
             testVectors.add(textVectors.get(i));
         }
-        System.out.println("ALL: " + textVectors.size());
-        System.out.println("TRAIN: " + trainVectors.size());
-        System.out.println("TEST: " + testVectors.size());
-        System.out.println("SUM: " + (testVectors.size() + trainVectors.size()));
-
     }
 }
