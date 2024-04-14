@@ -1,0 +1,7 @@
+"europe"
+"antarctica"
+"asia"
+"europe"
+"north america"
+"australia"
+"south america"
