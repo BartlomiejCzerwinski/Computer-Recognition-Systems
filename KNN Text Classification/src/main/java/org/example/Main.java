@@ -17,6 +17,7 @@ import java.util.regex.Pattern;
 
 public class Main {
     public static void main(String[] args) throws ParserConfigurationException, IOException, SAXException {
+
         ArticlesLoader articlesLoader = new ArticlesLoader();
         List<Article> articleList = articlesLoader.loadArticles();
         TextVectorsLoader textVectorsLoader = new TextVectorsLoader();
@@ -25,7 +26,7 @@ public class Main {
         List<Integer> featuresList = new ArrayList<>();
         List<Integer> list = Arrays.asList(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
         Metric metric = new ManhattanMetric(list);
-        KNNClassifier knnClassifier = new KNNClassifier(300, 0.5, featuresList, metric, textVectors);
+        KNNClassifier knnClassifier = new KNNClassifier(3, 0.9, featuresList, metric, textVectors);
         List<PredictedRealPair> predictedRealPairs = knnClassifier.classify();
         ClassificationQualityMeasure classificationQualityMeasure = new ClassificationQualityMeasure(predictedRealPairs);
         System.out.println("Total");
@@ -40,6 +41,8 @@ public class Main {
         System.out.println("ACC: " + classificationQualityMeasure.calculateCountryAccuracy("uk"));
         System.out.println("japan:");
         System.out.println("ACC: " + classificationQualityMeasure.calculateCountryAccuracy("japan"));
+
+
     }
 
 }
