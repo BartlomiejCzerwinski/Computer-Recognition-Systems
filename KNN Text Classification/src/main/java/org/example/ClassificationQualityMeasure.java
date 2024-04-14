@@ -30,4 +30,36 @@ public class ClassificationQualityMeasure {
         }
         return (double) correctlyClassified / (double) total;
     }
+
+    public double calculateCountryPrecision(String country) {
+        int TP = 0;
+        int FP = 0;
+        for (PredictedRealPair predictedRealPair : predictedRealPairs) {
+            if (predictedRealPair.real.equals(country) || predictedRealPair.predicted.equals(country)) {
+                if (predictedRealPair.isCorrectlyClassified()) {
+                    TP++;
+                }
+                if (predictedRealPair.isFP(country)) {
+                    FP++;
+                }
+            }
+        }
+        return (double) TP / ((double) TP + (double) FP);
+    }
+
+    public double calculateCountryRecall(String country) {
+        int TP = 0;
+        int FN = 0;
+        for (PredictedRealPair predictedRealPair : predictedRealPairs) {
+            if (predictedRealPair.predicted.equals(country) || predictedRealPair.real.equals(country)) {
+                if (predictedRealPair.isCorrectlyClassified()) {
+                    TP++;
+                }
+                if (predictedRealPair.isFN(country)) {
+                    FN++;
+                }
+            }
+        }
+        return (double) TP / ((double) TP + (double) FN);
+    }
 }

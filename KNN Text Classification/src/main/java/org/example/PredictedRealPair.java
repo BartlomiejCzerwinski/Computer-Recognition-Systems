@@ -20,4 +20,22 @@ public class PredictedRealPair {
     public boolean isCorrectlyClassified() {
         return predicted.equals(real);
     }
+
+    public boolean isFP (String country) {
+        if (!real.equals(country) && predicted.equals(country)) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    public boolean isFN (String country) {
+        if (real.equals(country) && !predicted.equals(country)) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
 }

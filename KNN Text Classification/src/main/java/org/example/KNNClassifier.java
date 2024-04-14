@@ -30,7 +30,7 @@ public class KNNClassifier {
             }
             Collections.sort(distancesToCountries);
             predictedRealPairs.add(new PredictedRealPair(predictCountry(distancesToCountries), testVector.getCountry()));
-            System.out.println((((double) i / (double) testVectors.size())*100.0) + "%");
+            //System.out.println((((double) i / (double) testVectors.size())*100.0) + "%");     \\percent of load
             i++;
         }
         return predictedRealPairs;
