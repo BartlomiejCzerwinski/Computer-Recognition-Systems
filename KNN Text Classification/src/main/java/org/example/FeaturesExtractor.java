@@ -26,8 +26,34 @@ public class FeaturesExtractor {
         return null;
     }
 
+    public String extractMostCommonContinentInText(String text) {
+        HashMap<String, Integer> continentsCounter = new HashMap<>(continents);
+        StringBuilder regexBuilder = new StringBuilder();
+        for (String continent : continentsCounter.keySet()) {
+            if (regexBuilder.length() > 0) {
+                regexBuilder.append("|");
+            }
+            regexBuilder.append(Pattern.quote(continent));
+        }
+        Pattern pattern = Pattern.compile(regexBuilder.toString(), Pattern.CASE_INSENSITIVE);
+
+        Matcher matcher = pattern.matcher(text);
+        while (matcher.find()) {
+            String matchedContinent = matcher.group();
+            continentsCounter.put(matchedContinent, continentsCounter.getOrDefault(matchedContinent, 0) + 1);
+        }
+        String mostCommonContinent = "";
+        int maxCount = 0;
+        for (Map.Entry<String, Integer> entry : continentsCounter.entrySet()) {
+            if (entry.getValue() > maxCount) {
+                mostCommonContinent = entry.getKey();
+                maxCount = entry.getValue();
+            }
+        }
+        return mostCommonContinent;
+    }
+
     public String extractMostCommonCountryInText(String text) {
-        System.out.println("Looking for country");
         HashMap<String, Integer> countriesCounter = new HashMap<>(countries);
         StringBuilder regexBuilder = new StringBuilder();
         for (String country : countriesCounter.keySet()) {
@@ -49,7 +75,6 @@ public class FeaturesExtractor {
             if (entry.getValue() > maxCount) {
                 mostCommonCountry = entry.getKey();
                 maxCount = entry.getValue();
-                System.out.println("MOST COMMON COUNTRY: " + mostCommonCountry);
             }
         }
         return mostCommonCountry;

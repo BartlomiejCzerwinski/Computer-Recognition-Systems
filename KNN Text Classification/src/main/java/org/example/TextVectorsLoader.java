@@ -25,7 +25,7 @@ public class TextVectorsLoader {
                     featuresExtractor.extractMostCommonBigLettersSeriesInText(body),
                     featuresExtractor.extractMostCommonCurrencyInText(body),
                     featuresExtractor.extractMostCommonCountryInText(body),
-                    "CONTINENT_PLACEHOLDER");
+                    featuresExtractor.extractMostCommonContinentInText(body));
             textVectors.add(textVector);
         }
         return textVectors;
