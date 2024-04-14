@@ -1,21 +1,58 @@
 package org.example;
 
 import java.io.*;
+import java.net.InterfaceAddress;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import com.google.gson.Gson;
+import org.apache.maven.surefire.shade.common.org.apache.commons.io.FileUtils;
 
 public class FeaturesExtractor {
     private static String CURRENCIES_DIC = "currencies.json";
+    private static String COUNTRIES_DICT = "countries.txt";
+    private static String CONTINENTS_DICT = "continents.txt";
     Map<String, String> currencies;
+    Map<String, Integer> countries;
+    Map<String, Integer> continents;
 
     public FeaturesExtractor() throws FileNotFoundException {
-        this.currencies = loadDictionary(CURRENCIES_DIC);
+        this.currencies = loadJSONDictionary(CURRENCIES_DIC);
+        this.countries = loadTxtDictionary(COUNTRIES_DICT);
+        this.continents = loadTxtDictionary(CONTINENTS_DICT);
     }
 
     public TextVector extract(Article article) {
         return null;
+    }
+
+    public String extractMostCommonCountryInText(String text) {
+        System.out.println("Looking for country");
+        HashMap<String, Integer> countriesCounter = new HashMap<>(countries);
+        StringBuilder regexBuilder = new StringBuilder();
+        for (String country : countriesCounter.keySet()) {
+            if (regexBuilder.length() > 0) {
+                regexBuilder.append("|");
+            }
+            regexBuilder.append(Pattern.quote(country));
+        }
+        Pattern pattern = Pattern.compile(regexBuilder.toString(), Pattern.CASE_INSENSITIVE);
+
+        Matcher matcher = pattern.matcher(text);
+        while (matcher.find()) {
+            String matchedCountry = matcher.group();
+            countriesCounter.put(matchedCountry, countriesCounter.getOrDefault(matchedCountry, 0) + 1);
+        }
+        String mostCommonCountry = "";
+        int maxCount = 0;
+        for (Map.Entry<String, Integer> entry : countriesCounter.entrySet()) {
+            if (entry.getValue() > maxCount) {
+                mostCommonCountry = entry.getKey();
+                maxCount = entry.getValue();
+                System.out.println("MOST COMMON COUNTRY: " + mostCommonCountry);
+            }
+        }
+        return mostCommonCountry;
     }
 
     public String extractMostCommonCurrencyInText(String text) throws FileNotFoundException {
@@ -54,7 +91,22 @@ public class FeaturesExtractor {
         }
     }
 
-    public HashMap<String, String> loadDictionary(String filePath) throws FileNotFoundException {
+    public HashMap<String, Integer> loadTxtDictionary(String filePath) {
+        HashMap<String, Integer> dict = new HashMap<>();
+        try {
+            File file = new File(filePath);
+            List<String> lines = FileUtils.readLines(file, "UTF-8");
+            for (String line : lines) {
+                dict.put(line, 0);
+            }
+        } catch (IOException e) {
+            System.out.println("Error during file read.");
+            e.printStackTrace();
+        }
+        return dict;
+    }
+
+    public HashMap<String, String> loadJSONDictionary(String filePath) throws FileNotFoundException {
         Gson gson = new Gson();
         HashMap<String, String> hashMap = gson.fromJson(new FileReader(filePath), HashMap.class);
 
