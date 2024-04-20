@@ -6,7 +6,7 @@ import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import com.google.gson.Gson;
-import org.apache.maven.surefire.shade.common.org.apache.commons.io.FileUtils;
+import org.apache.commons.io.FileUtils;
 
 public class FeaturesExtractor {
     private static String CURRENCIES_DIC = "currencies.json";

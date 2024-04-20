@@ -1,6 +1,6 @@
 package org.example;
 
-import org.apache.maven.surefire.shade.booter.org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 
 public class Article {
     private String title;
