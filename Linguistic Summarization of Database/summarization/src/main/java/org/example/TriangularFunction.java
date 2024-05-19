@@ -16,4 +16,19 @@ public class TriangularFunction extends MembershipFunction {
     public double calculateMembershipDegree() {
         return 0;
     }
+
+    @Override
+    public double calculateHeight() {
+        return 0;
+    }
+
+    @Override
+    public double calculateSupport() {
+        return 0;
+    }
+
+    @Override
+    public double calculateAlphaCut() {
+        return 0;
+    }
 }
