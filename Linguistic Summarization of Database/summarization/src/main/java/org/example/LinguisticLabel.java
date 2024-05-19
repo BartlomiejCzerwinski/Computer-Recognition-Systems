@@ -8,4 +8,8 @@ public class LinguisticLabel {
         this.name = name;
         this.membershipFunction = membershipFunction;
     }
+
+    public SetType getSetType() {
+        return SetType.NORMAL;
+    }
 }
