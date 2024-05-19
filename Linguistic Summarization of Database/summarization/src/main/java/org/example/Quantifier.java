@@ -2,10 +2,10 @@ package org.example;
 
 public class Quantifier {
     private String name;
-    private LinguisticLabel linguisticLabel;
+    private LinguisticLabel qualifier;
 
-    public Quantifier(String name, LinguisticLabel linguisticLabel) {
+    public Quantifier(String name, LinguisticLabel qualifier) {
         this.name = name;
-        this.linguisticLabel = linguisticLabel;
+        this.qualifier = qualifier;
     }
 }
