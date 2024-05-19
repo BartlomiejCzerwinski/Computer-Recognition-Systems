@@ -10,5 +10,5 @@ public class SummaryGenerator {
     private String subject1;
     private String subject2;
     private ArrayList<LinguisticVariable> linguisticVariables;
-    //summaries
+    private ArrayList<Summary> summaries;
 }
