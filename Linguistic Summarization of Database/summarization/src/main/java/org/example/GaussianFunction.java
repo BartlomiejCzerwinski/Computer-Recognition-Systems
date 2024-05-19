@@ -7,4 +7,9 @@ public class GaussianFunction extends MembershipFunction{
         super(alfaL, alfaR, domainL, domainR);
         this.a = a;
     }
+
+    @Override
+    public double calculateMembershipDegree() {
+        return 0;
+    }
 }

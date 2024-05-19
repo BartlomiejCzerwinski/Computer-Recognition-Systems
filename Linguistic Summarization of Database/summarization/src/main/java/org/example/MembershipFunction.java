@@ -1,10 +1,12 @@
 package org.example;
 
-public class MembershipFunction {
+public abstract class MembershipFunction {
     private double alfaL;
     private double alfaR;
     private double domainL;
     private double domainR;
+
+    public abstract double calculateMembershipDegree();
 
     public MembershipFunction(double alfaL, double alfaR, double domainL, double domainR) {
         this.alfaL = alfaL;

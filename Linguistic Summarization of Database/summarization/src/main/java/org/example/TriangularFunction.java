@@ -11,4 +11,9 @@ public class TriangularFunction extends MembershipFunction {
         this.b = b;
         this.c = c;
     }
+
+    @Override
+    public double calculateMembershipDegree() {
+        return 0;
+    }
 }

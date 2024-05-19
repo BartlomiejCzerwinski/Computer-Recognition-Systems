@@ -13,4 +13,9 @@ public class TrapezoidalFunction extends MembershipFunction {
         this.c = c;
         this.d = d;
     }
+
+    @Override
+    public double calculateMembershipDegree() {
+        return 0;
+    }
 }
