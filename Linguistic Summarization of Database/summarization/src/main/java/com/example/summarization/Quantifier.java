@@ -1,4 +1,4 @@
-package org.example;
+package com.example.summarization;
 
 public class Quantifier {
     private String name;

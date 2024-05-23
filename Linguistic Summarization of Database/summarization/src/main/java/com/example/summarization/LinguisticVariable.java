@@ -1,4 +1,4 @@
-package org.example;
+package com.example.summarization;
 
 import java.util.ArrayList;
 

@@ -1,4 +1,4 @@
-package org.example;
+package com.example.summarization;
 
 public class GaussianFunction extends MembershipFunction{
     private double a;

@@ -1,4 +1,4 @@
-package org.example;
+package com.example.summarization;
 
 public abstract class MembershipFunction {
     private double alfaL;
