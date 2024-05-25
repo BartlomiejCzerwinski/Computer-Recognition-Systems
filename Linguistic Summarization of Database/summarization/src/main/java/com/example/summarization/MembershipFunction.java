@@ -14,8 +14,8 @@ public abstract class MembershipFunction {
 
     public abstract double calculateAlphaCut();
 
-    public MembershipFunction(double alfaL, double alfaR, double domainL, double domainR) {
-        this.alfaL = alfaL;
+    public MembershipFunction(double domainL, double domainR) {
+        this.alfaL = alfaL;g
         this.alfaR = alfaR;
         this.domainL = domainL;
         this.domainR = domainR;
