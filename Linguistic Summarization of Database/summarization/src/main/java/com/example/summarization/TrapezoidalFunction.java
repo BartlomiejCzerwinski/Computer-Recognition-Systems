@@ -6,8 +6,8 @@ public class TrapezoidalFunction extends MembershipFunction {
     private double c;
     private double d;
 
-    public TrapezoidalFunction(double alfaL, double alfaR, double domainL, double domainR, double a, double b, double c, double d) {
-        super(alfaL, alfaR, domainL, domainR);
+    public TrapezoidalFunction(double domainL, double domainR, double a, double b, double c, double d) {
+        super(domainL, domainR);
         this.a = a;
         this.b = b;
         this.c = c;
