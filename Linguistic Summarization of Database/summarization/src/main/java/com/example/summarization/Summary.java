@@ -10,9 +10,9 @@ public class Summary {
     private String kind;
     private ArrayList<Double> measures;
     private ArrayList<Double> measuresWeights;
-    private ArrayList<LinguisticLabel> summarizers;
+    private ArrayList<Label> summarizers;
     private Quantifier quantifier;
-    private LinguisticLabel qualifier;
+    private Label qualifier;
     private double T;
 
     public void generateSummary() {
@@ -23,7 +23,7 @@ public class Summary {
         return;
     }
 
-    public Summary(String summary, String subject1, String subject2, int type, String kind, ArrayList<Double> measures, ArrayList<Double> measuresWeights, ArrayList<LinguisticLabel> summarizers, Quantifier quantifier, LinguisticLabel qualifier, double t) {
+    public Summary(String summary, String subject1, String subject2, int type, String kind, ArrayList<Double> measures, ArrayList<Double> measuresWeights, ArrayList<Label> summarizers, Quantifier quantifier, Label qualifier, double t) {
         this.summary = summary;
         this.subject1 = subject1;
         this.subject2 = subject2;

@@ -2,7 +2,7 @@ package com.example.summarization;
 
 public class Quantifier {
     private String name;
-    private LinguisticLabel qualifier;
+    private Label qualifier;
     private boolean isAbsolute;
 
     public String getName() {
@@ -13,7 +13,7 @@ public class Quantifier {
         return isAbsolute;
     }
 
-    public Quantifier(String name, LinguisticLabel qualifier, boolean isAbsolute) {
+    public Quantifier(String name, Label qualifier, boolean isAbsolute) {
         this.name = name;
         this.qualifier = qualifier;
         this.isAbsolute = isAbsolute;
