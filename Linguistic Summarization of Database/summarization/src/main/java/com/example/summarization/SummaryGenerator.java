@@ -34,4 +34,6 @@ public class SummaryGenerator {
         this.qualifiers = qualifiers;
         this.summarizers = summarizers;
     }
+
+
 }
