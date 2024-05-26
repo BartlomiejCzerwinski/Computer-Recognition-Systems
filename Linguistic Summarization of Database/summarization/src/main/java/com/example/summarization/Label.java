@@ -12,4 +12,8 @@ public class Label {
         this.isNormal = isNormal;
         this.isConvex = isConvex;
     }
+
+    public String getName() {
+        return name;
+    }
 }

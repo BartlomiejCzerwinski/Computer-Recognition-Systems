@@ -20,4 +20,12 @@ public class Quantifier {
         this.labels = labels;
         this.isAbsolute = isAbsolute;
     }
+
+    public ArrayList<String> getLabelsNames() {
+        ArrayList<String> result = new ArrayList<>();
+        for (Label label : labels) {
+            result.add(label.getName());
+        }
+        return result;
+    }
 }
