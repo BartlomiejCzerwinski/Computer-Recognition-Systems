@@ -1,8 +1,10 @@
 package com.example.summarization;
 
+import java.util.ArrayList;
+
 public class Quantifier {
     private String name;
-    private Label qualifier;
+    private ArrayList<Label> labels;
     private boolean isAbsolute;
 
     public String getName() {
@@ -13,9 +15,9 @@ public class Quantifier {
         return isAbsolute;
     }
 
-    public Quantifier(String name, Label qualifier, boolean isAbsolute) {
+    public Quantifier(String name, ArrayList<Label> labels, boolean isAbsolute) {
         this.name = name;
-        this.qualifier = qualifier;
+        this.labels = labels;
         this.isAbsolute = isAbsolute;
     }
 }

@@ -115,4 +115,14 @@ public class Initializer {
         Label label4 = new Label("account balance more than 9500", new TrapezoidalFunction(95000, 999999, 95000, 100000, 99999, 99999), true, true);
         return new ArrayList<>(Arrays.asList(label1, label2, label3, label3, label4));
     }
+
+    public Quantifier createQuantifier() {
+        Label label1 = new Label("a little", new GaussianFunction(0, 0.4, 0.5), true, true);
+        Label label2 = new Label("not a lot", new GaussianFunction(0, 0.9, 0.2), true, true);
+        Label label3 = new Label("about half of all", new GaussianFunction(0.3, 0.7, 0.5), true, true);
+        Label label4 = new Label("more than half", new GaussianFunction(0.4, 1, 0.7), true, true);
+        Label label5 = new Label("almost all", new GaussianFunction(0.7, 1, 0.9), true, true);
+        ArrayList<Label> labels = new ArrayList<>(Arrays.asList(label1, label2, label3, label4, label5));
+        return new Quantifier("number of objects", labels, true);
+    }
 }
