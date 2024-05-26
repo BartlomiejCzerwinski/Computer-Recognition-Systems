@@ -57,6 +57,8 @@ public class HelloController {
                 "1",
                 "2"
         ));
+        DatabaseConnector databaseConnector = new DatabaseConnector();
+        databaseConnector.fetchData();
     }
 
     @FXML
