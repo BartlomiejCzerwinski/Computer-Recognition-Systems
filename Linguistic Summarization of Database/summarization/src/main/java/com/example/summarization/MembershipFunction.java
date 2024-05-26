@@ -6,7 +6,7 @@ public abstract class MembershipFunction {
     private double domainL;
     private double domainR;
 
-    public abstract double calculateMembershipDegree();
+    public abstract double calculateMembershipDegree(double value);
 
     public abstract double calculateHeight();
 
@@ -15,8 +15,6 @@ public abstract class MembershipFunction {
     public abstract double calculateAlphaCut();
 
     public MembershipFunction(double domainL, double domainR) {
-        this.alfaL = alfaL;
-        this.alfaR = alfaR;
         this.domainL = domainL;
         this.domainR = domainR;
     }

@@ -15,8 +15,17 @@ public class TrapezoidalFunction extends MembershipFunction {
     }
 
     @Override
-    public double calculateMembershipDegree() {
-        return 0;
+    public double calculateMembershipDegree(double value) {
+        if (value < a)
+            return 0.0;
+        else if ( a <= value && value < b)
+            return (value - a) / (b - a);
+        else if (b <= value && value <= c)
+            return 1.0;
+        else if (c < value && value <= d)
+            return 1.0;
+        else
+            return 0.0;
     }
 
     @Override
