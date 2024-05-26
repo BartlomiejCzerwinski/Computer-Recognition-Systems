@@ -28,4 +28,8 @@ public class Quantifier {
         }
         return result;
     }
+
+    public ArrayList<Label> getLabels() {
+        return labels;
+    }
 }

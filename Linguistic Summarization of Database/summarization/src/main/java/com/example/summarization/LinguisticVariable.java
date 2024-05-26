@@ -17,7 +17,7 @@ public class LinguisticVariable {
         this.universeOfDiscourse = universeOfDiscourse;
     }
 
-    public ArrayList<Label> getLabels() {g
+    public ArrayList<Label> getLabels() {
         return labels;
     }
 }

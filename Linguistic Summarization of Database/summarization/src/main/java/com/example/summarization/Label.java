@@ -16,4 +16,8 @@ public class Label {
     public String getName() {
         return name;
     }
+
+    public MembershipFunction getMembershipFunction() {
+        return membershipFunction;
+    }
 }

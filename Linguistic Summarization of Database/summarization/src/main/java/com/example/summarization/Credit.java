@@ -41,4 +41,44 @@ public class Credit {
         sb.append('}');
         return sb.toString();
     }
+
+    public float getAmount() {
+        return amount;
+    }
+
+    public float getIntRate() {
+        return intRate;
+    }
+
+    public float getAnnualIncome() {
+        return annualIncome;
+    }
+
+    public int getNumberOfQuestions() {
+        return numberOfQuestions;
+    }
+
+    public float getInstallment() {
+        return installment;
+    }
+
+    public int getDti() {
+        return dti;
+    }
+
+    public float getRevolBalance() {
+        return revolBalance;
+    }
+
+    public float getTotalCollAmount() {
+        return totalCollAmount;
+    }
+
+    public float getCreditLimit() {
+        return creditLimit;
+    }
+
+    public float getTotalAccountsBalance() {
+        return totalAccountsBalance;
+    }
 }

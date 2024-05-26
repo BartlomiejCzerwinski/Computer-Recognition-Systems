@@ -6,6 +6,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class HelloController {
@@ -60,8 +61,10 @@ public class HelloController {
                 "1",
                 "2"
         ));
-        DatabaseConnector databaseConnector = new DatabaseConnector();
-        ArrayList<Credit> credits = databaseConnector.fetchData();
+        SummaryGenerator summaryGenerator = new SummaryGenerator("single", 1, new ArrayList<>(Arrays.asList(initializer.createQuantifier())),
+                "subject1", "subject2", initializer.createLinguisticVariables(), new ArrayList<>(Arrays.asList(0.0)),
+                new ArrayList<>(Arrays.asList("none")), initializer.createLinguisticVariables());
+        summaryGenerator.generateSummaries();
     }
 
     @FXML
