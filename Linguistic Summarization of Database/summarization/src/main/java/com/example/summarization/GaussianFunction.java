@@ -9,8 +9,10 @@ public class GaussianFunction extends MembershipFunction{
     }
 
     @Override
-    public double calculateMembershipDegree() {
-        return 0;
+    public double calculateMembershipDegree(double value) {
+         if (value >= domainL && value < domainR)
+             return Math.exp(-(Math.pow(value - a, 2))/1.8*Math.pow(domainL+domainR, 2));
+         return 0.0;
     }
 
     @Override

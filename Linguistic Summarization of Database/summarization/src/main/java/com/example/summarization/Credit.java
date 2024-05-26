@@ -24,4 +24,21 @@ public class Credit {
         this.creditLimit = creditLimit;
         this.totalAccountsBalance = totalAccountsBalance;
     }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("Credit{");
+        sb.append("amount=").append(amount);
+        sb.append(", intRate=").append(intRate);
+        sb.append(", annualIncome=").append(annualIncome);
+        sb.append(", numberOfQuestions=").append(numberOfQuestions);
+        sb.append(", installment=").append(installment);
+        sb.append(", dti=").append(dti);
+        sb.append(", revolBalance=").append(revolBalance);
+        sb.append(", totalCollAmount=").append(totalCollAmount);
+        sb.append(", creditLimit=").append(creditLimit);
+        sb.append(", totalAccountsBalance=").append(totalAccountsBalance);
+        sb.append('}');
+        return sb.toString();
+    }
 }

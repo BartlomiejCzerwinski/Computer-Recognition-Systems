@@ -5,6 +5,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class HelloController {
     @FXML
     private Label welcomeText;
@@ -58,7 +61,7 @@ public class HelloController {
                 "2"
         ));
         DatabaseConnector databaseConnector = new DatabaseConnector();
-        databaseConnector.fetchData();
+        ArrayList<Credit> credits = databaseConnector.fetchData();
     }
 
     @FXML

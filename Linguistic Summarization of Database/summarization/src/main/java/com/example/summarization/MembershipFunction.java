@@ -3,8 +3,8 @@ package com.example.summarization;
 public abstract class MembershipFunction {
     private double alfaL;
     private double alfaR;
-    private double domainL;
-    private double domainR;
+    protected double domainL;
+    protected double domainR;
 
     public abstract double calculateMembershipDegree(double value);
 
