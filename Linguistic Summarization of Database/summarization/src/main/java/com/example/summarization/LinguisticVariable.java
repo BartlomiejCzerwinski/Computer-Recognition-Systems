@@ -16,4 +16,8 @@ public class LinguisticVariable {
         this.domainR = domainR;
         this.universeOfDiscourse = universeOfDiscourse;
     }
+
+    public ArrayList<Label> getLabels() {g
+        return labels;
+    }
 }
