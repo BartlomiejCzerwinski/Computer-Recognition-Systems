@@ -61,7 +61,7 @@ public class HelloController {
                 "1",
                 "2"
         ));
-        SummaryGenerator summaryGenerator = new SummaryGenerator("single", 1, new ArrayList<>(Arrays.asList(initializer.createQuantifier())),
+        SummaryGenerator summaryGenerator = new SummaryGenerator("single", 2, new ArrayList<>(Arrays.asList(initializer.createQuantifier())),
                 "subject1", "subject2", initializer.createLinguisticVariables(), new ArrayList<>(Arrays.asList(0.0)),
                 new ArrayList<>(Arrays.asList("none")), initializer.createLinguisticVariables());
         summaryGenerator.generateSummaries();

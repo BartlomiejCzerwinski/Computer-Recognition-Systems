@@ -43,7 +43,7 @@ public class SummaryGenerator {
                     for (Label label : linguisticVariable.getLabels()) {
                         double sum = 0.0;
                         for (Credit credit : credits) {
-                            double value = getCalueByColumnIndex(columnIndex, credit);
+                            double value = getValueByColumnIndex(columnIndex, credit);
                             sum += label.getMembershipFunction().calculateMembershipDegree(value);
                         }
                         double totalMembership = sum/credits.size();
@@ -57,9 +57,43 @@ public class SummaryGenerator {
                 }
             }
         }
+        else if (type == 2) {
+            for (Quantifier quantifier : quantifiers) {
+                int columnIndexSummarizer = 0;
+                for (LinguisticVariable summarizer : summarizers) {
+                    for (Label summarizerLabel : summarizer.getLabels()) {
+                        double sumSummarizer = 0.0;
+                        for (Credit credit : credits) {
+                            double valueSummarizer = getValueByColumnIndex(columnIndexSummarizer, credit);
+                            sumSummarizer += summarizerLabel.getMembershipFunction().calculateMembershipDegree(valueSummarizer);
+                        }
+                        double totalMembershipSummarizer = sumSummarizer / credits.size();
+                        for (LinguisticVariable qualifier : summarizers) {
+                            int columnIndexQualifier = 0;
+                            for (Label qualifierLabel : qualifier.getLabels()) {
+                                double sumQualifier = 0.0;
+                                for (Credit credit : credits) {
+                                    double valueQualifier = getValueByColumnIndex(columnIndexQualifier, credit);
+                                    sumQualifier += qualifierLabel.getMembershipFunction().calculateMembershipDegree(valueQualifier);
+                                }
+                                double totalMembershipQualifier = sumQualifier / credits.size();
+                                for (Label quantifierLabel : quantifier.getLabels()) {
+                                    double membershipDegree = quantifierLabel.getMembershipFunction().calculateMembershipDegree(totalMembershipSummarizer);
+                                    String summary = quantifierLabel.getName() + " " + qualifierLabel.getName() + " are " + summarizerLabel.getName();
+                                    System.out.println(summary);
+                                }
+                                columnIndexQualifier++;
+                            }
+                        }
+                        columnIndexSummarizer++;
+                    }
+                }
+            }
+
+        }
     }
 
-    public double getCalueByColumnIndex(int columnIndex, Credit credit) {
+    public double getValueByColumnIndex(int columnIndex, Credit credit) {
         switch (columnIndex) {
             case 0:
                 return credit.getAmount();
