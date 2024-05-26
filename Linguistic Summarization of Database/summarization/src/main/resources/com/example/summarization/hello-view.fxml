@@ -8,13 +8,13 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="700.0" maxWidth="1200.0" minHeight="700.0" minWidth="1200.0" prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="700.0" maxWidth="1200.0" minHeight="700.0" minWidth="1200.0" prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.summarization.HelloController">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="333.0" layoutX="20.0" layoutY="38.0" stroke="BLACK" strokeType="INSIDE" width="645.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="333.0" layoutX="699.0" layoutY="38.0" stroke="BLACK" strokeType="INSIDE" width="483.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="281.0" layoutX="20.0" layoutY="399.0" stroke="BLACK" strokeType="INSIDE" width="1162.0" />
-      <ComboBox layoutX="241.0" layoutY="106.0" prefWidth="150.0" />
-      <ComboBox layoutX="445.0" layoutY="106.0" prefWidth="150.0" />
+      <ComboBox id="comboBoxQualifier" layoutX="241.0" layoutY="106.0" prefWidth="150.0" />
+      <ComboBox id="comboBoxSummarizer" layoutX="445.0" layoutY="106.0" prefWidth="150.0" />
       <ComboBox layoutX="241.0" layoutY="217.0" prefWidth="150.0" />
       <ComboBox layoutX="445.0" layoutY="217.0" prefWidth="150.0" />
       <ComboBox layoutX="241.0" layoutY="305.0" prefWidth="150.0" />
@@ -31,7 +31,7 @@
             <Font size="16.0" />
          </font>
       </Label>
-      <ComboBox layoutX="33.0" layoutY="106.0" prefWidth="150.0" />
+      <ComboBox fx:id="comboBoxQuantifier" layoutX="33.0" layoutY="106.0" prefWidth="150.0" />
       <TextField layoutX="749.0" layoutY="105.0" prefHeight="26.0" prefWidth="50.0" />
       <TextField layoutX="749.0" layoutY="167.0" prefHeight="26.0" prefWidth="50.0" />
       <TextField layoutX="749.0" layoutY="229.0" prefHeight="26.0" prefWidth="50.0" />
