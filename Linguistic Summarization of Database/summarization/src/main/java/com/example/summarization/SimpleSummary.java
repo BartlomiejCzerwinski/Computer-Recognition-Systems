@@ -35,18 +35,18 @@ public class SimpleSummary implements Comparable<SimpleSummary> {
     public String toString() {
         final StringBuilder sb = new StringBuilder("SimpleSummary{");
         sb.append("sentence='").append(sentence).append('\'');
-        sb.append(", T1=").append(T1);
-        sb.append(", T2=").append(T2);
-        sb.append(", T3=").append(T3);
-        sb.append(", T4=").append(T4);
-        sb.append(", T5=").append(T5);
-        sb.append(", T6=").append(T6);
-        sb.append(", T7=").append(T7);
-        sb.append(", T8=").append(T8);
-        sb.append(", T9=").append(T9);
-        sb.append(", T10=").append(T10);
-        sb.append(", T11=").append(T11);
-        sb.append(", T=").append(T);
+        sb.append(", T1=").append(String.format("%.2f", T1));
+        sb.append(", T2=").append(String.format("%.2f", T2));
+        sb.append(", T3=").append(String.format("%.2f", T3));
+        sb.append(", T4=").append(String.format("%.2f", T4));
+        sb.append(", T5=").append(String.format("%.2f", T5));
+        sb.append(", T6=").append(String.format("%.2f", T6));
+        sb.append(", T7=").append(String.format("%.2f", T7));
+        sb.append(", T8=").append(String.format("%.2f", T8));
+        sb.append(", T9=").append(String.format("%.2f", T9));
+        sb.append(", T10=").append(String.format("%.2f", T10));
+        sb.append(", T11=").append(String.format("%.2f", T11));
+        sb.append(", T=").append(String.format("%.2f", T));
         sb.append('}');
         return sb.toString();
     }
