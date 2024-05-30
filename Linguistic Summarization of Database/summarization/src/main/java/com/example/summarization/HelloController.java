@@ -4,6 +4,7 @@ import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -29,6 +30,39 @@ public class HelloController {
     private ComboBox<String> comboBoxSingleOrMany;
     @FXML
     private ComboBox<String> comboBoxType;
+
+    @FXML
+    private TextField t1;
+
+    @FXML
+    private TextField t2;
+
+    @FXML
+    private TextField t3;
+
+    @FXML
+    private TextField t4;
+
+    @FXML
+    private TextField t5;
+
+    @FXML
+    private TextField t6;
+
+    @FXML
+    private TextField t7;
+
+    @FXML
+    private TextField t8;
+
+    @FXML
+    private TextField t9;
+
+    @FXML
+    private TextField t10;
+
+    @FXML
+    private TextField t11;
 
 
     @FXML
@@ -81,7 +115,23 @@ public class HelloController {
         ));
         comboBoxType.setValue("1");
 
+        t1.setText("0");
+        t2.setText("0");
+        t3.setText("0");
+        t4.setText("0");
+        t5.setText("0");
+        t6.setText("0");
+        t7.setText("0");
+        t8.setText("0");
+        t9.setText("0");
+        t10.setText("0");
+        t11.setText("0");
+
+
+
         summaryGenerator.generateSummaries();
+
+
     }
 
     @FXML
