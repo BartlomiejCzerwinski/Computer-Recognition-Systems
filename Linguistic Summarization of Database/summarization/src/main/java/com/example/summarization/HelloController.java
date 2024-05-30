@@ -2,6 +2,7 @@ package com.example.summarization;
 
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -63,6 +64,12 @@ public class HelloController {
 
     @FXML
     private TextField t11;
+
+    @FXML
+    private Button generateSummary;
+
+    @FXML
+    private Button confirmWeights;
 
 
     @FXML
@@ -127,15 +134,24 @@ public class HelloController {
         t10.setText("0");
         t11.setText("0");
 
-
-
         summaryGenerator.generateSummaries();
 
 
     }
 
     @FXML
+    public void onGenerateSummaryClick() {
+        System.out.println("Generate summary clicked!");
+    }
+
+    @FXML
+    public void onConfirmWeightsClick() {
+        System.out.println("Confirm weights clicked!");
+    }
+
+    @FXML
     protected void onHelloButtonClick() {
         welcomeText.setText("Welcome to JavaFX Application!");
     }
+
 }
