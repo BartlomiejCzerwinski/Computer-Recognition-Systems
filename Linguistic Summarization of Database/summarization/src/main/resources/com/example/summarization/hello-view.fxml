@@ -32,17 +32,17 @@
          </font>
       </Label>
       <ComboBox fx:id="comboBoxQuantifier" layoutX="33.0" layoutY="106.0" prefWidth="150.0" />
-      <TextField layoutX="749.0" layoutY="105.0" prefHeight="26.0" prefWidth="50.0" />
-      <TextField layoutX="749.0" layoutY="167.0" prefHeight="26.0" prefWidth="50.0" />
-      <TextField layoutX="749.0" layoutY="229.0" prefHeight="26.0" prefWidth="50.0" />
-      <TextField layoutX="889.0" layoutY="229.0" prefHeight="26.0" prefWidth="50.0" />
-      <TextField layoutX="889.0" layoutY="105.0" prefHeight="26.0" prefWidth="50.0" />
-      <TextField layoutX="889.0" layoutY="167.0" prefHeight="26.0" prefWidth="50.0" />
-      <TextField layoutX="889.0" layoutY="292.0" prefHeight="26.0" prefWidth="50.0" />
-      <TextField layoutX="1033.0" layoutY="229.0" prefHeight="26.0" prefWidth="50.0" />
-      <TextField layoutX="1033.0" layoutY="167.0" prefHeight="26.0" prefWidth="50.0" />
-      <TextField layoutX="1033.0" layoutY="105.0" prefHeight="26.0" prefWidth="50.0" />
-      <TextField layoutX="749.0" layoutY="292.0" prefHeight="26.0" prefWidth="50.0" />
+      <TextField fx:id="t1" layoutX="749.0" layoutY="105.0" prefHeight="26.0" prefWidth="50.0" />
+      <TextField fx:id="t4" layoutX="749.0" layoutY="167.0" prefHeight="26.0" prefWidth="50.0" />
+      <TextField fx:id="t7" layoutX="749.0" layoutY="229.0" prefHeight="26.0" prefWidth="50.0" />
+      <TextField fx:id="t8" layoutX="889.0" layoutY="229.0" prefHeight="26.0" prefWidth="50.0" />
+      <TextField fx:id="t2" layoutX="889.0" layoutY="105.0" prefHeight="26.0" prefWidth="50.0" />
+      <TextField fx:id="t5" layoutX="889.0" layoutY="167.0" prefHeight="26.0" prefWidth="50.0" />
+      <TextField fx:id="t11" layoutX="889.0" layoutY="292.0" prefHeight="26.0" prefWidth="50.0" />
+      <TextField fx:id="t9" layoutX="1033.0" layoutY="229.0" prefHeight="26.0" prefWidth="50.0" />
+      <TextField fx:id="t6" layoutX="1033.0" layoutY="167.0" prefHeight="26.0" prefWidth="50.0" />
+      <TextField fx:id="t3" layoutX="1033.0" layoutY="105.0" prefHeight="26.0" prefWidth="50.0" />
+      <TextField fx:id="t10" layoutX="749.0" layoutY="292.0" prefHeight="26.0" prefWidth="50.0" />
       <Label layoutX="722.0" layoutY="105.0" text="T1">
          <font>
             <Font size="16.0" />
