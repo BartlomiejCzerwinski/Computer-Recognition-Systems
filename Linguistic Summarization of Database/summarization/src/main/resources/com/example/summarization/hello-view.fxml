@@ -20,7 +20,7 @@
       <ComboBox fx:id="comboBoxType" layoutX="241.0" layoutY="305.0" prefWidth="150.0" />
       <ComboBox fx:id="comboBoxSubject1" layoutX="33.0" layoutY="217.0" prefWidth="150.0" />
       <ComboBox fx:id="comboBoxSingleOrMany" layoutX="33.0" layoutY="305.0" prefWidth="150.0" />
-      <Button layoutX="465.0" layoutY="295.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="110.0" text="Generuj" />
+      <Button fx:id="generateSummary" layoutX="465.0" layoutY="295.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="110.0" text="Generuj" />
       <Label layoutX="33.0" layoutY="55.0" prefHeight="26.0" prefWidth="150.0" text="Jednopodmiotowe:">
          <font>
             <Font size="16.0" />
@@ -98,7 +98,7 @@
             <Font size="16.0" />
          </font>
       </Label>
-      <Button layoutX="1003.0" layoutY="282.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="110.0" text="Zatwierdź" />
+      <Button fx:id="confirmWeights" layoutX="1003.0" layoutY="282.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="110.0" text="Zatwierdź" />
       <Label layoutX="711.0" layoutY="55.0" prefHeight="26.0" prefWidth="150.0" text="Wagi miar">
          <font>
             <Font size="16.0" />
