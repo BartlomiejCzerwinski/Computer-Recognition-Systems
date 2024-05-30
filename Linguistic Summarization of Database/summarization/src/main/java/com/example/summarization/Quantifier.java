@@ -26,6 +26,7 @@ public class Quantifier {
         for (Label label : labels) {
             result.add(label.getName());
         }
+        result.add("----");
         return result;
     }
 

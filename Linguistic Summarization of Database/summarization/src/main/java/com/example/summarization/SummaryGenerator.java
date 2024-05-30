@@ -91,7 +91,7 @@ public class SummaryGenerator {
             }
         }
 
-        printFirstXSummaries(300);
+        printFirstXSummaries(25);
     }
 
     public void printFirstXSummaries(int x) {
@@ -192,5 +192,16 @@ public class SummaryGenerator {
                 return credit.getTotalAccountsBalance();
         }
         return 0.0;
+    }
+
+    public ArrayList<String> getLinguisticLabelsNamesList() {
+        ArrayList<String> names = new ArrayList<String>();
+        for (LinguisticVariable linguisticVariable : linguisticVariables) {
+            for (Label label : linguisticVariable.getLabels()) {
+                names.add(label.getName());
+            }
+        }
+        names.add("----");
+        return names;
     }
 }

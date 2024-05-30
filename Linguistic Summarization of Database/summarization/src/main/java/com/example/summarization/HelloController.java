@@ -36,34 +36,51 @@ public class HelloController {
         Initializer initializer = new Initializer();
         Quantifier quantifier = initializer.createQuantifier();
         initializer.createLinguisticVariables();
+        SummaryGenerator summaryGenerator = new SummaryGenerator("single", 1, new ArrayList<>(Arrays.asList(initializer.createQuantifier())),
+                "credits", "subject2", initializer.createLinguisticVariables(), new ArrayList<>(Arrays.asList(0.0)),
+                new ArrayList<>(Arrays.asList("none")), initializer.createLinguisticVariables());
+
         comboBoxQuantifier.setItems(FXCollections.observableArrayList(
                 quantifier.getLabelsNames()
         ));
+        comboBoxQuantifier.setValue("----");
+
         comboBoxQualifier.setItems(FXCollections.observableArrayList(
-                "-"
+                summaryGenerator.getLinguisticLabelsNamesList()
         ));
+        comboBoxQualifier.setValue("----");
+
         comboBoxSummarizer.setItems(FXCollections.observableArrayList(
-                "-"
+                summaryGenerator.getLinguisticLabelsNamesList()
         ));
+        comboBoxSummarizer.setValue("----");
+
         comboBoxSubject1.setItems(FXCollections.observableArrayList(
-                "-"
+                "credit"
         ));
+        comboBoxSubject1.setValue("credit");
+
         comboBoxSubject2.setItems(FXCollections.observableArrayList(
                 "-"
         ));
+        comboBoxSubject2.setValue("-");
+
         comboBoxSummarizerMany.setItems(FXCollections.observableArrayList(
                 "-"
         ));
+        comboBoxSummarizerMany.setValue("-");
+
         comboBoxSingleOrMany.setItems(FXCollections.observableArrayList(
                 "single subject"
         ));
+        comboBoxSingleOrMany.setValue("single subject");
+
         comboBoxType.setItems(FXCollections.observableArrayList(
                 "1",
                 "2"
         ));
-        SummaryGenerator summaryGenerator = new SummaryGenerator("single", 2, new ArrayList<>(Arrays.asList(initializer.createQuantifier())),
-                "credits", "subject2", initializer.createLinguisticVariables(), new ArrayList<>(Arrays.asList(0.0)),
-                new ArrayList<>(Arrays.asList("none")), initializer.createLinguisticVariables());
+        comboBoxType.setValue("1");
+
         summaryGenerator.generateSummaries();
     }
 
