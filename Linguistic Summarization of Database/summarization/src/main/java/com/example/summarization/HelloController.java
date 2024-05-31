@@ -73,6 +73,10 @@ public class HelloController {
     @FXML
     private Button confirmWeights;
 
+    private ArrayList<Double> measuresWeights = new ArrayList<Double>(Arrays.asList(
+            0.09, 0.09, 0.09, 0.09, 0.09, 0.09, 0.09, 0.09, 0.09, 0.09, 0.09
+    ));
+
 
     @FXML
     public void initialize() {
@@ -161,6 +165,8 @@ public class HelloController {
         System.out.println("Kind: " + kind);
         System.out.println("Type: " + type);
 
+
+
     }
 
     @FXML
@@ -176,9 +182,24 @@ public class HelloController {
         double t9 = Double.parseDouble(this.t9.getCharacters().toString());
         double t10 = Double.parseDouble(this.t10.getCharacters().toString());
         double t11 = Double.parseDouble(this.t11.getCharacters().toString());
+
         System.out.println(isWeightsCorrect(t1, t2, t3, t4, t5, t6, t7, t8, t9, t10, t11));
+
         if (isWeightsCorrect(t1, t2, t3, t4, t5, t6, t7, t8, t9, t10, t11)) {
-            // save weights
+
+            BigDecimal sumBigDecimal = new BigDecimal(t1 + t2 + t3 + t4 + t5 + t6 + t7 + t8 + t9 + t10 + t11).setScale(2, RoundingMode.HALF_UP);
+            double sum = sumBigDecimal.doubleValue();
+
+            if (sum == 0.0) {
+                measuresWeights = new ArrayList<Double>(Arrays.asList(
+                        0.09, 0.09, 0.09, 0.09, 0.09, 0.09, 0.09, 0.09, 0.09, 0.09, 0.09
+                ));
+            }
+            else {
+                measuresWeights = new ArrayList<Double>(Arrays.asList(
+                        t1, t2, t3, t4, t5, t6, t7, t8, t9, t10, t11
+                ));
+            }
         }
         else {
             // error msg
