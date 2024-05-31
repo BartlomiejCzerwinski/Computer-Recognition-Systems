@@ -20,4 +20,8 @@ public class LinguisticVariable {
     public ArrayList<Label> getLabels() {
         return labels;
     }
+
+    public String getName() {
+        return name;
+    }
 }

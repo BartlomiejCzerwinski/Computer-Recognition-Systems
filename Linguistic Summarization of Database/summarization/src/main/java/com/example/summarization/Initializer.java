@@ -20,13 +20,22 @@ public class Initializer {
     private ArrayList<ArrayList<Label>> LINGUISTIC_LABELS = new ArrayList<>();
 
 
-    public ArrayList<LinguisticVariable> createLinguisticVariables() {
+    public ArrayList<LinguisticVariable> getAllLinguisticVariables() {
         ArrayList<LinguisticVariable> linguisticVariables = new ArrayList<>();
         initLinguisticLabels();
         for (int i = 0; i < NUMBER_OF_VARIABLES; i++) {
             linguisticVariables.add(new LinguisticVariable(LINGUISTIC_VARIABLE_NAMES[i], LINGUISTIC_LABELS.get(i), L[i], R[i], UNIVERSES_OF_DISCOURSES[i]));
         }
         return linguisticVariables;
+    }
+
+    public ArrayList<LinguisticVariable> getSingleLinguisticVariable(String name) {
+        ArrayList<LinguisticVariable> linguisticVariables = getAllLinguisticVariables();
+        for (LinguisticVariable linguisticVariable : linguisticVariables) {
+            if (linguisticVariable.getName() == name)
+                return new ArrayList<LinguisticVariable>(Arrays.asList(linguisticVariable));
+        }
+        return null;
     }
 
 
@@ -129,7 +138,7 @@ public class Initializer {
 
     public ArrayList<String> getLinguisticLabelsNamesList() {
         ArrayList<String> names = new ArrayList<>();
-        for (LinguisticVariable linguisticVariable : createLinguisticVariables()) {
+        for (LinguisticVariable linguisticVariable : getAllLinguisticVariables()) {
             for (Label label : linguisticVariable.getLabels()) {
                 names.add(label.getName());
             }
