@@ -132,14 +132,4 @@ public class SummaryGenerator {
         return 0.0;
     }
 
-    public ArrayList<String> getLinguisticLabelsNamesList() {
-        ArrayList<String> names = new ArrayList<String>();
-        for (LinguisticVariable linguisticVariable : linguisticVariables) {
-            for (Label label : linguisticVariable.getLabels()) {
-                names.add(label.getName());
-            }
-        }
-        names.add("----");
-        return names;
-    }
 }

@@ -125,4 +125,15 @@ public class Initializer {
         ArrayList<Label> labels = new ArrayList<>(Arrays.asList(label1, label2, label3, label4, label5));
         return new Quantifier("number of objects", labels, true);
     }
+
+    public ArrayList<String> getLinguisticLabelsNamesList() {
+        ArrayList<String> names = new ArrayList<>();
+        for (LinguisticVariable linguisticVariable : createLinguisticVariables()) {
+            for (Label label : linguisticVariable.getLabels()) {
+                names.add(label.getName());
+            }
+        }
+        names.add("----");
+        return names;
+    }
 }

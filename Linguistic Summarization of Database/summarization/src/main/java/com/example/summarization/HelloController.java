@@ -95,12 +95,12 @@ public class HelloController {
         comboBoxQuantifier.setValue("----");
 
         comboBoxQualifier.setItems(FXCollections.observableArrayList(
-                summaryGenerator.getLinguisticLabelsNamesList()
+                initializer.getLinguisticLabelsNamesList()
         ));
         comboBoxQualifier.setValue("----");
 
         comboBoxSummarizer.setItems(FXCollections.observableArrayList(
-                summaryGenerator.getLinguisticLabelsNamesList()
+                initializer.getLinguisticLabelsNamesList()
         ));
         comboBoxSummarizer.setValue("----");
 
