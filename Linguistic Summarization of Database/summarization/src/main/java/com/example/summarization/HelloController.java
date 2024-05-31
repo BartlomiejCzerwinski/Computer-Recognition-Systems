@@ -33,6 +33,8 @@ public class HelloController {
     private ComboBox<String> comboBoxSingleOrMany;
     @FXML
     private ComboBox<String> comboBoxType;
+    @FXML
+    private ComboBox<String> comboBoxSortBy;
 
     @FXML
     private TextField t1;
@@ -140,6 +142,12 @@ public class HelloController {
         t10.setText("0");
         t11.setText("0");
 
+        comboBoxSortBy.setItems(FXCollections.observableArrayList(
+                Arrays.asList(
+                        "T", "T1", "T2", "T3", "T4", "T5", "T6", "T7", "T8", "T9", "T10", "T11"
+                )
+        ));
+
         summaryGenerator.generateSummaries();
 
 
@@ -164,7 +172,6 @@ public class HelloController {
         System.out.println("Summarizer Many: " + summarizerMany);
         System.out.println("Kind: " + kind);
         System.out.println("Type: " + type);
-
 
 
     }
