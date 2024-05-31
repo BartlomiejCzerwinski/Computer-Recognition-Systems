@@ -100,7 +100,7 @@
             <Font size="16.0" />
          </font>
       </Label>
-      <Button fx:id="confirmWeights" layoutX="1003.0" layoutY="282.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="110.0" text="Zatwierdź" />
+      <Button fx:id="confirmWeights" layoutX="1003.0" layoutY="282.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="110.0" text="Zatwierdź" onAction="#onConfirmWeightsClick"/>
       <Label layoutX="711.0" layoutY="55.0" prefHeight="26.0" prefWidth="150.0" text="Wagi miar">
          <font>
             <Font size="16.0" />
