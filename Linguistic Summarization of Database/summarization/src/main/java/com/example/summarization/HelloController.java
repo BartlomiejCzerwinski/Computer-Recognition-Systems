@@ -79,15 +79,12 @@ public class HelloController {
             0.09, 0.09, 0.09, 0.09, 0.09, 0.09, 0.09, 0.09, 0.09, 0.09, 0.09
     ));
 
+    private Initializer initializer = new Initializer();
+
 
     @FXML
     public void initialize() {
-        Initializer initializer = new Initializer();
         Quantifier quantifier = initializer.createQuantifier();
-        initializer.createLinguisticVariables();
-        SummaryGenerator summaryGenerator = new SummaryGenerator("single", 1, new ArrayList<>(Arrays.asList(initializer.createQuantifier())),
-                "credits", "subject2", initializer.createLinguisticVariables(), new ArrayList<>(Arrays.asList(0.0)),
-                new ArrayList<>(Arrays.asList("none")), initializer.createLinguisticVariables());
 
         comboBoxQuantifier.setItems(FXCollections.observableArrayList(
                 quantifier.getLabelsNames()
@@ -148,8 +145,6 @@ public class HelloController {
                 )
         ));
 
-        summaryGenerator.generateSummaries();
-
 
     }
 
@@ -173,7 +168,17 @@ public class HelloController {
         System.out.println("Kind: " + kind);
         System.out.println("Type: " + type);
 
+        ArrayList<LinguisticVariable> qualifiers = getLinguisticVariables(qualifier);
+        ArrayList<LinguisticVariable> summarizer1 = getLinguisticVariables(summarizer);
+        // linguistic labels should be given, instead of whole variables!
+        System.out.println("qualifiers: " + qualifiers.size() + "; summarizer1: " + summarizer1.size());
+    }
 
+    public ArrayList<LinguisticVariable> getLinguisticVariables(String name) {
+        if (name == "----")
+            return initializer.getAllLinguisticVariables();
+        else
+            return initializer.getSingleLinguisticVariable(name);
     }
 
     @FXML

@@ -1,33 +1,47 @@
 package com.example.summarization;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
 public class SummaryGenerator {
+
+
+    // GENERATOR SECTION ****************************
     private String kind;
     private int type;
     private ArrayList<Quantifier> quantifiers;
-    private String subject1;
-    private String subject2;
-    private ArrayList<LinguisticVariable> linguisticVariables;
-    private ArrayList<Summary> summaries;
-    private ArrayList<Double> measuresWeights;
     private ArrayList<String> qualifiers;
     private ArrayList<LinguisticVariable> summarizers;
+    private String subject1;
+    private String subject2;
+    private ArrayList<Double> measuresWeights;
+    // GENERATOR SECTION ****************************
+
+
+    // WHAT TO RETURN SECTION ***********************
+    private String quantifiersToReturn;
+    private String qualifiersToReturn;
+    private String summarizersToReturn;
+    // WHAT TO RETURN SECTION ***********************
+
+
+    // DATA SECTION *********************************
+    private ArrayList<Summary> summaries;
     private ArrayList<Credit> credits;
+    // DATA SECTION *********************************
 
 
-    public SummaryGenerator(String kind, int type, ArrayList<Quantifier> quantifiers, String subject1, String subject2, ArrayList<LinguisticVariable> linguisticVariables, ArrayList<Double> measuresWeights, ArrayList<String> qualifiers, ArrayList<LinguisticVariable> summarizers) {
+    public SummaryGenerator(String kind, int type, ArrayList<Quantifier> quantifiers, ArrayList<String> qualifiers, ArrayList<LinguisticVariable> summarizers, String subject1, String subject2, ArrayList<Double> measuresWeights, String quantifiersToReturn, String qualifiersToReturn, String summarizersToReturn) {
         this.kind = kind;
         this.type = type;
         this.quantifiers = quantifiers;
-        this.subject1 = subject1;
-        this.subject2 = subject2;
-        this.linguisticVariables = linguisticVariables;
-        this.measuresWeights = measuresWeights;
         this.qualifiers = qualifiers;
         this.summarizers = summarizers;
+        this.subject1 = subject1;
+        this.subject2 = subject2;
+        this.measuresWeights = measuresWeights;
+        this.quantifiersToReturn = quantifiersToReturn;
+        this.qualifiersToReturn = qualifiersToReturn;
+        this.summarizersToReturn = summarizersToReturn;
         DatabaseConnector databaseConnector = new DatabaseConnector();
         this.credits = databaseConnector.fetchData();
     }
@@ -131,4 +145,7 @@ public class SummaryGenerator {
         return 0.0;
     }
 
+    public ArrayList<Summary> getSummaries() {
+        return summaries;
+    }
 }
