@@ -16,7 +16,6 @@ public class SummaryGenerator {
     private ArrayList<String> qualifiers;
     private ArrayList<LinguisticVariable> summarizers;
     private ArrayList<Credit> credits;
-    private ArrayList<SimpleSummary> summariesWithMeasures = new ArrayList<>();
 
 
     public SummaryGenerator(String kind, int type, ArrayList<Quantifier> quantifiers, String subject1, String subject2, ArrayList<LinguisticVariable> linguisticVariables, ArrayList<Double> measuresWeights, ArrayList<String> qualifiers, ArrayList<LinguisticVariable> summarizers) {

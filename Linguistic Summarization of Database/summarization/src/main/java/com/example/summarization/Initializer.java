@@ -29,6 +29,7 @@ public class Initializer {
         return linguisticVariables;
     }
 
+
     public void initLinguisticLabels() {
         LINGUISTIC_LABELS.add(initLinguisticLabels1());
         LINGUISTIC_LABELS.add(initLinguisticLabels2());
