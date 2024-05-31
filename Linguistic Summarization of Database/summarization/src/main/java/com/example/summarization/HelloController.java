@@ -7,6 +7,8 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -174,7 +176,7 @@ public class HelloController {
         double t9 = Double.parseDouble(this.t9.getCharacters().toString());
         double t10 = Double.parseDouble(this.t10.getCharacters().toString());
         double t11 = Double.parseDouble(this.t11.getCharacters().toString());
-
+        System.out.println(isWeightsCorrect(t1, t2, t3, t4, t5, t6, t7, t8, t9, t10, t11));
         if (isWeightsCorrect(t1, t2, t3, t4, t5, t6, t7, t8, t9, t10, t11)) {
             // save weights
         }
@@ -186,7 +188,13 @@ public class HelloController {
 
     public boolean isWeightsCorrect(double t1, double t2, double t3, double t4, double t5, double t6, double t7,
                                     double t8, double t9, double t10, double t11) {
-        if ((t1 + t2 + t3 + t4 + t5 + t6 + t7 + t8 + t9 + t10 + t11) == 1.0)
+
+        BigDecimal sumBigDecimal = new BigDecimal(t1 + t2 + t3 + t4 + t5 + t6 + t7 + t8 + t9 + t10 + t11).setScale(2, RoundingMode.HALF_UP);
+        double sum = sumBigDecimal.doubleValue();
+
+        if ( sum == 0.0)
+            return true;
+        if ( sum == 1.0)
             return true;
         return false;
     }
