@@ -141,7 +141,24 @@ public class HelloController {
 
     @FXML
     public void onGenerateSummaryClick() {
-        System.out.println("Generate summary clicked!");
+        String quantifier = comboBoxQuantifier.getValue().toString();
+        String qualifier = comboBoxQualifier.getValue().toString();
+        String summarizer = comboBoxSummarizer.getValue().toString();
+        String subject1 = comboBoxSubject1.getValue().toString();
+        String subject2 = comboBoxSubject2.getValue().toString();
+        String summarizerMany = comboBoxSummarizerMany.getValue().toString();
+        String kind = comboBoxSingleOrMany.getValue().toString();
+        int type = Integer.valueOf(comboBoxType.getValue().toString());
+
+        System.out.println("Quantifier: " + quantifier);
+        System.out.println("Qualifier: " + qualifier);
+        System.out.println("Summarizer: " + summarizer);
+        System.out.println("Subject 1: " + subject1);
+        System.out.println("Subject 2: " + subject2);
+        System.out.println("Summarizer Many: " + summarizerMany);
+        System.out.println("Kind: " + kind);
+        System.out.println("Type: " + type);
+
     }
 
     @FXML
