@@ -3,37 +3,54 @@ package com.example.summarization;
 import java.util.ArrayList;
 
 public class Summary {
-    private String summary;
     private String subject1;
     private String subject2;
-    private int type;
-    private String kind;
     private ArrayList<Double> measures;
-    private ArrayList<Double> measuresWeights;
-    private ArrayList<Label> summarizers;
-    private Quantifier quantifier;
-    private Label qualifier;
-    private double T;
+    private String quantifier;
+    private String qualifier;
+    private String summarizer;
+    private String summarizerMany;
+    private String kind;
+    private int type;
 
-    public void generateSummary() {
-        return;
-    }
 
-    public void calculateMeasures() {
-        return;
-    }
-
-    public Summary(String summary, String subject1, String subject2, int type, String kind, ArrayList<Double> measures, ArrayList<Double> measuresWeights, ArrayList<Label> summarizers, Quantifier quantifier, Label qualifier, double t) {
-        this.summary = summary;
+    public Summary(String kind, int type, String subject1, String subject2, ArrayList<Double> measures, String quantifier, String qualifier, String summarizer, String summarizerMany) {
         this.subject1 = subject1;
         this.subject2 = subject2;
-        this.type = type;
-        this.kind = kind;
         this.measures = measures;
-        this.measuresWeights = measuresWeights;
-        this.summarizers = summarizers;
         this.quantifier = quantifier;
         this.qualifier = qualifier;
-        T = t;
+        this.summarizer = summarizer;
+        this.summarizerMany = summarizerMany;
+        this.kind = kind;
+        this.type = type;
+    }
+
+    public String getSentence(){
+        if (kind == "single subject") {
+            switch (type) {
+                case 1:
+                    return "TODO";
+                case 2:
+                    return "TODO";
+            }
+        }
+        else {
+            switch (type) {
+                case 1:
+                    return "TODO";
+                case 2:
+                    return "TODO";
+                case 3:
+                    return "TODO";
+                case 4:
+                    return "TODO";
+            }
+        }
+        return null;
+    }
+
+    public ArrayList<Double> getMeasures() {
+        return measures;
     }
 }
