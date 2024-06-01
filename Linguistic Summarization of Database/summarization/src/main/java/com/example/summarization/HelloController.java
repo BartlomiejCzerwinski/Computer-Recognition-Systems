@@ -1,9 +1,14 @@
 package com.example.summarization;
 
+import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableArray;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.Label;
+import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.util.converter.DoubleStringConverter;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -72,33 +77,34 @@ public class HelloController {
     private Button confirmWeights;
 
     @FXML
-    private TableView<Summary> tableView;
+    private TableView<ObservableList<Object>> summaryTable;
     @FXML
-    private TableColumn<Summary, String> sentence;
+    private TableColumn<ObservableList<String>, String> sentence;
     @FXML
-    private TableColumn<Summary, Double> measureT1;
+    private TableColumn<ObservableList<String>, Double> measureT1;
     @FXML
-    private TableColumn<Summary, Double> measureT2;
+    private TableColumn<ObservableList<String>, Double> measureT2;
     @FXML
-    private TableColumn<Summary, Double> measureT3;
+    private TableColumn<ObservableList<String>, Double> measureT3;
     @FXML
-    private TableColumn<Summary, Double> measureT4;
+    private TableColumn<ObservableList<String>, Double> measureT4;
     @FXML
-    private TableColumn<Summary, Double> measureT5;
+    private TableColumn<ObservableList<String>, Double> measureT5;
     @FXML
-    private TableColumn<Summary, Double> measureT6;
+    private TableColumn<ObservableList<String>, Double> measureT6;
     @FXML
-    private TableColumn<Summary, Double> measureT7;
+    private TableColumn<ObservableList<String>, Double> measureT7;
     @FXML
-    private TableColumn<Summary, Double> measureT8;
+    private TableColumn<ObservableList<String>, Double> measureT8;
     @FXML
-    private TableColumn<Summary, Double> measureT9;
+    private TableColumn<ObservableList<String>, Double> measureT9;
     @FXML
-    private TableColumn<Summary, Double> measureT10;
+    private TableColumn<ObservableList<String>, Double> measureT10;
     @FXML
-    private TableColumn<Summary, Double> measureT11;
+    private TableColumn<ObservableList<String>, Double> measureT11;
     @FXML
-    private TableColumn<Summary, Double> measureT;
+    private TableColumn<ObservableList<String>, Double> measureT;
+
 
     private ArrayList<Double> measuresWeights = new ArrayList<Double>(Arrays.asList(
             0.09, 0.09, 0.09, 0.09, 0.09, 0.09, 0.09, 0.09, 0.09, 0.09, 0.09
@@ -189,7 +195,82 @@ public class HelloController {
                 initializer.getAllLinguisticVariables(), initializer.getAllLinguisticVariables(), subject1, subject2,
                 measuresWeights, quantifier, qualifier, summarizer);
         summaryGenerator.generateSummaries();
+
+        sentence.setCellValueFactory(param -> {
+            return new ReadOnlyObjectWrapper<>(param.getValue().get(0));
+        });
+        measureT1.setCellValueFactory(param -> {
+            return new ReadOnlyObjectWrapper<>(Double.valueOf(String.valueOf(param.getValue().get(1))));
+        });
+        measureT2.setCellValueFactory(param -> {
+            return new ReadOnlyObjectWrapper<>(Double.valueOf(String.valueOf(param.getValue().get(2))));
+        });
+        measureT3.setCellValueFactory(param -> {
+            return new ReadOnlyObjectWrapper<>(Double.valueOf(String.valueOf(param.getValue().get(3))));
+        });
+        measureT4.setCellValueFactory(param -> {
+            return new ReadOnlyObjectWrapper<>(Double.valueOf(String.valueOf(param.getValue().get(4))));
+        });
+        measureT5.setCellValueFactory(param -> {
+            return new ReadOnlyObjectWrapper<>(Double.valueOf(String.valueOf(param.getValue().get(5))));
+        });
+        measureT6.setCellValueFactory(param -> {
+            return new ReadOnlyObjectWrapper<>(Double.valueOf(String.valueOf(param.getValue().get(6))));
+        });
+        measureT7.setCellValueFactory(param -> {
+            return new ReadOnlyObjectWrapper<>(Double.valueOf(String.valueOf(param.getValue().get(7))));
+        });
+        measureT8.setCellValueFactory(param -> {
+            return new ReadOnlyObjectWrapper<>(Double.valueOf(String.valueOf(param.getValue().get(8))));
+        });
+        measureT9.setCellValueFactory(param -> {
+            return new ReadOnlyObjectWrapper<>(Double.valueOf(String.valueOf(param.getValue().get(9))));
+        });
+        measureT10.setCellValueFactory(param -> {
+            return new ReadOnlyObjectWrapper<>(Double.valueOf(String.valueOf(param.getValue().get(10))));
+        });
+        measureT11.setCellValueFactory(param -> {
+            return new ReadOnlyObjectWrapper<>(Double.valueOf(String.valueOf(param.getValue().get(11))));
+        });
+        measureT.setCellValueFactory(param -> {
+            return new ReadOnlyObjectWrapper<>(Double.valueOf(String.valueOf(param.getValue().get(12))));
+        });
+        sentence.setCellFactory(TextFieldTableCell.forTableColumn());
+        measureT1.setCellFactory(TextFieldTableCell.forTableColumn(new DoubleStringConverter()));
+        measureT2.setCellFactory(TextFieldTableCell.forTableColumn(new DoubleStringConverter()));
+        measureT3.setCellFactory(TextFieldTableCell.forTableColumn(new DoubleStringConverter()));
+        measureT4.setCellFactory(TextFieldTableCell.forTableColumn(new DoubleStringConverter()));
+        measureT5.setCellFactory(TextFieldTableCell.forTableColumn(new DoubleStringConverter()));
+        measureT6.setCellFactory(TextFieldTableCell.forTableColumn(new DoubleStringConverter()));
+        measureT7.setCellFactory(TextFieldTableCell.forTableColumn(new DoubleStringConverter()));
+        measureT8.setCellFactory(TextFieldTableCell.forTableColumn(new DoubleStringConverter()));
+        measureT9.setCellFactory(TextFieldTableCell.forTableColumn(new DoubleStringConverter()));
+        measureT10.setCellFactory(TextFieldTableCell.forTableColumn(new DoubleStringConverter()));
+        measureT11.setCellFactory(TextFieldTableCell.forTableColumn(new DoubleStringConverter()));
+        measureT.setCellFactory(TextFieldTableCell.forTableColumn(new DoubleStringConverter()));
+
         ArrayList<Summary> summaries = summaryGenerator.getSummaries();
+        for (Summary summary : summaries) {
+            addSummaryToTable(summary);
+        }
+    }
+
+    public void addSummaryToTable(Summary summary) {
+        ObservableList<Object> row = FXCollections.observableArrayList();
+        row.add(summary.getSentence());
+        row.add(summary.getMeasures().get(0));
+        row.add(summary.getMeasures().get(1));
+        row.add(summary.getMeasures().get(2));
+        row.add(summary.getMeasures().get(3));
+        row.add(summary.getMeasures().get(4));
+        row.add(summary.getMeasures().get(5));
+        row.add(summary.getMeasures().get(6));
+        row.add(summary.getMeasures().get(7));
+        row.add(summary.getMeasures().get(8));
+        row.add(summary.getMeasures().get(9));
+        row.add(summary.getMeasures().get(10));
+        row.add(summary.getMeasures().get(11));
+        summaryTable.getItems().add(row);
     }
 
     @FXML

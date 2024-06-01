@@ -154,18 +154,18 @@
       <TableView fx:id="summaryTable" layoutX="26.0" layoutY="410.0" prefHeight="262.0" prefWidth="968.0">
         <columns>
             <TableColumn fx:id="sentence" prefWidth="427.0" resizable="false" text="Zdanie" />
-            <TableColumn fx:id="mearuseT1" prefWidth="45.0" resizable="false" text="T1" />
-            <TableColumn fx:id="mearuseT2" prefWidth="45.0" resizable="false" text="T2" />
-            <TableColumn fx:id="mearuseT3" prefWidth="45.0" resizable="false" text="T3" />
-            <TableColumn fx:id="mearuseT4" prefWidth="45.0" resizable="false" text="T4" />
-            <TableColumn fx:id="mearuseT5" prefWidth="45.0" resizable="false" text="T5" />
-            <TableColumn fx:id="mearuseT6" prefWidth="45.0" resizable="false" text="T6" />
-            <TableColumn fx:id="mearuseT7" prefWidth="45.0" resizable="false" text="T7" />
-            <TableColumn fx:id="mearuseT8" prefWidth="45.0" resizable="false" text="T8" />
-            <TableColumn fx:id="mearuseT9" prefWidth="45.0" resizable="false" text="T9" />
-            <TableColumn fx:id="mearuseT10" prefWidth="45.0" resizable="false" text="T10" />
-            <TableColumn fx:id="mearuseT11" prefWidth="45.0" resizable="false" text="T11" />
-            <TableColumn fx:id="mearuseT" prefWidth="45.0" resizable="false" text="T" />
+            <TableColumn fx:id="measureT1" prefWidth="45.0" resizable="false" text="T1" />
+            <TableColumn fx:id="measureT2" prefWidth="45.0" resizable="false" text="T2" />
+            <TableColumn fx:id="measureT3" prefWidth="45.0" resizable="false" text="T3" />
+            <TableColumn fx:id="measureT4" prefWidth="45.0" resizable="false" text="T4" />
+            <TableColumn fx:id="measureT5" prefWidth="45.0" resizable="false" text="T5" />
+            <TableColumn fx:id="measureT6" prefWidth="45.0" resizable="false" text="T6" />
+            <TableColumn fx:id="measureT7" prefWidth="45.0" resizable="false" text="T7" />
+            <TableColumn fx:id="measureT8" prefWidth="45.0" resizable="false" text="T8" />
+            <TableColumn fx:id="measureT9" prefWidth="45.0" resizable="false" text="T9" />
+            <TableColumn fx:id="measureT10" prefWidth="45.0" resizable="false" text="T10" />
+            <TableColumn fx:id="measureT11" prefWidth="45.0" resizable="false" text="T11" />
+            <TableColumn fx:id="measureT" prefWidth="45.0" resizable="false" text="T" />
         </columns>
          <columnResizePolicy>
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />

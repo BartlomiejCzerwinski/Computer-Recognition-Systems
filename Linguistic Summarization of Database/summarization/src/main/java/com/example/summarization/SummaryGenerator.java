@@ -26,7 +26,7 @@ public class SummaryGenerator {
 
 
     // DATA SECTION *********************************
-    private ArrayList<Summary> summaries;
+    private ArrayList<Summary> summaries = new ArrayList<>();
     private ArrayList<Credit> credits;
     // DATA SECTION *********************************
 
