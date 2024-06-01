@@ -2,10 +2,8 @@ package com.example.summarization;
 
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
+import javafx.scene.control.*;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -72,6 +70,35 @@ public class HelloController {
 
     @FXML
     private Button confirmWeights;
+
+    @FXML
+    private TableView<Summary> tableView;
+    @FXML
+    private TableColumn<Summary, String> sentence;
+    @FXML
+    private TableColumn<Summary, Double> measureT1;
+    @FXML
+    private TableColumn<Summary, Double> measureT2;
+    @FXML
+    private TableColumn<Summary, Double> measureT3;
+    @FXML
+    private TableColumn<Summary, Double> measureT4;
+    @FXML
+    private TableColumn<Summary, Double> measureT5;
+    @FXML
+    private TableColumn<Summary, Double> measureT6;
+    @FXML
+    private TableColumn<Summary, Double> measureT7;
+    @FXML
+    private TableColumn<Summary, Double> measureT8;
+    @FXML
+    private TableColumn<Summary, Double> measureT9;
+    @FXML
+    private TableColumn<Summary, Double> measureT10;
+    @FXML
+    private TableColumn<Summary, Double> measureT11;
+    @FXML
+    private TableColumn<Summary, Double> measureT;
 
     private ArrayList<Double> measuresWeights = new ArrayList<Double>(Arrays.asList(
             0.09, 0.09, 0.09, 0.09, 0.09, 0.09, 0.09, 0.09, 0.09, 0.09, 0.09
