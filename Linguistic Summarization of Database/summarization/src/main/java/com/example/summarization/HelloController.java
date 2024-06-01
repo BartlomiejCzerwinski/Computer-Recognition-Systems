@@ -12,11 +12,9 @@ import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicReferenceArray;
 
 public class HelloController {
-    @FXML
-    private Label welcomeText;
-
     @FXML
     private ComboBox<String> comboBoxQuantifier;
     @FXML
@@ -159,26 +157,10 @@ public class HelloController {
         String kind = comboBoxSingleOrMany.getValue().toString();
         int type = Integer.valueOf(comboBoxType.getValue().toString());
 
-        System.out.println("Quantifier: " + quantifier);
-        System.out.println("Qualifier: " + qualifier);
-        System.out.println("Summarizer: " + summarizer);
-        System.out.println("Subject 1: " + subject1);
-        System.out.println("Subject 2: " + subject2);
-        System.out.println("Summarizer Many: " + summarizerMany);
-        System.out.println("Kind: " + kind);
-        System.out.println("Type: " + type);
-
-        ArrayList<LinguisticVariable> qualifiers = getLinguisticVariables(qualifier);
-        ArrayList<LinguisticVariable> summarizer1 = getLinguisticVariables(summarizer);
-        // linguistic labels should be given, instead of whole variables!
-        System.out.println("qualifiers: " + qualifiers.size() + "; summarizer1: " + summarizer1.size());
-    }
-
-    public ArrayList<LinguisticVariable> getLinguisticVariables(String name) {
-        if (name == "----")
-            return initializer.getAllLinguisticVariables();
-        else
-            return initializer.getSingleLinguisticVariable(name);
+        SummaryGenerator summaryGenerator = new SummaryGenerator(kind, type,
+                new ArrayList<Quantifier>(Arrays.asList(initializer.createQuantifier())),
+                initializer.getAllLinguisticVariables(), initializer.getAllLinguisticVariables(), subject1, subject2,
+                measuresWeights, quantifier, qualifier, summarizer);
     }
 
     @FXML
@@ -230,11 +212,6 @@ public class HelloController {
         if ( sum == 1.0)
             return true;
         return false;
-    }
-
-    @FXML
-    protected void onHelloButtonClick() {
-        welcomeText.setText("Welcome to JavaFX Application!");
     }
 
 }

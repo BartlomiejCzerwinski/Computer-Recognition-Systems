@@ -9,7 +9,7 @@ public class SummaryGenerator {
     private String kind;
     private int type;
     private ArrayList<Quantifier> quantifiers;
-    private ArrayList<String> qualifiers;
+    private ArrayList<LinguisticVariable> qualifiers;
     private ArrayList<LinguisticVariable> summarizers;
     private String subject1;
     private String subject2;
@@ -30,7 +30,7 @@ public class SummaryGenerator {
     // DATA SECTION *********************************
 
 
-    public SummaryGenerator(String kind, int type, ArrayList<Quantifier> quantifiers, ArrayList<String> qualifiers, ArrayList<LinguisticVariable> summarizers, String subject1, String subject2, ArrayList<Double> measuresWeights, String quantifiersToReturn, String qualifiersToReturn, String summarizersToReturn) {
+    public SummaryGenerator(String kind, int type, ArrayList<Quantifier> quantifiers, ArrayList<LinguisticVariable> qualifiers, ArrayList<LinguisticVariable> summarizers, String subject1, String subject2, ArrayList<Double> measuresWeights, String quantifiersToReturn, String qualifiersToReturn, String summarizersToReturn) {
         this.kind = kind;
         this.type = type;
         this.quantifiers = quantifiers;
