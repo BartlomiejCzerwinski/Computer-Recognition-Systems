@@ -51,11 +51,9 @@ public class SummaryGenerator {
         if (kind == "single subject") {
             switch (type) {
                 case 1:
-                    System.out.println("11111");
                     generateSummariesSingleKindType1();
                     break;
                 case 2:
-                    System.out.println("222222");
                     generateSummariesSingleKindType2();
                     break;
             }

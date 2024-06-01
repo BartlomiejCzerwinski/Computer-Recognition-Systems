@@ -195,60 +195,7 @@ public class HelloController {
                 initializer.getAllLinguisticVariables(), initializer.getAllLinguisticVariables(), subject1, subject2,
                 measuresWeights, quantifier, qualifier, summarizer);
         summaryGenerator.generateSummaries();
-
-        sentence.setCellValueFactory(param -> {
-            return new ReadOnlyObjectWrapper<>(param.getValue().get(0));
-        });
-        measureT1.setCellValueFactory(param -> {
-            return new ReadOnlyObjectWrapper<>(Double.valueOf(String.valueOf(param.getValue().get(1))));
-        });
-        measureT2.setCellValueFactory(param -> {
-            return new ReadOnlyObjectWrapper<>(Double.valueOf(String.valueOf(param.getValue().get(2))));
-        });
-        measureT3.setCellValueFactory(param -> {
-            return new ReadOnlyObjectWrapper<>(Double.valueOf(String.valueOf(param.getValue().get(3))));
-        });
-        measureT4.setCellValueFactory(param -> {
-            return new ReadOnlyObjectWrapper<>(Double.valueOf(String.valueOf(param.getValue().get(4))));
-        });
-        measureT5.setCellValueFactory(param -> {
-            return new ReadOnlyObjectWrapper<>(Double.valueOf(String.valueOf(param.getValue().get(5))));
-        });
-        measureT6.setCellValueFactory(param -> {
-            return new ReadOnlyObjectWrapper<>(Double.valueOf(String.valueOf(param.getValue().get(6))));
-        });
-        measureT7.setCellValueFactory(param -> {
-            return new ReadOnlyObjectWrapper<>(Double.valueOf(String.valueOf(param.getValue().get(7))));
-        });
-        measureT8.setCellValueFactory(param -> {
-            return new ReadOnlyObjectWrapper<>(Double.valueOf(String.valueOf(param.getValue().get(8))));
-        });
-        measureT9.setCellValueFactory(param -> {
-            return new ReadOnlyObjectWrapper<>(Double.valueOf(String.valueOf(param.getValue().get(9))));
-        });
-        measureT10.setCellValueFactory(param -> {
-            return new ReadOnlyObjectWrapper<>(Double.valueOf(String.valueOf(param.getValue().get(10))));
-        });
-        measureT11.setCellValueFactory(param -> {
-            return new ReadOnlyObjectWrapper<>(Double.valueOf(String.valueOf(param.getValue().get(11))));
-        });
-        measureT.setCellValueFactory(param -> {
-            return new ReadOnlyObjectWrapper<>(Double.valueOf(String.valueOf(param.getValue().get(12))));
-        });
-        sentence.setCellFactory(TextFieldTableCell.forTableColumn());
-        measureT1.setCellFactory(TextFieldTableCell.forTableColumn(new DoubleStringConverter()));
-        measureT2.setCellFactory(TextFieldTableCell.forTableColumn(new DoubleStringConverter()));
-        measureT3.setCellFactory(TextFieldTableCell.forTableColumn(new DoubleStringConverter()));
-        measureT4.setCellFactory(TextFieldTableCell.forTableColumn(new DoubleStringConverter()));
-        measureT5.setCellFactory(TextFieldTableCell.forTableColumn(new DoubleStringConverter()));
-        measureT6.setCellFactory(TextFieldTableCell.forTableColumn(new DoubleStringConverter()));
-        measureT7.setCellFactory(TextFieldTableCell.forTableColumn(new DoubleStringConverter()));
-        measureT8.setCellFactory(TextFieldTableCell.forTableColumn(new DoubleStringConverter()));
-        measureT9.setCellFactory(TextFieldTableCell.forTableColumn(new DoubleStringConverter()));
-        measureT10.setCellFactory(TextFieldTableCell.forTableColumn(new DoubleStringConverter()));
-        measureT11.setCellFactory(TextFieldTableCell.forTableColumn(new DoubleStringConverter()));
-        measureT.setCellFactory(TextFieldTableCell.forTableColumn(new DoubleStringConverter()));
-
+        initResultTable();
         ArrayList<Summary> summaries = summaryGenerator.getSummaries();
         for (Summary summary : summaries) {
             addSummaryToTable(summary);
@@ -322,6 +269,62 @@ public class HelloController {
         if ( sum == 1.0)
             return true;
         return false;
+    }
+
+    public void initResultTable() {
+        summaryTable.getItems().clear();
+        sentence.setCellValueFactory(param -> {
+            return new ReadOnlyObjectWrapper<>(param.getValue().get(0));
+        });
+        measureT1.setCellValueFactory(param -> {
+            return new ReadOnlyObjectWrapper<>(Double.valueOf(String.valueOf(param.getValue().get(1))));
+        });
+        measureT2.setCellValueFactory(param -> {
+            return new ReadOnlyObjectWrapper<>(Double.valueOf(String.valueOf(param.getValue().get(2))));
+        });
+        measureT3.setCellValueFactory(param -> {
+            return new ReadOnlyObjectWrapper<>(Double.valueOf(String.valueOf(param.getValue().get(3))));
+        });
+        measureT4.setCellValueFactory(param -> {
+            return new ReadOnlyObjectWrapper<>(Double.valueOf(String.valueOf(param.getValue().get(4))));
+        });
+        measureT5.setCellValueFactory(param -> {
+            return new ReadOnlyObjectWrapper<>(Double.valueOf(String.valueOf(param.getValue().get(5))));
+        });
+        measureT6.setCellValueFactory(param -> {
+            return new ReadOnlyObjectWrapper<>(Double.valueOf(String.valueOf(param.getValue().get(6))));
+        });
+        measureT7.setCellValueFactory(param -> {
+            return new ReadOnlyObjectWrapper<>(Double.valueOf(String.valueOf(param.getValue().get(7))));
+        });
+        measureT8.setCellValueFactory(param -> {
+            return new ReadOnlyObjectWrapper<>(Double.valueOf(String.valueOf(param.getValue().get(8))));
+        });
+        measureT9.setCellValueFactory(param -> {
+            return new ReadOnlyObjectWrapper<>(Double.valueOf(String.valueOf(param.getValue().get(9))));
+        });
+        measureT10.setCellValueFactory(param -> {
+            return new ReadOnlyObjectWrapper<>(Double.valueOf(String.valueOf(param.getValue().get(10))));
+        });
+        measureT11.setCellValueFactory(param -> {
+            return new ReadOnlyObjectWrapper<>(Double.valueOf(String.valueOf(param.getValue().get(11))));
+        });
+        measureT.setCellValueFactory(param -> {
+            return new ReadOnlyObjectWrapper<>(Double.valueOf(String.valueOf(param.getValue().get(12))));
+        });
+        sentence.setCellFactory(TextFieldTableCell.forTableColumn());
+        measureT1.setCellFactory(TextFieldTableCell.forTableColumn(new DoubleStringConverter()));
+        measureT2.setCellFactory(TextFieldTableCell.forTableColumn(new DoubleStringConverter()));
+        measureT3.setCellFactory(TextFieldTableCell.forTableColumn(new DoubleStringConverter()));
+        measureT4.setCellFactory(TextFieldTableCell.forTableColumn(new DoubleStringConverter()));
+        measureT5.setCellFactory(TextFieldTableCell.forTableColumn(new DoubleStringConverter()));
+        measureT6.setCellFactory(TextFieldTableCell.forTableColumn(new DoubleStringConverter()));
+        measureT7.setCellFactory(TextFieldTableCell.forTableColumn(new DoubleStringConverter()));
+        measureT8.setCellFactory(TextFieldTableCell.forTableColumn(new DoubleStringConverter()));
+        measureT9.setCellFactory(TextFieldTableCell.forTableColumn(new DoubleStringConverter()));
+        measureT10.setCellFactory(TextFieldTableCell.forTableColumn(new DoubleStringConverter()));
+        measureT11.setCellFactory(TextFieldTableCell.forTableColumn(new DoubleStringConverter()));
+        measureT.setCellFactory(TextFieldTableCell.forTableColumn(new DoubleStringConverter()));
     }
 
 }
