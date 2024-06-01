@@ -30,7 +30,7 @@ public class Summary {
         if (kind == "single subject") {
             switch (type) {
                 case 1:
-                    return "TODO";
+                    return quantifier + " " + subject1 + "s have " + summarizer;
                 case 2:
                     return "TODO";
             }
