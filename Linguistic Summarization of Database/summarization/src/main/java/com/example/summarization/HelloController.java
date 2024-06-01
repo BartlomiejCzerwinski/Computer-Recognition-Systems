@@ -161,6 +161,8 @@ public class HelloController {
                 new ArrayList<Quantifier>(Arrays.asList(initializer.createQuantifier())),
                 initializer.getAllLinguisticVariables(), initializer.getAllLinguisticVariables(), subject1, subject2,
                 measuresWeights, quantifier, qualifier, summarizer);
+        summaryGenerator.generateSummaries();
+        ArrayList<Summary> summaries = summaryGenerator.getSummaries();
     }
 
     @FXML

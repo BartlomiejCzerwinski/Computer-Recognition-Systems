@@ -1,6 +1,7 @@
 package com.example.summarization;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class SummaryGenerator {
 
@@ -50,9 +51,11 @@ public class SummaryGenerator {
         if (kind == "single subject") {
             switch (type) {
                 case 1:
+                    System.out.println("11111");
                     generateSummariesSingleKindType1();
                     break;
                 case 2:
+                    System.out.println("222222");
                     generateSummariesSingleKindType2();
                     break;
             }
@@ -88,9 +91,11 @@ public class SummaryGenerator {
                     double totalMembership = sum / credits.size();
                     for (Label quantifierLabel : quantifier.getLabels()) {
                         double membershipDegree = quantifierLabel.getMembershipFunction().calculateMembershipDegree(totalMembership);
-                        String summary = quantifierLabel.getName() + " " + subject1 + " are " + label.getName();
-                        System.out.println(summary);
-
+                        //String summary = quantifierLabel.getName() + " " + subject1 + " are " + label.getName();
+                        //System.out.println(summary);
+                        ArrayList<Double> arr = new ArrayList<Double>(Arrays.asList(0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0));
+                        Summary summary = new Summary(kind, type, subject1, subject2, arr, quantifierLabel.getName(), "", label.getName(), "");
+                        summaries.add(summary);
                         //calculateAndPrintQualityMeasures(summary, membershipDegree, totalMembership, 0, 0, linguisticVariable.getLabels().size(), summarizers.size(), quantifierLabel.getMembershipFunction().domainR - quantifierLabel.getMembershipFunction().domainL); // Adjust parameters as needed
                     }
                 }
