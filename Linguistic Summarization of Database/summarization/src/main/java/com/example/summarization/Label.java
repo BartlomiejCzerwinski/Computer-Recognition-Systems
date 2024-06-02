@@ -23,13 +23,8 @@ public class Label {
         return membershipFunction;
     }
 
-    public ArrayList<Credit> getSupport(ArrayList<Credit> credits, int columnIndex) {
-        ArrayList<Credit> result = new ArrayList<Credit>();
-        for (Credit credit : credits) {
-            if(membershipFunction.calculateMembershipDegree(credit.getValueByColumnIndex(columnIndex)) > 0.0)
-                result.add(credit);
-        }
-        return result;
+    public double getSupport() {
+        return (double)membershipFunction.domainR - (double)membershipFunction.domainL;
     }
 
     public double getHeight(ArrayList<Credit> credits, int columnIndex) {
