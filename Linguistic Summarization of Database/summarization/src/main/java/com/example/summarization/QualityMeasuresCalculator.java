@@ -32,6 +32,10 @@ public class QualityMeasuresCalculator {
         return result;
     }
 
+    public double degreeOfCovering() {
+        return 0.0;
+    }
+
     public QualityMeasuresCalculator(ArrayList<Credit> credits) {
         this.credits = credits;
     }
