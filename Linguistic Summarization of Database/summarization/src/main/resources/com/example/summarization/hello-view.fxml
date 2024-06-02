@@ -146,14 +146,14 @@
             <Font size="10.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" layoutX="19.0" layoutY="5.0" prefHeight="26.0" prefWidth="1162.0" style="-fx-background-color: #86c2fc; -fx-background-radius: 50px; -fx-border-color: #1e90ff; -fx-border-radius: 50px; -fx-border-width: 2px;" text="Treść komunikatu">
+      <Label alignment="CENTER" layoutX="19.0" layoutY="5.0" prefHeight="26.0" prefWidth="1162.0" style="-fx-background-color: #86c2fc; -fx-background-radius: 50px; -fx-border-color: #1e90ff; -fx-border-radius: 50px; -fx-border-width: 2px;">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <TableView fx:id="summaryTable" layoutX="26.0" layoutY="410.0" prefHeight="262.0" prefWidth="968.0">
+      <TableView fx:id="summaryTable" layoutX="26.0" layoutY="410.0" prefHeight="262.0" prefWidth="1149.0">
         <columns>
-            <TableColumn fx:id="sentence" prefWidth="427.0" resizable="false" text="Zdanie" />
+            <TableColumn fx:id="sentence" prefWidth="608.0" resizable="false" text="Zdanie" />
             <TableColumn fx:id="measureT1" prefWidth="45.0" resizable="false" text="T1" />
             <TableColumn fx:id="measureT2" prefWidth="45.0" resizable="false" text="T2" />
             <TableColumn fx:id="measureT3" prefWidth="45.0" resizable="false" text="T3" />
@@ -171,12 +171,5 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
-      <ComboBox fx:id="comboBoxSortBy" layoutX="1049.0" layoutY="442.0" prefHeight="25.0" prefWidth="68.0" promptText="T" />
-      <Label layoutX="1028.0" layoutY="410.0" prefHeight="25.0" prefWidth="110.0" text="Sortuj Według">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Label>
-      <Button fx:id="confirmWeights1" layoutX="1028.0" layoutY="496.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="110.0" text="Sortuj" />
    </children>
 </AnchorPane>
