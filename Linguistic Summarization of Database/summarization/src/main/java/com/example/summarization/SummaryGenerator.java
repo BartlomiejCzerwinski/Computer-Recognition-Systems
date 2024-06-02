@@ -86,21 +86,16 @@ public class SummaryGenerator {
                 for (Label label : linguisticVariable.getLabels()) {
                     double sum = 0.0;
                     for (Credit credit : credits) {
-                        double value = getValueByColumnIndex(columnIndex, credit);
+                        double value = credit.getValueByColumnIndex(columnIndex);
                         sum += label.getMembershipFunction().calculateMembershipDegree(value);
                     }
-                    double totalMembership = sum / credits.size();
                     for (Label quantifierLabel : quantifier.getLabels()) {
-                        double membershipDegree = quantifierLabel.getMembershipFunction().calculateMembershipDegree(totalMembership);
-                        //String summary = quantifierLabel.getName() + " " + subject1 + " are " + label.getName();
-                        //System.out.println(summary);
                         ArrayList<Double> arr = new ArrayList<Double>(Arrays.asList(
                                 qualityMeasuresCalculator.degreeOfTruth(new ArrayList<>(Arrays.asList(quantifierLabel, label)), columnIndex),
                                 qualityMeasuresCalculator.degreeOfImprecision(new ArrayList<>(Arrays.asList(quantifierLabel, label)), columnIndex),0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0));
                         Summary summary = new Summary(kind, type, subject1, subject2, arr, quantifierLabel.getName(), "", label.getName(), "");
                         System.out.println(qualityMeasuresCalculator.degreeOfTruth(new ArrayList<>(Arrays.asList(quantifierLabel, label)), columnIndex));
                         summaries.add(summary);
-                        //calculateAndPrintQualityMeasures(summary, membershipDegree, totalMembership, 0, 0, linguisticVariable.getLabels().size(), summarizers.size(), quantifierLabel.getMembershipFunction().domainR - quantifierLabel.getMembershipFunction().domainL); // Adjust parameters as needed
                     }
                 }
                 columnIndex++;
@@ -126,32 +121,6 @@ public class SummaryGenerator {
 
     public void generateSummariesMultipleKindType4() {
 
-    }
-
-    public double getValueByColumnIndex(int columnIndex, Credit credit) {
-        switch (columnIndex) {
-            case 0:
-                return credit.getAmount();
-            case 1:
-                return credit.getIntRate();
-            case 2:
-                return credit.getAnnualIncome();
-            case 3:
-                return credit.getNumberOfQuestions();
-            case 4:
-                return credit.getInstallment();
-            case 5:
-                return credit.getDti();
-            case 6:
-                return credit.getRevolBalance();
-            case 7:
-                return credit.getTotalCollAmount();
-            case 8:
-                return credit.getCreditLimit();
-            case 9:
-                return credit.getTotalAccountsBalance();
-        }
-        return 0.0;
     }
 
     public ArrayList<Summary> getSummaries() {

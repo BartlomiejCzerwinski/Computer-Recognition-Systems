@@ -81,4 +81,30 @@ public class Credit {
     public float getTotalAccountsBalance() {
         return totalAccountsBalance;
     }
+
+    public double getValueByColumnIndex(int columnIndex) {
+        switch (columnIndex) {
+            case 0:
+                return getAmount();
+            case 1:
+                return getIntRate();
+            case 2:
+                return getAnnualIncome();
+            case 3:
+                return getNumberOfQuestions();
+            case 4:
+                return getInstallment();
+            case 5:
+                return getDti();
+            case 6:
+                return getRevolBalance();
+            case 7:
+                return getTotalCollAmount();
+            case 8:
+                return getCreditLimit();
+            case 9:
+                return getTotalAccountsBalance();
+        }
+        return 0.0;
+    }
 }
