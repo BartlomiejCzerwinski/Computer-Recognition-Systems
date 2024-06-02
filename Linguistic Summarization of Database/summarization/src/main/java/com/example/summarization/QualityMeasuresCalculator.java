@@ -70,8 +70,11 @@ public class QualityMeasuresCalculator {
     }
 
     //T7 !!!
-    public double degreeOfQuantifierCardinality() {
-        return 0.0;
+    public double degreeOfQuantifierCardinality(Label quantifier, ArrayList<Credit> credits, int columnIndex, boolean isAbsolute) {
+        double result = quantifier.getCardinality(credits, columnIndex);
+        result /= (double) credits.size();
+        result = Math.round(result * 100.0) / 100.0;
+        return result;
     }
 
     //T8 !!!
