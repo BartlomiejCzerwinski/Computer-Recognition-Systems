@@ -92,7 +92,10 @@ public class SummaryGenerator {
                     for (Label quantifierLabel : quantifier.getLabels()) {
                         ArrayList<Double> arr = new ArrayList<Double>(Arrays.asList(
                                 qualityMeasuresCalculator.degreeOfTruth(new ArrayList<>(Arrays.asList(quantifierLabel, label)), columnIndex),
-                                qualityMeasuresCalculator.degreeOfImprecision(linguisticVariable, columnIndex),0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0));
+                                qualityMeasuresCalculator.degreeOfImprecision(linguisticVariable, columnIndex),
+                                qualityMeasuresCalculator.degreeOfCovering(),
+                                qualityMeasuresCalculator.degreeOfAppropriateness(credits, linguisticVariable, columnIndex),
+                                qualityMeasuresCalculator.lengthOfSummary(new ArrayList<>(Arrays.asList(linguisticVariable))),0.0,0.0,0.0,0.0,0.0,0.0,0.0));
                         Summary summary = new Summary(kind, type, subject1, subject2, arr, quantifierLabel.getName(), "", label.getName(), "");
                         System.out.println(qualityMeasuresCalculator.degreeOfTruth(new ArrayList<>(Arrays.asList(quantifierLabel, label)), columnIndex));
                         summaries.add(summary);

@@ -1,11 +1,13 @@
 package com.example.summarization;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class QualityMeasuresCalculator {
     private ArrayList<Credit> credits;
 
 
+    // T1
     public double degreeOfTruth(ArrayList<Label> labels, int columIndex) {
         double totalResult = 0.0;
         for (Label label : labels) {
@@ -21,6 +23,7 @@ public class QualityMeasuresCalculator {
         return result;
     }
 
+    // T2 ???
     public double degreeOfImprecision(LinguisticVariable summarizer, int columIndex) {
         double quotient = 1.0;
         for (Label label : summarizer.getLabels()) {
@@ -32,8 +35,29 @@ public class QualityMeasuresCalculator {
         return result;
     }
 
+    // T3 !!!
     public double degreeOfCovering() {
         return 0.0;
+    }
+
+    // T4 !!!
+    public double degreeOfAppropriateness(ArrayList<Credit> credits, LinguisticVariable summarizer, int columIndex) {
+        double quotient = 1.0;
+        double t3 = degreeOfCovering();
+        for (Label label : summarizer.getLabels()) {
+            double sum = 0.0;
+            for (Credit credit : credits) {
+                sum += label.getMembershipFunction().calculateMembershipDegree(credit.getValueByColumnIndex(columIndex));
+            }
+            quotient *= sum/credits.size();
+        }
+        return Math.abs(quotient - t3);
+    }
+
+    // T5
+    public double lengthOfSummary(ArrayList<LinguisticVariable> summarizers) {
+        System.out.println("SUMMARIZERS SIZE: " + summarizers.size());
+        return 2 * Math.pow(1.0 / 2.0, summarizers.size());
     }
 
     public QualityMeasuresCalculator(ArrayList<Credit> credits) {
