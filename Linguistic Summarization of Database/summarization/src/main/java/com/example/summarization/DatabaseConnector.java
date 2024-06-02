@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 public class DatabaseConnector {
     private static final String DATABASE_URL = "jdbc:sqlite:database.db";
-    private int LIMIT_OF_DATA_POINTS = 15000;
+    private int LIMIT_OF_DATA_POINTS = 800000;
     private int NUMBER_OF_RECORDS = 0;
     public ArrayList<Credit> fetchData() {
         Connection conn = null;

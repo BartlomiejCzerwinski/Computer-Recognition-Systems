@@ -107,9 +107,9 @@ public class Initializer {
         return new ArrayList<>(Arrays.asList(label1, label2, label3, label3, label4, label5));
     }
     public ArrayList<Label> initLinguisticLabels8() {
-        Label label1 = new Label("the amount of widiction not more than 1500", new TrapezoidalFunction(0, 1500, 0, 0, 1500, 1500), true, true);
-        Label label2 = new Label("the amount of widiction from 1500 to 5000", new TrapezoidalFunction(1500, 5000, 1500, 1500, 5000, 5000), true, true);
-        Label label3 = new Label("the amount of widiction more than 5000", new TrapezoidalFunction(5000, 99950, 5000, 5000, 99950, 99950), true, true);
+        Label label1 = new Label("the amount of vindication not more than 1500", new TrapezoidalFunction(0, 1500, 0, 0, 1500, 1500), true, true);
+        Label label2 = new Label("the amount of vindication from 1500 to 5000", new TrapezoidalFunction(1500, 5000, 1500, 1500, 5000, 5000), true, true);
+        Label label3 = new Label("the amount of vindication more than 5000", new TrapezoidalFunction(5000, 99950, 5000, 5000, 99950, 99950), true, true);
         return new ArrayList<>(Arrays.asList(label1, label2, label3, label3));
     }
     public ArrayList<Label> initLinguisticLabels9() {
