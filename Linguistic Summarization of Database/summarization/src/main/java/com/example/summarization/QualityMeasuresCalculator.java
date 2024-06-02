@@ -21,17 +21,13 @@ public class QualityMeasuresCalculator {
         return result;
     }
 
-    public double degreeOfImprecision(ArrayList<Label> labels, int columIndex) {
-        double totalResult = 0.0;
-        for (Label label : labels) {
-            double sum = 0.0;
-            for (Credit credit : credits) {
-                sum += (1.0 - label.getMembershipFunction().calculateMembershipDegree(getValueByColumnIndex(columIndex, credit)));
-            }
-            sum /= credits.size();
-            totalResult += sum;
+    public double degreeOfImprecision(LinguisticVariable summarizer, int columIndex) {
+        double quotient = 1.0;
+        for (Label label : summarizer.getLabels()) {
+            double degreeOfFuzniess = label.getSupport(credits, columIndex).size() / (double)credits.size();
+            quotient *= degreeOfFuzniess;
         }
-        double result = totalResult / labels.size();
+        double result = 1.0 - Math.pow(quotient, 1.0 / summarizer.getLabels().size());
         result = Math.round(result * 100.0) / 100.0;
         return result;
     }
