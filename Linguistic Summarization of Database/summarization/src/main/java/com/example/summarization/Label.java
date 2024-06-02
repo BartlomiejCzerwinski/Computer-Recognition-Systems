@@ -1,5 +1,7 @@
 package com.example.summarization;
 
+import java.util.ArrayList;
+
 public class Label {
     private String name;
     private MembershipFunction membershipFunction;
@@ -20,4 +22,5 @@ public class Label {
     public MembershipFunction getMembershipFunction() {
         return membershipFunction;
     }
+
 }
