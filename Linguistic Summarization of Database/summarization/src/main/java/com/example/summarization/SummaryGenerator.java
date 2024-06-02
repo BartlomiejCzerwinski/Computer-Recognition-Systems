@@ -88,8 +88,8 @@ public class SummaryGenerator {
 
                         double degreeOfTruth = qualityMeasuresCalculator.degreeOfTruth(new ArrayList<>(Arrays.asList(quantifierLabel, label)), columnIndex);
                         double degreeOfImprecision = qualityMeasuresCalculator.degreeOfImprecision(linguisticVariable, columnIndex);
-                        double degreeOfCovering = qualityMeasuresCalculator.degreeOfCovering();
-                        double degreeOfAppropriateness = qualityMeasuresCalculator.degreeOfAppropriateness(credits, linguisticVariable, columnIndex);
+                        double degreeOfCovering = qualityMeasuresCalculator.degreeOfCovering(null, label, credits, columnIndex);
+                        double degreeOfAppropriateness = qualityMeasuresCalculator.degreeOfAppropriateness(credits, linguisticVariable, null, columnIndex);
                         double lengthOfSummary = qualityMeasuresCalculator.lengthOfSummary(new ArrayList<>(Arrays.asList(linguisticVariable)));
                         double degreeOfQuantifierImprecision = qualityMeasuresCalculator.degreeOfQuantifierImprecision(quantifierLabel, credits, columnIndex, quantifier.isAbsolute());
                         double degreeOfQuantifierCardinality = qualityMeasuresCalculator.degreeOfQuantifierCardinality(quantifierLabel, credits, columnIndex, quantifier.isAbsolute());
@@ -147,8 +147,8 @@ public class SummaryGenerator {
 
                                 double degreeOfTruth = qualityMeasuresCalculator.degreeOfTruth(new ArrayList<>(Arrays.asList(quantifierLabel, labelSummarizer)), columnIndex);
                                 double degreeOfImprecision = qualityMeasuresCalculator.degreeOfImprecision(linguisticVariable, columnIndex);
-                                double degreeOfCovering = qualityMeasuresCalculator.degreeOfCovering();
-                                double degreeOfAppropriateness = qualityMeasuresCalculator.degreeOfAppropriateness(credits, linguisticVariable, columnIndex);
+                                double degreeOfCovering = qualityMeasuresCalculator.degreeOfCovering(qualifierLabel, labelSummarizer, credits, columnIndex);
+                                double degreeOfAppropriateness = qualityMeasuresCalculator.degreeOfAppropriateness(credits, linguisticVariable, qualifierLabel, columnIndex);
                                 double lengthOfSummary = qualityMeasuresCalculator.lengthOfSummary(new ArrayList<>(Arrays.asList(linguisticVariable)));
                                 double degreeOfQuantifierImprecision = qualityMeasuresCalculator.degreeOfQuantifierImprecision(quantifierLabel, credits, columnIndex, quantifier.isAbsolute());
                                 double degreeOfQuantifierCardinality = qualityMeasuresCalculator.degreeOfQuantifierCardinality(quantifierLabel, credits, columnIndex, quantifier.isAbsolute());

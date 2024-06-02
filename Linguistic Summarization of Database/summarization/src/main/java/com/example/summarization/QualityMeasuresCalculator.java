@@ -37,14 +37,29 @@ public class QualityMeasuresCalculator {
     }
 
     // T3 !!!
-    public double degreeOfCovering() {
-        return 0.0;
+    public double degreeOfCovering(Label qualifier, Label summarizer, ArrayList<Credit> credits, int columnIndex) {
+        double t = 0.0;
+        double h = 0.0;
+        if (qualifier == null)
+            return 0.0;
+
+        for (Credit credit : credits) {
+            if (qualifier.getMembershipFunction().calculateMembershipDegree(credit.getValueByColumnIndex(columnIndex)) > 0) {
+                h++;
+                if (summarizer.getMembershipFunction().calculateMembershipDegree(credit.getValueByColumnIndex(columnIndex)) > 0) {
+                    t++;
+                }
+            }
+        }
+        double result = t / h;
+        result = Math.round(result * 100.0) / 100.0;
+        return result;
     }
 
     // T4 !!!
-    public double degreeOfAppropriateness(ArrayList<Credit> credits, LinguisticVariable summarizer, int columIndex) {
+    public double degreeOfAppropriateness(ArrayList<Credit> credits, LinguisticVariable summarizer, Label qualifier, int columIndex) {
         double quotient = 1.0;
-        double t3 = degreeOfCovering();
+        double t3 = 0.0;
         for (Label label : summarizer.getLabels()) {
             double sum = 0.0;
             for (Credit credit : credits) {
