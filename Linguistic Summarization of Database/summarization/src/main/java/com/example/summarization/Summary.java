@@ -32,7 +32,7 @@ public class Summary {
                 case 1:
                     return quantifier + " " + subject1 + "s have " + summarizer;
                 case 2:
-                    return "TODO";
+                    return quantifier + " " + subject1 + "s with " + qualifier + " have " + summarizer;
             }
         }
         else {

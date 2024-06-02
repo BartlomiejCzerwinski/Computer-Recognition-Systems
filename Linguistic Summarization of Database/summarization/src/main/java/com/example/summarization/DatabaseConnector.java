@@ -9,6 +9,7 @@ import java.util.ArrayList;
 
 public class DatabaseConnector {
     private static final String DATABASE_URL = "jdbc:sqlite:database.db";
+    private int LIMIT_OF_DATA_POINTS = 15000;
     private int NUMBER_OF_RECORDS = 0;
     public ArrayList<Credit> fetchData() {
         Connection conn = null;
@@ -23,8 +24,8 @@ public class DatabaseConnector {
 
             String sql = "SELECT * FROM loan";
             rs = stmt.executeQuery(sql);
-
-            while (rs.next()) {
+            int i = 0;
+            while (rs.next() && i < LIMIT_OF_DATA_POINTS) {
                 NUMBER_OF_RECORDS ++;
                 float amount = rs.getFloat("loan_amnt");
                 float intRate = rs.getFloat("int_rate");
@@ -40,6 +41,7 @@ public class DatabaseConnector {
                 Credit credit = new Credit(amount, intRate, annualIncome, numberOfQuestions,
                         installment, dti, revolBalance, totalCollAmount, creditLimit, totalAccountsBalance);
                 credits.add(credit);
+                i++;
             }
         } catch (SQLException e) {
             System.err.println(e.getMessage());
