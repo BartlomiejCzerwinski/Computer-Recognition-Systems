@@ -24,7 +24,7 @@ public class QualityMeasuresCalculator {
         return result;
     }
 
-    // T2 ???
+    // T2
     public double degreeOfImprecision(LinguisticVariable summarizer, int columIndex) {
         double quotient = 1.0;
         for (Label label : summarizer.getLabels()) {
@@ -36,7 +36,7 @@ public class QualityMeasuresCalculator {
         return result;
     }
 
-    // T3 !!!
+    // T3
     public double degreeOfCovering(Label qualifier, Label summarizer, ArrayList<Credit> credits, int columnIndex) {
         double t = 0.0;
         double h = 0.0;
@@ -56,7 +56,7 @@ public class QualityMeasuresCalculator {
         return result;
     }
 
-    // T4 !!!
+    // T4
     public double degreeOfAppropriateness(ArrayList<Credit> credits, LinguisticVariable summarizer, Label qualifier, int columIndex) {
         double quotient = 1.0;
         double t3 = 0.0;
@@ -77,7 +77,7 @@ public class QualityMeasuresCalculator {
         return 2 * Math.pow(1.0 / 2.0, summarizers.size());
     }
 
-    //T6 !!!
+    //T6
     public double degreeOfQuantifierImprecision(Label quantifier, ArrayList<Credit> credits, int columnIndex, boolean isAbsolute) {
         double result = 1.0 - quantifier.getHeight(credits, columnIndex);
         result = Math.round(result * 100.0) / 100.0;
@@ -103,19 +103,24 @@ public class QualityMeasuresCalculator {
     }
 
     //T9 !!! - forma 2
-    public double degreeOfQualifierImprecision(LinguisticVariable qualifier) {
+    public double degreeOfQualifierImprecision(Label qualifier, ArrayList<Credit> credits, int columnIndex) {
         if (qualifier == null) {
             return 0.0;
         }
-        return -1;
+        double degreeOfFuzziness = qualifier.getSupport(credits, columnIndex).size() / (double)credits.size();
+        double result = 1.0 - degreeOfFuzziness;
+        result = Math.round(result * 100.0) / 100.0;
+        return result;
     }
 
     //T10 !!! - forma 2
-    public double degreeOfQualifierCardinality(LinguisticVariable qualifier) {
+    public double degreeOfQualifierCardinality(Label qualifier, ArrayList<Credit> credits, int columnIndex) {
         if (qualifier == null) {
             return 0.0;
         }
-        return -1;
+        double result = 1.0 - (qualifier.getCardinality(credits, columnIndex) / credits.size());
+        result = Math.round(result * 100.0) / 100.0;
+        return result;
     }
 
     //T11 !!!
