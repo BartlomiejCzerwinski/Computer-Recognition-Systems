@@ -95,7 +95,8 @@ public class SummaryGenerator {
                                 qualityMeasuresCalculator.degreeOfImprecision(linguisticVariable, columnIndex),
                                 qualityMeasuresCalculator.degreeOfCovering(),
                                 qualityMeasuresCalculator.degreeOfAppropriateness(credits, linguisticVariable, columnIndex),
-                                qualityMeasuresCalculator.lengthOfSummary(new ArrayList<>(Arrays.asList(linguisticVariable))),0.0,0.0,0.0,0.0,0.0,0.0,0.0));
+                                qualityMeasuresCalculator.lengthOfSummary(new ArrayList<>(Arrays.asList(linguisticVariable))),
+                                qualityMeasuresCalculator.degreeOfQuantifierImprecision(quantifierLabel, credits, columnIndex, quantifier.isAbsolute()),0.0,0.0,0.0,0.0,0.0,0.0));
                         Summary summary = new Summary(kind, type, subject1, subject2, arr, quantifierLabel.getName(), "", label.getName(), "");
                         System.out.println(qualityMeasuresCalculator.degreeOfTruth(new ArrayList<>(Arrays.asList(quantifierLabel, label)), columnIndex));
                         summaries.add(summary);

@@ -133,7 +133,7 @@ public class Initializer {
         Label label4 = new Label("more than half", new GaussianFunction(0.4, 1, 0.7), true, true);
         Label label5 = new Label("almost all", new GaussianFunction(0.7, 1, 0.9), true, true);
         ArrayList<Label> labels = new ArrayList<>(Arrays.asList(label1, label2, label3, label4, label5));
-        return new Quantifier("number of objects", labels, true);
+        return new Quantifier("number of objects", labels, false);
     }
 
     public ArrayList<String> getLinguisticLabelsNamesList() {

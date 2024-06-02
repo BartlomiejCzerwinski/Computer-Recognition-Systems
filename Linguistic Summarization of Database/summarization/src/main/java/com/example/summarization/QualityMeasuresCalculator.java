@@ -2,6 +2,7 @@ package com.example.summarization;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class QualityMeasuresCalculator {
     private ArrayList<Credit> credits;
@@ -51,7 +52,9 @@ public class QualityMeasuresCalculator {
             }
             quotient *= sum/credits.size();
         }
-        return Math.abs(quotient - t3);
+        double result = Math.abs(quotient - t3);
+        result = Math.round(result * 100.0) / 100.0;
+        return result;
     }
 
     // T5
@@ -60,8 +63,10 @@ public class QualityMeasuresCalculator {
     }
 
     //T6 !!!
-    public double degreeOfQuantifierImprecision() {
-        return 0.0;
+    public double degreeOfQuantifierImprecision(Label quantifier, ArrayList<Credit> credits, int columnIndex, boolean isAbsolute) {
+        double result = 1.0 - quantifier.getHeight(credits, columnIndex);
+        result = Math.round(result * 100.0) / 100.0;
+        return result;
     }
 
     //T7 !!!

@@ -32,4 +32,14 @@ public class Label {
         return result;
     }
 
+    public double getHeight(ArrayList<Credit> credits, int columnIndex) {
+        double max = 0.0;
+        for (Credit credit : credits) {
+            if (membershipFunction.calculateMembershipDegree(credit.getValueByColumnIndex(columnIndex)) > max) {
+                max = membershipFunction.calculateMembershipDegree(credit.getValueByColumnIndex(columnIndex));
+            }
+        }
+        return max;
+    }
+
 }
