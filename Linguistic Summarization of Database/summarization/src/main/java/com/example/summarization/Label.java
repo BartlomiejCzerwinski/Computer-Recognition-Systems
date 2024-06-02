@@ -42,4 +42,12 @@ public class Label {
         return max;
     }
 
+    public double getCardinality(ArrayList<Credit> credits, int columnIndex) {
+        double sum = 0.0;
+        for (Credit credit : credits) {
+            sum += membershipFunction.calculateMembershipDegree(credit.getValueByColumnIndex(columnIndex));
+        }
+        return sum;
+    }
+
 }
