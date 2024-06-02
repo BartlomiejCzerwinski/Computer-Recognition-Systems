@@ -56,8 +56,37 @@ public class QualityMeasuresCalculator {
 
     // T5
     public double lengthOfSummary(ArrayList<LinguisticVariable> summarizers) {
-        System.out.println("SUMMARIZERS SIZE: " + summarizers.size());
         return 2 * Math.pow(1.0 / 2.0, summarizers.size());
+    }
+
+    //T6 !!!
+    public double degreeOfQuantifierImprecision() {
+        return 0.0;
+    }
+
+    //T7 !!!
+    public double degreeOfQuantifierCardinality() {
+        return 0.0;
+    }
+
+    //T8 !!!
+    public double degreeOfSummarizerCardinality() {
+        return 0.0;
+    }
+
+    //T9 !!!
+    public double degreeOfQualifierImprecision() {
+        return 0.0;
+    }
+
+    //T10 !!!
+    public double degreeOfQualifierCardinality() {
+        return 0.0;
+    }
+
+    //T11 !!!
+    public double lengthOfQualifier() {
+        return 0.0;
     }
 
     public QualityMeasuresCalculator(ArrayList<Credit> credits) {
