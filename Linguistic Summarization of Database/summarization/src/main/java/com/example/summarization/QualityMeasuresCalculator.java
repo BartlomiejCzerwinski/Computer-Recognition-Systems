@@ -78,23 +78,39 @@ public class QualityMeasuresCalculator {
     }
 
     //T8 !!!
-    public double degreeOfSummarizerCardinality() {
-        return 0.0;
+    public double degreeOfSummarizerCardinality(LinguisticVariable summarizer, ArrayList<Credit> credits, int columnIndex) {
+        double quotient = 1.0;
+        for (Label label : summarizer.getLabels())
+            quotient *= (label.getCardinality(credits, columnIndex) / credits.size());
+        double result = 1 - Math.pow(quotient, 1.0 / summarizer.getLabels().size());
+        result = Math.round(result * 100.0) / 100.0;
+        return result;
     }
 
-    //T9 !!!
-    public double degreeOfQualifierImprecision() {
-        return 0.0;
+    //T9 !!! - forma 2
+    public double degreeOfQualifierImprecision(LinguisticVariable qualifier) {
+        if (qualifier == null) {
+            return 0.0;
+        }
+        return -1;
     }
 
-    //T10 !!!
-    public double degreeOfQualifierCardinality() {
-        return 0.0;
+    //T10 !!! - forma 2
+    public double degreeOfQualifierCardinality(LinguisticVariable qualifier) {
+        if (qualifier == null) {
+            return 0.0;
+        }
+        return -1;
     }
 
     //T11 !!!
-    public double lengthOfQualifier() {
-        return 0.0;
+    public double lengthOfQualifier(LinguisticVariable qualifier) {
+        if (qualifier == null) {
+            return 1.0;
+        }
+        double result = 2 * Math.pow(1.0 / 2.0, qualifier.getLabels().size());
+        result = Math.round(result * 100.0) / 100.0;
+        return result;
     }
 
     public QualityMeasuresCalculator(ArrayList<Credit> credits) {
