@@ -120,12 +120,7 @@ public class QualityMeasuresCalculator {
 
     //T11 !!!
     public double lengthOfQualifier(LinguisticVariable qualifier) {
-        if (qualifier == null) {
-            return 1.0;
-        }
-        double result = 2 * Math.pow(1.0 / 2.0, qualifier.getLabels().size());
-        result = Math.round(result * 100.0) / 100.0;
-        return result;
+        return 1.0;
     }
 
     public QualityMeasuresCalculator(ArrayList<Credit> credits) {
