@@ -30,6 +30,8 @@ public class SummaryGenerator {
     private ArrayList<Credit> credits;
     // DATA SECTION *********************************
 
+    private QualityMeasuresCalculator qualityMeasuresCalculator;
+
 
     public SummaryGenerator(String kind, int type, ArrayList<Quantifier> quantifiers, ArrayList<LinguisticVariable> qualifiers, ArrayList<LinguisticVariable> summarizers, String subject1, String subject2, ArrayList<Double> measuresWeights, String quantifiersToReturn, String qualifiersToReturn, String summarizersToReturn) {
         this.kind = kind;
@@ -45,6 +47,7 @@ public class SummaryGenerator {
         this.summarizersToReturn = summarizersToReturn;
         DatabaseConnector databaseConnector = new DatabaseConnector();
         this.credits = databaseConnector.fetchData();
+        this.qualityMeasuresCalculator = new QualityMeasuresCalculator(credits);
     }
 
     public void generateSummaries() {
@@ -91,8 +94,11 @@ public class SummaryGenerator {
                         double membershipDegree = quantifierLabel.getMembershipFunction().calculateMembershipDegree(totalMembership);
                         //String summary = quantifierLabel.getName() + " " + subject1 + " are " + label.getName();
                         //System.out.println(summary);
-                        ArrayList<Double> arr = new ArrayList<Double>(Arrays.asList(0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0));
+                        ArrayList<Double> arr = new ArrayList<Double>(Arrays.asList(
+                                qualityMeasuresCalculator.degreeOfTruth(new ArrayList<>(Arrays.asList(quantifierLabel, label)), columnIndex),
+                                qualityMeasuresCalculator.degreeOfImprecision(new ArrayList<>(Arrays.asList(quantifierLabel, label)), columnIndex),0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0));
                         Summary summary = new Summary(kind, type, subject1, subject2, arr, quantifierLabel.getName(), "", label.getName(), "");
+                        System.out.println(qualityMeasuresCalculator.degreeOfTruth(new ArrayList<>(Arrays.asList(quantifierLabel, label)), columnIndex));
                         summaries.add(summary);
                         //calculateAndPrintQualityMeasures(summary, membershipDegree, totalMembership, 0, 0, linguisticVariable.getLabels().size(), summarizers.size(), quantifierLabel.getMembershipFunction().domainR - quantifierLabel.getMembershipFunction().domainL); // Adjust parameters as needed
                     }
