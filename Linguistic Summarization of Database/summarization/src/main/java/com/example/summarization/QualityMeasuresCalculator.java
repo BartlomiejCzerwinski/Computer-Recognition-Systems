@@ -40,8 +40,17 @@ public class QualityMeasuresCalculator {
     public double degreeOfCovering(Label qualifier, Label summarizer, ArrayList<Credit> credits, int columnIndex) {
         double t = 0.0;
         double h = 0.0;
-        if (qualifier == null)
-            return 0.0;
+        if (qualifier == null) {
+            for (Credit credit : credits) {
+                if (summarizer.getMembershipFunction().calculateMembershipDegree(credit.getValueByColumnIndex(columnIndex)) > 0) {
+                    t++;
+                }
+                h++;
+            }
+            double result = t / h;
+            result = Math.round(result * 100.0) / 100.0;
+            return result;
+        }
 
         for (Credit credit : credits) {
             if (qualifier.getMembershipFunction().calculateMembershipDegree(credit.getValueByColumnIndex(columnIndex)) > 0) {
