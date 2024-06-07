@@ -37,9 +37,10 @@ public class DatabaseConnector {
                 float totalCollAmount = rs.getFloat("tot_coll_amt");
                 float creditLimit = rs.getFloat("total_rev_hi_lim");
                 float totalAccountsBalance = rs.getFloat("tot_cur_bal");
+                String creditPurpose = rs.getString("purpose");
 
                 Credit credit = new Credit(amount, intRate, annualIncome, numberOfQuestions,
-                        installment, dti, revolBalance, totalCollAmount, creditLimit, totalAccountsBalance);
+                        installment, dti, revolBalance, totalCollAmount, creditLimit, totalAccountsBalance, creditPurpose);
                 credits.add(credit);
                 i++;
             }
@@ -63,5 +64,6 @@ public class DatabaseConnector {
         System.out.println("LOADED " + credits.size() + " CREDITS.");
         return credits;
     }
+
 
 }

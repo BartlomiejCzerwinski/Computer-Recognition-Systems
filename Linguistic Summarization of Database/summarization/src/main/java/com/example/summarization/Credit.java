@@ -11,8 +11,9 @@ public class Credit {
     private float totalCollAmount;
     private float creditLimit;
     private float totalAccountsBalance;
+    private String purpose;
 
-    public Credit(float amount, float intRate, float annualIncome, int numberOfQuestions, float installment, int dti, float revolBalance, float totalCollAmount, float creditLimit, float totalAccountsBalance) {
+    public Credit(float amount, float intRate, float annualIncome, int numberOfQuestions, float installment, int dti, float revolBalance, float totalCollAmount, float creditLimit, float totalAccountsBalance, String purpose) {
         this.amount = amount;
         this.intRate = intRate;
         this.annualIncome = annualIncome;
@@ -23,6 +24,7 @@ public class Credit {
         this.totalCollAmount = totalCollAmount;
         this.creditLimit = creditLimit;
         this.totalAccountsBalance = totalAccountsBalance;
+        this.purpose = purpose;
     }
 
     @Override
@@ -80,6 +82,10 @@ public class Credit {
 
     public float getTotalAccountsBalance() {
         return totalAccountsBalance;
+    }
+
+    public String getPurpose() {
+        return purpose;
     }
 
     public double getValueByColumnIndex(int columnIndex) {
