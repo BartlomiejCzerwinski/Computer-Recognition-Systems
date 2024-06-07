@@ -216,4 +216,69 @@ public class SummaryGenerator {
     public ArrayList<Summary> getSummaries() {
         return summaries;
     }
+
+    public void getCreditsPurposeInfo() {
+        int creditCard = 0;
+        int car = 0;
+        int smallBusiness = 0;
+        int other = 0;
+        int wedding = 0;
+        int debtConsolidation = 0;
+        int homeImprovement = 0;
+        int majorPurchase = 0;
+        int medical = 0;
+        int vacation = 0;
+        int buyingHouse = 0;
+
+        for (Credit credit : credits) {
+            String creditPurpose = credit.getPurpose();
+            switch (creditPurpose) {
+                case "credit_card":
+                    creditCard++;
+                    break;
+                case "car":
+                    car++;
+                    break;
+                case "small_business":
+                    smallBusiness++;
+                    break;
+                case "other":
+                    other++;
+                    break;
+                case "wedding":
+                    wedding++;
+                    break;
+                case "debt_consolidation":
+                    debtConsolidation++;
+                    break;
+                case "home_improvement":
+                    homeImprovement++;
+                    break;
+                case "major_purchase":
+                    majorPurchase++;
+                    break;
+                case "medical":
+                    medical++;
+                    break;
+                case "vacation":
+                    vacation++;
+                    break;
+                case "house":
+                    buyingHouse++;
+                    break;
+            }
+        }
+        System.out.println("CREDITS BY PURPOSE");
+        System.out.println("Credit Card: " + creditCard);
+        System.out.println("Car: " + car);
+        System.out.println("Small Business: " + smallBusiness);
+        System.out.println("Other: " + other);
+        System.out.println("Wedding: " + wedding);
+        System.out.println("Debt Consolidation: " + debtConsolidation);
+        System.out.println("Home Improvement: " + homeImprovement);
+        System.out.println("Major Purchase: " + majorPurchase);
+        System.out.println("Medical: " + medical);
+        System.out.println("Vacation: " + vacation);
+        System.out.println("Buying House: " + buyingHouse);
+    }
 }

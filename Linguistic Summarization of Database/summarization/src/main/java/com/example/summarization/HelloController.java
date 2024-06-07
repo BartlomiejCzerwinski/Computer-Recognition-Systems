@@ -189,6 +189,7 @@ public class HelloController {
                 new ArrayList<Quantifier>(Arrays.asList(initializer.createQuantifier())),
                 initializer.getAllLinguisticVariables(), initializer.getAllLinguisticVariables(), subject1, subject2,
                 measuresWeights, quantifier, qualifier, summarizer);
+        summaryGenerator.getCreditsPurposeInfo();
         summaryGenerator.generateSummaries();
         initResultTable();
         ArrayList<Summary> summaries = summaryGenerator.getSummaries();
