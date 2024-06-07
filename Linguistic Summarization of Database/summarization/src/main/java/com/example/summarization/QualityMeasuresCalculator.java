@@ -27,7 +27,7 @@ public class QualityMeasuresCalculator {
     // T2
     public double degreeOfImprecision(LinguisticVariable summarizer, int columIndex) {
         double quotient = 1.0;
-        for (Label label : summarizer.getLabels()) {
+        for (Label label : summarizer.getLabels()) { // sumaryzatorem jest jeden label, nie cała zmienna lingwistyczna
             double degreeOfFuzniess = label.getSupport() / (double)credits.size();
             quotient *= degreeOfFuzniess;
         }
