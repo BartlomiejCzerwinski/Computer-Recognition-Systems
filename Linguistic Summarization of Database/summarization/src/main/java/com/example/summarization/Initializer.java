@@ -69,11 +69,11 @@ public class Initializer {
     }
     public ArrayList<Label> initLinguisticLabels3() {
         Label label1 = new Label("income up to 23000", new TrapezoidalFunction(0, 23000, 0, 0, 23000, 23000), true, true);
-        Label label2 = new Label("income about 25000", new GaussianFunction(15000, 35000, 25000), true, true);
+        Label label2 = new Label("income about 25000", new GaussianFunction(15000, 35000, 25000, 2), true, true);
         Label label3 = new Label("income from 27000 to 68000", new TrapezoidalFunction(27000, 68000, 27000, 27000, 68000, 68000), true, true);
-        Label label4 = new Label("income about 70000", new GaussianFunction(60000, 80000, 70000), true, true);
+        Label label4 = new Label("income about 70000", new GaussianFunction(60000, 80000, 70000, 2), true, true);
         Label label5 = new Label("income from 72000 to 98000", new TrapezoidalFunction(72000, 98000, 72000, 72000, 98000, 98000), true, true);
-        Label label6 = new Label("income about 100000", new GaussianFunction(90000, 110000, 100000), true, true);
+        Label label6 = new Label("income about 100000", new GaussianFunction(90000, 110000, 100000, 2), true, true);
         Label label7 = new Label("income more than 102000", new TrapezoidalFunction(102000, 950000, 102000, 102000, 950000, 950000), true, true);
         return new ArrayList<>(Arrays.asList(label1, label2, label3, label3, label4, label5, label6, label7));
     }
@@ -100,9 +100,9 @@ public class Initializer {
     }
     public ArrayList<Label> initLinguisticLabels7() {
         Label label1 = new Label("loan balance less than 1500", new TrapezoidalFunction(0, 1500, 0, 0, 1500, 1500), true, true);
-        Label label2 = new Label("loan balance about 2000", new GaussianFunction(500, 3500, 2000), true, true);
-        Label label3 = new Label("loan balance about 3000", new GaussianFunction(1500, 4500, 3000), true, true);
-        Label label4 = new Label("loan balance about 4000", new GaussianFunction(2500, 5500, 4000), true, true);
+        Label label2 = new Label("loan balance about 2000", new GaussianFunction(500, 3500, 2000, 500), true, true);
+        Label label3 = new Label("loan balance about 3000", new GaussianFunction(1500, 4500, 3000, 500), true, true);
+        Label label4 = new Label("loan balance about 4000", new GaussianFunction(2500, 5500, 4000, 500), true, true);
         Label label5 = new Label("loan balance more than 4000", new TrapezoidalFunction(4000, 3000000, 4000, 4000, 3000000, 3000000), true, true);
         return new ArrayList<>(Arrays.asList(label1, label2, label3, label3, label4, label5));
     }
@@ -127,11 +127,11 @@ public class Initializer {
     }
 
     public Quantifier createQuantifier() {
-        Label label1 = new Label("a little", new GaussianFunction(0, 0.4, 0.5), true, true);
-        Label label2 = new Label("not a lot", new GaussianFunction(0, 0.9, 0.2), true, true);
-        Label label3 = new Label("about half of all", new GaussianFunction(0.3, 0.7, 0.5), true, true);
-        Label label4 = new Label("more than half", new GaussianFunction(0.4, 1, 0.7), true, true);
-        Label label5 = new Label("almost all", new GaussianFunction(0.7, 1, 0.9), true, true);
+        Label label1 = new Label("a little", new GaussianFunction(0, 0.4, 0.5, 0.1), true, true);
+        Label label2 = new Label("not a lot", new GaussianFunction(0, 0.9, 0.2, 0.2), true, true);
+        Label label3 = new Label("about half of all", new GaussianFunction(0.3, 0.7, 0.5, 0.05), true, true);
+        Label label4 = new Label("more than half", new GaussianFunction(0.4, 1, 0.7, 0.1), true, true);
+        Label label5 = new Label("almost all", new GaussianFunction(0.7, 1, 0.9, 0.05), true, true);
         ArrayList<Label> labels = new ArrayList<>(Arrays.asList(label1, label2, label3, label4, label5));
         return new Quantifier("number of objects", labels, false);
     }

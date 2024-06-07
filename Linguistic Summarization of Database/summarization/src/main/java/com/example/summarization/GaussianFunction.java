@@ -1,17 +1,19 @@
 package com.example.summarization;
 
 public class GaussianFunction extends MembershipFunction{
-    private double a;
+    private double mu;
+    private double omega;
 
-    public GaussianFunction(double domainL, double domainR, double a) {
+    public GaussianFunction(double domainL, double domainR, double mu, double omega) {
         super(domainL, domainR);
-        this.a = a;
+        this.mu = mu;
+        this.omega = omega;
     }
 
     @Override
     public double calculateMembershipDegree(double value) {
          if (value >= domainL && value < domainR)
-             return Math.exp(-(Math.pow(value - a, 2))/1.8*Math.pow(domainL+domainR, 2));
+             return Math.exp(-(Math.pow(value - mu, 2))/2.0*Math.pow(omega, 2));
          return 0.0;
     }
 
