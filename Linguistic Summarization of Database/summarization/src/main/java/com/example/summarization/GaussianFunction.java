@@ -1,8 +1,8 @@
 package com.example.summarization;
 
 public class GaussianFunction extends MembershipFunction{
-    private double mu;
-    private double omega;
+    private double mu; // https://en.wikipedia.org/wiki/Mu_(letter)
+    private double omega; // https://en.wikipedia.org/wiki/Omega
 
     public GaussianFunction(double domainL, double domainR, double mu, double omega) {
         super(domainL, domainR);
