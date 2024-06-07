@@ -1,28 +1,28 @@
 package com.example.summarization;
 
 public class TrapezoidalFunction extends MembershipFunction {
-    private double a;
-    private double b;
-    private double c;
-    private double d;
+    private double startGrowth;
+    private double stopGrowth;
+    private double startDecrease;
+    private double stopDecrease;
 
-    public TrapezoidalFunction(double domainL, double domainR, double a, double b, double c, double d) {
+    public TrapezoidalFunction(double domainL, double domainR, double startGrowth, double stopGrowth, double startDecrease, double stopDecrease) {
         super(domainL, domainR);
-        this.a = a;
-        this.b = b;
-        this.c = c;
-        this.d = d;
+        this.startGrowth = startGrowth;
+        this.stopGrowth = stopGrowth;
+        this.startDecrease = startDecrease;
+        this.stopDecrease = stopDecrease;
     }
 
     @Override
     public double calculateMembershipDegree(double value) {
-        if (value < a)
+        if (value < startGrowth)
             return 0.0;
-        else if ( a <= value && value < b)
-            return (value - a) / (b - a);
-        else if (b <= value && value <= c)
+        else if ( startGrowth <= value && value < stopGrowth)
+            return (value - startGrowth) / (stopGrowth - startGrowth);
+        else if (stopGrowth <= value && value <= startDecrease)
             return 1.0;
-        else if (c < value && value <= d)
+        else if (startDecrease < value && value <= stopDecrease)
             return 1.0;
         else
             return 0.0;
