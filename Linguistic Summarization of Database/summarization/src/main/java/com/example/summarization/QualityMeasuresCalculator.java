@@ -28,7 +28,6 @@ public class QualityMeasuresCalculator {
             result = rUp;
         else
             result = rUp/rDown;
-        System.out.println(result/(double)credits.size());
         if (quantifier.isAbsolute())
             result = quantifier.getLabel().getMembershipFunction().calculateMembershipDegree(result);
         else
@@ -93,7 +92,7 @@ public class QualityMeasuresCalculator {
     }
 
     // T5
-    public double lengthOfSummary(ArrayList<LinguisticVariable> summarizers) {
+    public double lengthOfSummary(ArrayList<Label> summarizers) {
         return 2 * Math.pow(1.0 / 2.0, summarizers.size());
     }
 
