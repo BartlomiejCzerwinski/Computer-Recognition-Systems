@@ -13,7 +13,7 @@ public class GaussianFunction extends MembershipFunction{
     @Override
     public double calculateMembershipDegree(double value) {
          if (value >= domainL && value < domainR)
-             return Math.exp(-(Math.pow(value - mu, 2))/2.0*Math.pow(omega, 2));
+             return Math.exp(-((Math.pow(value - mu, 2))/(2.0*Math.pow(omega, 2))));
          return 0.0;
     }
 
