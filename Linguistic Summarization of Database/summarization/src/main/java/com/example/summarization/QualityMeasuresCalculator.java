@@ -97,8 +97,10 @@ public class QualityMeasuresCalculator {
     }
 
     //T6
-    public double degreeOfQuantifierImprecision(Label quantifier, ArrayList<Credit> credits, int columnIndex, boolean isAbsolute) {
-        double result = 1.0 - quantifier.getSupport(credits, columnIndex);
+    public double degreeOfQuantifierImprecision(Quantifier quantifier, ArrayList<Credit> credits, int columnIndex, boolean isAbsolute) {
+        double result = quantifier.getLabel().getMembershipFunction().domainR - quantifier.getLabel().getMembershipFunction().domainL;
+        if (quantifier.isAbsolute())
+            result /= (double) credits.size();
         result = Math.round(result * 100.0) / 100.0;
         return result;
     }
