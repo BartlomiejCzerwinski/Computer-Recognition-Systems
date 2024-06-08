@@ -115,10 +115,8 @@ public class HelloController {
 
     @FXML
     public void initialize() {
-        Quantifier quantifier = initializer.createQuantifier();
-
         comboBoxQuantifier.setItems(FXCollections.observableArrayList(
-                quantifier.getLabelsNames()
+                getQuantifiersLabels(initializer.createQuantifiers())
         ));
         comboBoxQuantifier.setValue("----");
 
@@ -185,8 +183,7 @@ public class HelloController {
         String kind = comboBoxSingleOrMany.getValue().toString();
         int type = Integer.valueOf(comboBoxType.getValue().toString());
 
-        SummaryGenerator summaryGenerator = new SummaryGenerator(kind, type,
-                new ArrayList<Quantifier>(Arrays.asList(initializer.createQuantifier())),
+        SummaryGenerator summaryGenerator = new SummaryGenerator(kind, type, initializer.createQuantifiers(),
                 initializer.getAllLinguisticVariables(), initializer.getAllLinguisticVariables(), subject1, subject2,
                 measuresWeights, quantifier, qualifier, summarizer);
         summaryGenerator.getCreditsPurposeInfo();
@@ -265,6 +262,15 @@ public class HelloController {
         if ( sum == 1.0)
             return true;
         return false;
+    }
+
+    public ArrayList<String> getQuantifiersLabels(ArrayList<Quantifier> quantifiers) {
+        ArrayList<String> result = new ArrayList<>();
+        for (Quantifier quantifier : quantifiers) {
+            result.add(quantifier.getLabel().getName());
+        }
+        result.add("----");
+        return result;
     }
 
     public void initResultTable() {

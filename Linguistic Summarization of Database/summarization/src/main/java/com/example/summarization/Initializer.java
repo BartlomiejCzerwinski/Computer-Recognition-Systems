@@ -126,14 +126,19 @@ public class Initializer {
         return new ArrayList<>(Arrays.asList(label1, label2, label3, label3, label4));
     }
 
-    public Quantifier createQuantifier() {
+    public ArrayList<Quantifier> createQuantifiers() {
         Label label1 = new Label("a little", new GaussianFunction(0, 0.4, 0.5, 0.1), true, true);
         Label label2 = new Label("not a lot", new GaussianFunction(0, 0.9, 0.2, 0.2), true, true);
         Label label3 = new Label("about half of all", new GaussianFunction(0.3, 0.7, 0.5, 0.05), true, true);
         Label label4 = new Label("more than half", new GaussianFunction(0.4, 1, 0.7, 0.1), true, true);
         Label label5 = new Label("almost all", new GaussianFunction(0.7, 1, 0.9, 0.05), true, true);
-        ArrayList<Label> labels = new ArrayList<>(Arrays.asList(label1, label2, label3, label4, label5));
-        return new Quantifier("number of objects", labels, false);
+        ArrayList<Quantifier> quantifiers = new ArrayList<>();
+        quantifiers.add(new Quantifier("number of objects", label1, false));
+        quantifiers.add(new Quantifier("number of objects", label2, false));
+        quantifiers.add(new Quantifier("number of objects", label3, false));
+        quantifiers.add(new Quantifier("number of objects", label4, false));
+        quantifiers.add(new Quantifier("number of objects", label5, false));
+        return quantifiers;
     }
 
     public ArrayList<String> getLinguisticLabelsNamesList() {
