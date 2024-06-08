@@ -1,6 +1,7 @@
 package com.example.summarization;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Label {
     private String name;
@@ -23,9 +24,15 @@ public class Label {
         return membershipFunction;
     }
 
-    public double getSupport() {
-        return (double)membershipFunction.domainR - (double)membershipFunction.domainL;
+    public double getSupport(ArrayList<Credit> credits, int columnIndex) {
+        double supp = 0.0;
+        for (Credit credit : credits) {
+            if (membershipFunction.calculateMembershipDegree(credit.getValueByColumnIndex(columnIndex)) > 0)
+                supp ++;
+        }
+        return supp;
     }
+
 
     public double getHeight(ArrayList<Credit> credits, int columnIndex) {
         double max = 0.0;

@@ -41,9 +41,9 @@ public class QualityMeasuresCalculator {
     // T2
     public double degreeOfImprecision(LinguisticVariable summarizer, int columIndex) {
         double quotient = 1.0;
-        for (Label label : summarizer.getLabels()) { // sumaryzatorem jest jeden label, nie cała zmienna lingwistyczna
-            double degreeOfFuzniess = label.getSupport() / (double)credits.size();
-            quotient *= degreeOfFuzniess;
+        for (Label label : summarizer.getLabels()) {
+            double degreeOfFuzziness = label.getSupport(credits, columIndex) / (double) credits.size();
+            quotient *= degreeOfFuzziness;
         }
         double result = 1.0 - Math.pow(quotient, 1.0 / summarizer.getLabels().size());
         result = Math.round(result * 100.0) / 100.0;
@@ -102,7 +102,7 @@ public class QualityMeasuresCalculator {
 
     //T6
     public double degreeOfQuantifierImprecision(Label quantifier, ArrayList<Credit> credits, int columnIndex, boolean isAbsolute) {
-        double result = 1.0 - quantifier.getSupport();
+        double result = 1.0 - quantifier.getSupport(credits, columnIndex);
         result = Math.round(result * 100.0) / 100.0;
         return result;
     }
@@ -130,7 +130,7 @@ public class QualityMeasuresCalculator {
         if (qualifier == null) {
             return 0.0;
         }
-        double degreeOfFuzziness = qualifier.getSupport() / (double)credits.size();
+        double degreeOfFuzziness = qualifier.getSupport(credits, columnIndex) / (double)credits.size();
         double result = 1.0 - degreeOfFuzziness;
         result = Math.round(result * 100.0) / 100.0;
         return result;
