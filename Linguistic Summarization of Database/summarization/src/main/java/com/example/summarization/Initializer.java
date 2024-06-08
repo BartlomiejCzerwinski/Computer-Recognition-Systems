@@ -127,7 +127,7 @@ public class Initializer {
     }
 
     public ArrayList<Quantifier> createQuantifiers() {
-        Label label1 = new Label("a little", new GaussianFunction(0, 0.4, 0.5, 0.1), true, true);
+        Label label1 = new Label("a little", new GaussianFunction(0, 0.4, 0.05, 0.1), true, true);
         Label label2 = new Label("not a lot", new GaussianFunction(0, 0.9, 0.2, 0.2), true, true);
         Label label3 = new Label("about half of all", new GaussianFunction(0.3, 0.7, 0.5, 0.05), true, true);
         Label label4 = new Label("more than half", new GaussianFunction(0.4, 1, 0.7, 0.1), true, true);
