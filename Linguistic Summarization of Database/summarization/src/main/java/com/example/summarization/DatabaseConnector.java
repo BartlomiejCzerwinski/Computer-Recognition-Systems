@@ -16,6 +16,7 @@ public class DatabaseConnector {
         Statement stmt = null;
         ResultSet rs = null;
         ArrayList<Credit> credits = new ArrayList<>();
+        int test = 0;
         try {
             conn = DriverManager.getConnection(DATABASE_URL);
             System.out.println("SUCCESSFULLY CONNECTED WITH DATABASE.");
@@ -38,6 +39,8 @@ public class DatabaseConnector {
                 float creditLimit = rs.getFloat("total_rev_hi_lim");
                 float totalAccountsBalance = rs.getFloat("tot_cur_bal");
                 String creditPurpose = rs.getString("purpose");
+                if (amount < 10000)
+                    test++;
 
                 Credit credit = new Credit(amount, intRate, annualIncome, numberOfQuestions,
                         installment, dti, revolBalance, totalCollAmount, creditLimit, totalAccountsBalance, creditPurpose);
@@ -62,6 +65,7 @@ public class DatabaseConnector {
             }
         }
         System.out.println("LOADED " + credits.size() + " CREDITS.");
+        System.out.println("TESTTESTTEST: " + test);
         return credits;
     }
 
