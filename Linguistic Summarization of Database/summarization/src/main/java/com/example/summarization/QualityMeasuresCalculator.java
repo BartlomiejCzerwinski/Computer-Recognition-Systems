@@ -9,17 +9,31 @@ public class QualityMeasuresCalculator {
 
 
     // T1
-    public double degreeOfTruth(ArrayList<Label> labels, int columIndex) {
-        double totalResult = 0.0;
-        for (Label label : labels) {
-            double sum = 0.0;
-            for (Credit credit : credits) {
-                sum += label.getMembershipFunction().calculateMembershipDegree(getValueByColumnIndex(columIndex, credit));
+    public double degreeOfTruth(Quantifier quantifier, Label summarizer, Label qualifier, int columIndex) {
+        double rUp = 0.0;
+        double rDown = 0.0;
+        for (Credit credit : credits) {
+            if (qualifier == null) {
+                rUp += summarizer.getMembershipFunction().calculateMembershipDegree(credit.getValueByColumnIndex(columIndex));
             }
-            sum /= credits.size();
-            totalResult += sum;
+            else {
+                rUp += Math.min(summarizer.getMembershipFunction().calculateMembershipDegree(credit.getValueByColumnIndex(columIndex)),
+                        qualifier.getMembershipFunction().calculateMembershipDegree(credit.getValueByColumnIndex(columIndex)));
+                rDown += qualifier.getMembershipFunction().calculateMembershipDegree(credit.getValueByColumnIndex(columIndex));
+            }
         }
-        double result = totalResult / labels.size();
+
+        double result = 0.0;
+        if (qualifier == null)
+            result = rUp;
+        else
+            result = rUp/rDown;
+        System.out.println(result/(double)credits.size());
+        if (quantifier.isAbsolute())
+            result = quantifier.getLabel().getMembershipFunction().calculateMembershipDegree(result);
+        else
+            result = quantifier.getLabel().getMembershipFunction().calculateMembershipDegree(result/(double)credits.size());
+
         result = Math.round(result * 100.0) / 100.0;
         return result;
     }
