@@ -88,7 +88,7 @@ public class SummaryGenerator {
                     double degreeOfTruth = qualityMeasuresCalculator.degreeOfTruth(quantifier, summarizerLabel, null, columnIndex);
                     double degreeOfImprecision = qualityMeasuresCalculator.degreeOfImprecision(summarizer, columnIndex);
                     double degreeOfCovering = qualityMeasuresCalculator.degreeOfCovering(null, summarizerLabel, credits, columnIndex);
-                    double degreeOfAppropriateness = qualityMeasuresCalculator.degreeOfAppropriateness(credits, summarizer, null, columnIndex);
+                    double degreeOfAppropriateness = qualityMeasuresCalculator.degreeOfAppropriateness(summarizer, credits, null, columnIndex);
                     double lengthOfSummary = qualityMeasuresCalculator.lengthOfSummary(new ArrayList<>(Arrays.asList(summarizer)));
                     double degreeOfQuantifierImprecision = qualityMeasuresCalculator.degreeOfQuantifierImprecision(quantifier.getLabel(), credits, columnIndex, quantifier.isAbsolute());
                     double degreeOfQuantifierCardinality = qualityMeasuresCalculator.degreeOfQuantifierCardinality(quantifier.getLabel(), credits, columnIndex, quantifier.isAbsolute());
@@ -146,7 +146,7 @@ public class SummaryGenerator {
                                 double degreeOfTruth = qualityMeasuresCalculator.degreeOfTruth(quantifier, labelSummarizer, qualifierLabel, columnIndex);
                                 double degreeOfImprecision = qualityMeasuresCalculator.degreeOfImprecision(summarizer, columnIndex);
                                 double degreeOfCovering = qualityMeasuresCalculator.degreeOfCovering(qualifierLabel, labelSummarizer, credits, columnIndex);
-                                double degreeOfAppropriateness = qualityMeasuresCalculator.degreeOfAppropriateness(credits, summarizer, qualifierLabel, columnIndex);
+                                double degreeOfAppropriateness = qualityMeasuresCalculator.degreeOfAppropriateness(summarizer, credits, qualifierLabel, columnIndex);
                                 double lengthOfSummary = qualityMeasuresCalculator.lengthOfSummary(new ArrayList<>(Arrays.asList(summarizer)));
                                 double degreeOfQuantifierImprecision = qualityMeasuresCalculator.degreeOfQuantifierImprecision(quantifier.getLabel(), credits, columnIndex, quantifier.isAbsolute());
                                 double degreeOfQuantifierCardinality = qualityMeasuresCalculator.degreeOfQuantifierCardinality(quantifier.getLabel(), credits, columnIndex, quantifier.isAbsolute());

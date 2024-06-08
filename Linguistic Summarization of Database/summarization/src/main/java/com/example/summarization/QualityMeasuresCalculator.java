@@ -79,18 +79,15 @@ public class QualityMeasuresCalculator {
         return result;
     }
 
-    // T4
-    public double degreeOfAppropriateness(ArrayList<Credit> credits, LinguisticVariable summarizer, Label qualifier, int columIndex) {
+    // T4 //TODO
+    public double degreeOfAppropriateness(LinguisticVariable summarizer, ArrayList<Credit> credits, Label qualifier, int columIndex) {
         double quotient = 1.0;
-        double t3 = 0.0;
         for (Label label : summarizer.getLabels()) {
-            double sum = 0.0;
-            for (Credit credit : credits) {
-                sum += label.getMembershipFunction().calculateMembershipDegree(credit.getValueByColumnIndex(columIndex));
-            }
-            quotient *= sum/credits.size();
+            double sum = label.getSupport(credits, columIndex) / (double) credits.size();
+            double t3 = degreeOfCovering(qualifier, label, credits, columIndex);
+            quotient *= (sum - t3);
         }
-        double result = Math.abs(quotient - t3);
+        double result = Math.abs(quotient);
         result = Math.round(result * 100.0) / 100.0;
         return result;
     }
