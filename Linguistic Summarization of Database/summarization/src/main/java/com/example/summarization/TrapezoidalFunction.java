@@ -48,7 +48,7 @@ public class TrapezoidalFunction extends MembershipFunction {
     @Override
     public double getCardinality(ArrayList<Credit> credits, int columnIndex) {
         if (universeOfDiscourse == UniverseOfDiscourse.CONTINUOUS) {
-            return (double) ((stopDecrease - startGrowth) * (startDecrease * stopGrowth)) / 2.0;
+            return (double) ((stopDecrease - startGrowth) + (startDecrease - stopGrowth)) / 2.0;
         }
         else {
             double sum = 0.0;
