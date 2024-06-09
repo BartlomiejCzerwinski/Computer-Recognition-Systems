@@ -114,7 +114,7 @@ public class QualityMeasuresCalculator {
         return result;
     }
 
-    //T8 ???
+    //T8 //TODO
     public double degreeOfSummarizerCardinality(LinguisticVariable summarizer, ArrayList<Credit> credits, int columnIndex) {
         double quotient = 1.0;
 
@@ -126,13 +126,17 @@ public class QualityMeasuresCalculator {
         return result;
     }
 
-    //T9 !!! - forma 2
-    public double degreeOfQualifierImprecision(Label qualifier, ArrayList<Credit> credits, int columnIndex) {
+    //T9
+    public double degreeOfQualifierImprecision(LinguisticVariable qualifier, ArrayList<Credit> credits, int columnIndex) {
         if (qualifier == null) {
             return 0.0;
         }
-        double degreeOfFuzziness = qualifier.getSupport(credits, columnIndex) / (double)credits.size();
-        double result = 1.0 - degreeOfFuzziness;
+        double quotient = 1.0;
+        for (Label label : qualifier.getLabels()) {
+            double degreeOfFuzziness = label.getSupport(credits, columnIndex) / credits.size();
+            quotient *= degreeOfFuzziness;
+        }
+        double result = 1.0 - Math.pow(quotient, 1.0 / qualifier.getLabels().size());
         result = Math.round(result * 100.0) / 100.0;
         return result;
     }
