@@ -1,5 +1,7 @@
 package com.example.summarization;
 
+import java.util.ArrayList;
+
 public abstract class MembershipFunction {
     private double alfaL;
     private double alfaR;
@@ -14,6 +16,8 @@ public abstract class MembershipFunction {
     public abstract double calculateSupport();
 
     public abstract double calculateAlphaCut();
+
+    public abstract double getCardinality(ArrayList<Credit> credits, int columnIndex);
 
     public MembershipFunction(double domainL, double domainR, UniverseOfDiscourse universeOfDiscourse) {
         this.domainL = domainL;
