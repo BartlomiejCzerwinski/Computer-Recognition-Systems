@@ -285,7 +285,20 @@ public class SummaryGenerator {
     }
 
     public void generateSummariesMultipleKindType4() {
+        for (CreditsType subject1 : creditsTypes) {
+            for (CreditsType subject2 : creditsTypes) {
 
+                if (subject1 != subject2)
+                    for (LinguisticVariable summarizer : summarizers) {
+                        for (Label summarizerLabel : summarizer.getLabels()) {
+
+                            ArrayList<Double> arr = new ArrayList<Double>(Arrays.asList(0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0));
+                            Summary summary = new Summary(kind, type, creditsTypeToString(subject1), creditsTypeToString(subject2), arr, null, null, summarizerLabel.getName(), "");
+                            summaries.add(summary);
+                        }
+                    }
+            }
+        }
     }
 
     public ArrayList<Summary> getSummaries() {

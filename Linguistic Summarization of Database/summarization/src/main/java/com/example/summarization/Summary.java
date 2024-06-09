@@ -44,7 +44,7 @@ public class Summary {
                 case 3:
                     return quantifier + " " + subject1 + " credits with " + qualifier +" compared to " + subject2 + " credits have " + summarizer;
                 case 4:
-                    return "TODO";
+                    return "more " + subject1 + " credits than " + subject2 + " credits have" + summarizer;
             }
         }
         return null;
