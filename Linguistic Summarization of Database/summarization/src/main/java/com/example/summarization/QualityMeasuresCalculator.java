@@ -96,7 +96,7 @@ public class QualityMeasuresCalculator {
         return 2 * Math.pow(1.0 / 2.0, summarizers.size());
     }
 
-    //T6
+    // T6
     public double degreeOfQuantifierImprecision(Quantifier quantifier, ArrayList<Credit> credits, int columnIndex, boolean isAbsolute) {
         double result = quantifier.getLabel().getMembershipFunction().domainR - quantifier.getLabel().getMembershipFunction().domainL;
         if (quantifier.isAbsolute())
@@ -105,6 +105,7 @@ public class QualityMeasuresCalculator {
         return result;
     }
 
+    // T7
     public double degreeOfQuantifierCardinality(Quantifier quantifier, ArrayList<Credit> credits, int columnIndex) {
         double result = quantifier.getLabel().getMembershipFunction().getCardinality(credits, columnIndex);
         if (quantifier.isAbsolute())
@@ -113,11 +114,13 @@ public class QualityMeasuresCalculator {
         return result;
     }
 
-    //T8 !!!
+    //T8 ???
     public double degreeOfSummarizerCardinality(LinguisticVariable summarizer, ArrayList<Credit> credits, int columnIndex) {
         double quotient = 1.0;
-        for (Label label : summarizer.getLabels())
+
+        for (Label label : summarizer.getLabels()) {
             quotient *= (label.getMembershipFunction().getCardinality(credits, columnIndex) / credits.size());
+        }
         double result = 1 - Math.pow(quotient, 1.0 / summarizer.getLabels().size());
         result = Math.round(result * 100.0) / 100.0;
         return result;
