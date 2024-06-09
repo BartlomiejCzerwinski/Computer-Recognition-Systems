@@ -101,6 +101,7 @@ public class QualityMeasuresCalculator {
         double result = quantifier.getLabel().getMembershipFunction().domainR - quantifier.getLabel().getMembershipFunction().domainL;
         if (quantifier.isAbsolute())
             result /= (double) credits.size();
+        result = 1 - result;
         result = Math.round(result * 100.0) / 100.0;
         return result;
     }
@@ -110,6 +111,7 @@ public class QualityMeasuresCalculator {
         double result = quantifier.getLabel().getMembershipFunction().getCardinality(credits, columnIndex);
         if (quantifier.isAbsolute())
             result =  result / (double) credits.size();
+        result = 1 - result;
         result = Math.round(result * 100.0) / 100.0;
         return result;
     }
