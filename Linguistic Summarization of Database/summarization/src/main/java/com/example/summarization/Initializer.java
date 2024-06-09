@@ -86,11 +86,11 @@ public class Initializer {
         return new ArrayList<>(Arrays.asList(label1, label2, label3, label3, label4, label5));
     }
     public ArrayList<Label> initLinguisticLabels6() {
-        Label label1 = new Label("very low DTI", new TrapezoidalFunction(0, 20, 0, 0, 10, 20), true, true);
-        Label label2 = new Label("low DTI", new TrapezoidalFunction(10, 60, 10, 20, 40, 60), true, true);
-        Label label3 = new Label("medium DTI", new TrapezoidalFunction(40, 100, 40, 60, 80, 100), true, true);
-        Label label4 = new Label("high DTI", new TrapezoidalFunction(70, 110, 70, 80, 90, 110), true, true);
-        Label label5 = new Label("very high DTI", new TrapezoidalFunction(80, 100, 80, 100, 100, 100), true, true);
+        Label label1 = new Label("very low DTI", new TrapezoidalFunction(0, 20, UniverseOfDiscourse.CONTINUOUS, 0, 0, 10, 20), true, true);
+        Label label2 = new Label("low DTI", new TrapezoidalFunction(10, 60, UniverseOfDiscourse.CONTINUOUS, 10, 20, 40, 60), true, true);
+        Label label3 = new Label("medium DTI", new TrapezoidalFunction(40, 100, UniverseOfDiscourse.CONTINUOUS, 40, 60, 80, 100), true, true);
+        Label label4 = new Label("high DTI", new TrapezoidalFunction(70, 110, UniverseOfDiscourse.CONTINUOUS, 70, 80, 90, 110), true, true);
+        Label label5 = new Label("very high DTI", new TrapezoidalFunction(80, 100, UniverseOfDiscourse.CONTINUOUS, 80, 100, 100, 100), true, true);
         return new ArrayList<>(Arrays.asList(label1, label2, label3, label3, label4, label5));
     }
     public ArrayList<Label> initLinguisticLabels7() {
