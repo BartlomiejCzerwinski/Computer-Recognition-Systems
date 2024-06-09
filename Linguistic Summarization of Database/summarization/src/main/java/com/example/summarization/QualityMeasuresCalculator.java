@@ -127,16 +127,14 @@ public class QualityMeasuresCalculator {
     }
 
     //T9
-    public double degreeOfQualifierImprecision(LinguisticVariable qualifier, ArrayList<Credit> credits, int columnIndex) {
+    public double degreeOfQualifierImprecision(Label qualifier, ArrayList<Credit> credits, int columnIndex) {
         if (qualifier == null) {
             return 0.0;
         }
-        double quotient = 1.0;
-        for (Label label : qualifier.getLabels()) {
-            double degreeOfFuzziness = label.getSupport(credits, columnIndex) / credits.size();
-            quotient *= degreeOfFuzziness;
-        }
-        double result = 1.0 - Math.pow(quotient, 1.0 / qualifier.getLabels().size());
+
+        double degreeOfFuzziness = qualifier.getSupport(credits, columnIndex) / credits.size();
+        double result = 1.0 - degreeOfFuzziness;
+
         result = Math.round(result * 100.0) / 100.0;
         return result;
     }
