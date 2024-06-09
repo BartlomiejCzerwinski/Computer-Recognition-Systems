@@ -115,15 +115,20 @@ public class QualityMeasuresCalculator {
     }
 
     //T8 //TODO
-    public double degreeOfSummarizerCardinality(LinguisticVariable summarizer, ArrayList<Credit> credits, int columnIndex) {
-        double quotient = 1.0;
+    public double degreeOfSummarizerCardinality(LinguisticVariable summarizer, ArrayList<Credit> credits, int columnIndex, Label summarizerLabel) {
+        double product = 1.0;
 
-        for (Label label : summarizer.getLabels()) {
-            quotient *= (label.getMembershipFunction().getCardinality(credits, columnIndex) / credits.size());
-        }
-        double result = 1 - Math.pow(quotient, 1.0 / summarizer.getLabels().size());
+        double cardinality = summarizerLabel.getMembershipFunction().getCardinality(credits, columnIndex);
+        double normalizedCardinality = cardinality / credits.size();
+        product *= normalizedCardinality;
+
+        double nthRoot = Math.pow(product, 1.0 / summarizer.getLabels().size());
+
+        double result = 1 - nthRoot;
+
         result = Math.round(result * 100.0) / 100.0;
-        return result;
+
+        return result < 0 ? 0 : result;
     }
 
     //T9
