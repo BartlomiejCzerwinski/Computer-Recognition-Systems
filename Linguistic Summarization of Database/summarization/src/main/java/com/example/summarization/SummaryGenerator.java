@@ -34,6 +34,16 @@ public class SummaryGenerator {
 
     private QualityMeasuresCalculator qualityMeasuresCalculator;
 
+    private ArrayList<CreditsType> creditsTypes = new ArrayList<>(Arrays.asList(
+            CreditsType.CREDIT_CARD,
+            CreditsType.CAR,
+            CreditsType.SMALL_BUSINESS,
+            CreditsType.DEBT_CONSOLIDATION,
+            CreditsType.HOME_IMPROVEMENT,
+            CreditsType.MAJOR_PURCHASE,
+            CreditsType.MEDICAL
+    ));
+
 
     public SummaryGenerator(String kind, int type, ArrayList<Quantifier> quantifiers, ArrayList<LinguisticVariable> qualifiers, ArrayList<LinguisticVariable> summarizers, String subject1, String subject2, ArrayList<Double> measuresWeights, String quantifiersToReturn, String qualifiersToReturn, String summarizersToReturn) {
         this.kind = kind;
@@ -201,7 +211,25 @@ public class SummaryGenerator {
     }
 
     public void generateSummariesMultipleKindType1() {
+        for (CreditsType subject1 : creditsTypes) {
+            for (CreditsType subject2 : creditsTypes) {
 
+                if (subject1 != subject2)
+                for (Quantifier quantifier : quantifiers) {
+
+                    for (LinguisticVariable summarizer : summarizers) {
+                        for (Label summarizerLabel : summarizer.getLabels()) {
+
+                            ArrayList<Double> arr = new ArrayList<Double>(Arrays.asList(0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0));
+
+                            Summary summary = new Summary(kind, type, creditsTypeToString(subject1), creditsTypeToString(subject2), arr, quantifier.getLabel().getName(), null, summarizerLabel.getName(), "");
+                            summaries.add(summary);
+                        }
+                    }
+
+                }
+            }
+        }
     }
 
     public void generateSummariesMultipleKindType2() {
@@ -232,4 +260,32 @@ public class SummaryGenerator {
             System.out.println("Medical: " + creditsByTypes.get(CreditsType.MEDICAL).size());
             System.out.println("All: " + creditsByTypes.get(CreditsType.ALL).size());
     }
+
+    public String creditsTypeToString(CreditsType creditsType) {
+        switch (creditsType) {
+            case CREDIT_CARD -> {
+                return "credit card";
+            }
+            case CAR -> {
+                return "car";
+            }
+            case SMALL_BUSINESS -> {
+                return "small business";
+            }
+            case DEBT_CONSOLIDATION -> {
+                return "debt consolidation";
+            }
+            case HOME_IMPROVEMENT -> {
+                return "home improvement";
+            }
+            case MAJOR_PURCHASE -> {
+                return "major purchase";
+            }
+            case MEDICAL -> {
+                return "medical";
+            }
+        }
+        return null;
+    }
+
 }

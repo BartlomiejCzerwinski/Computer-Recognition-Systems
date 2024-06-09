@@ -38,7 +38,7 @@ public class Summary {
         else {
             switch (type) {
                 case 1:
-                    return "TODO";
+                    return quantifier + " " + subject1 + " credits compared to " + subject2 + " credits have " + summarizer;
                 case 2:
                     return "TODO";
                 case 3:

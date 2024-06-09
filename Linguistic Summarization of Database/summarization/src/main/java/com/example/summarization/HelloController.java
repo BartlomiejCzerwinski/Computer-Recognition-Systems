@@ -146,7 +146,8 @@ public class HelloController {
         comboBoxSummarizerMany.setValue("-");
 
         comboBoxSingleOrMany.setItems(FXCollections.observableArrayList(
-                "single subject"
+                "single subject",
+                "multiple subjects"
         ));
         comboBoxSingleOrMany.setValue("single subject");
 

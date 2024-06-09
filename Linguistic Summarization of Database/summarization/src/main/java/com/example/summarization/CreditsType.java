@@ -9,4 +9,5 @@ public enum CreditsType {
     MAJOR_PURCHASE,
     MEDICAL,
     ALL
+
 }
