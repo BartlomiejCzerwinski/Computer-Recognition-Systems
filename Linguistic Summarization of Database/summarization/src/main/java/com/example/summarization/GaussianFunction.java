@@ -59,4 +59,12 @@ public class GaussianFunction extends MembershipFunction{
             return result;
         }
     }
+
+    public double getAlphaCount(ArrayList<Credit> credits, int columnIndex) {
+        double sum = 0.0;
+        for (Credit credit : credits) {
+            sum += calculateMembershipDegree(credit.getValueByColumnIndex(columnIndex));
+        }
+        return sum;
+    }
 }

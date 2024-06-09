@@ -58,4 +58,12 @@ public class TrapezoidalFunction extends MembershipFunction {
             return sum;
         }
     }
+
+    public double getAlphaCount(ArrayList<Credit> credits, int columnIndex) {
+        double sum = 0.0;
+        for (Credit credit : credits) {
+            sum += calculateMembershipDegree(credit.getValueByColumnIndex(columnIndex));
+        }
+        return sum;
+    }
 }

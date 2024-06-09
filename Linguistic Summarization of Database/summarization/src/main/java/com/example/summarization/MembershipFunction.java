@@ -18,6 +18,7 @@ public abstract class MembershipFunction {
     public abstract double calculateAlphaCut();
 
     public abstract double getCardinality(ArrayList<Credit> credits, int columnIndex);
+    public abstract double getAlphaCount(ArrayList<Credit> credits, int columnIndex);
 
     public MembershipFunction(double domainL, double domainR, UniverseOfDiscourse universeOfDiscourse) {
         this.domainL = domainL;
