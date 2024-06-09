@@ -342,17 +342,29 @@ public class SummaryGenerator {
 
     public void generateSummariesMultipleKindType4() {
         for (CreditsType subject1 : creditsTypes) {
+            ArrayList<Credit> credits1 = creditsByTypes.get(subject1);
             for (CreditsType subject2 : creditsTypes) {
-
+                ArrayList<Credit> credits2 = creditsByTypes.get(subject2);
                 if (subject1 != subject2)
+                {
+                    int columnIndex = 0;
                     for (LinguisticVariable summarizer : summarizers) {
                         for (Label summarizerLabel : summarizer.getLabels()) {
-
-                            ArrayList<Double> arr = new ArrayList<Double>(Arrays.asList(0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0));
+                            double sum = 0.0;
+                            for (int i = 0; i < credits1.size(); i++) {
+                                double a = summarizerLabel.getMembershipFunction().calculateMembershipDegree(credits2.get(i).getValueByColumnIndex(columnIndex));
+                                double b = summarizerLabel.getMembershipFunction().calculateMembershipDegree(credits1.get(i).getValueByColumnIndex(columnIndex));
+                                sum += Math.min(a, b);
+                            }
+                            sum /= summarizerLabel.getMembershipFunction().getAlphaCount(credits2, columnIndex);
+                            double T = 1 - (sum / summarizerLabel.getMembershipFunction().getAlphaCount(credits2, columnIndex));
+                            ArrayList<Double> arr = new ArrayList<Double>(Arrays.asList(0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, T));
                             Summary summary = new Summary(kind, type, creditsTypeToString(subject1), creditsTypeToString(subject2), arr, null, null, summarizerLabel.getName(), "");
                             summaries.add(summary);
                         }
+                        columnIndex ++;
                     }
+                }
             }
         }
     }
