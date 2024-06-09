@@ -149,9 +149,14 @@ public class QualityMeasuresCalculator {
         if (qualifier == null) {
             return 0.0;
         }
-        double result = 1.0 - (qualifier.getMembershipFunction().getCardinality(credits, columnIndex) / credits.size());
+
+        double cardinality = qualifier.getMembershipFunction().getCardinality(credits, columnIndex);
+        double normalizedCardinality = cardinality / credits.size();
+
+        double result = 1.0 - normalizedCardinality;
+
         result = Math.round(result * 100.0) / 100.0;
-        return result;
+        return result < 0 ? 0 : result;
     }
 
     //T11 !!!
