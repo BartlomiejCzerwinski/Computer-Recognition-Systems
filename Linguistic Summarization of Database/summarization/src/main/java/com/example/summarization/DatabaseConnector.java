@@ -11,6 +11,7 @@ import java.util.HashMap;
 public class DatabaseConnector {
     private static final String DATABASE_URL = "jdbc:sqlite:database.db";
     private int LIMIT_OF_DATA_POINTS = 5000;//800000;
+    private int NUMBER_OF_ALL_CREDITS = 800000;
     private ArrayList<Credit> credits;
     private int NUMBER_OF_RECORDS = 0;
 
@@ -33,7 +34,7 @@ public class DatabaseConnector {
             String sql = "SELECT * FROM loan";
             rs = stmt.executeQuery(sql);
             int i = 0;
-            while (rs.next() && i < LIMIT_OF_DATA_POINTS) {
+            while (rs.next() && i < NUMBER_OF_ALL_CREDITS) {
                 NUMBER_OF_RECORDS ++;
                 float amount = rs.getFloat("loan_amnt");
                 float intRate = rs.getFloat("int_rate");
@@ -71,8 +72,7 @@ public class DatabaseConnector {
                 System.err.println(e.getMessage());
             }
         }
-        System.out.println("LOADED " + credits.size() + " CREDITS.");
-        System.out.println("TESTTESTTEST: " + test);
+        System.out.println("LOADED " + credits.size() + " CREDITS FROM DATABASE.");
         return credits;
     }
 

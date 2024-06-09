@@ -2,6 +2,7 @@ package com.example.summarization;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 
 public class SummaryGenerator {
 
@@ -27,6 +28,7 @@ public class SummaryGenerator {
 
     // DATA SECTION *********************************
     private ArrayList<Summary> summaries = new ArrayList<>();
+    private HashMap<CreditsType, ArrayList<Credit>> creditsByTypes;
     private ArrayList<Credit> credits;
     // DATA SECTION *********************************
 
@@ -46,8 +48,7 @@ public class SummaryGenerator {
         this.qualifiersToReturn = qualifiersToReturn;
         this.summarizersToReturn = summarizersToReturn;
         DatabaseConnector databaseConnector = new DatabaseConnector();
-        this.credits = databaseConnector.fetchData();
-        this.qualityMeasuresCalculator = new QualityMeasuresCalculator(credits);
+        this.creditsByTypes = databaseConnector.getAllCredits();
     }
 
     public void generateSummaries() {
@@ -80,6 +81,8 @@ public class SummaryGenerator {
     }
 
     public void generateSummariesSingleKindType1() {
+        credits = creditsByTypes.get(CreditsType.ALL);
+        qualityMeasuresCalculator = new QualityMeasuresCalculator(credits);
         for (Quantifier quantifier : quantifiers) {
             int columnIndex = 0;
             for (LinguisticVariable summarizer : summarizers) {
@@ -136,6 +139,8 @@ public class SummaryGenerator {
     }
 
     public void generateSummariesSingleKindType2() {
+        credits = creditsByTypes.get(CreditsType.ALL);
+        qualityMeasuresCalculator = new QualityMeasuresCalculator(credits);
         for (Quantifier quantifier : quantifiers) {
             int columnIndex = 0;
             for (LinguisticVariable qualifier : qualifiers) {
@@ -216,67 +221,15 @@ public class SummaryGenerator {
     }
 
     public void getCreditsPurposeInfo() {
-        int creditCard = 0;
-        int car = 0;
-        int smallBusiness = 0;
-        int other = 0;
-        int wedding = 0;
-        int debtConsolidation = 0;
-        int homeImprovement = 0;
-        int majorPurchase = 0;
-        int medical = 0;
-        int vacation = 0;
-        int buyingHouse = 0;
 
-        for (Credit credit : credits) {
-            String creditPurpose = credit.getPurpose();
-            switch (creditPurpose) {
-                case "credit_card":
-                    creditCard++;
-                    break;
-                case "car":
-                    car++;
-                    break;
-                case "small_business":
-                    smallBusiness++;
-                    break;
-                case "other":
-                    other++;
-                    break;
-                case "wedding":
-                    wedding++;
-                    break;
-                case "debt_consolidation":
-                    debtConsolidation++;
-                    break;
-                case "home_improvement":
-                    homeImprovement++;
-                    break;
-                case "major_purchase":
-                    majorPurchase++;
-                    break;
-                case "medical":
-                    medical++;
-                    break;
-                case "vacation":
-                    vacation++;
-                    break;
-                case "house":
-                    buyingHouse++;
-                    break;
-            }
-        }
-        System.out.println("CREDITS BY PURPOSE");
-        System.out.println("Credit Card: " + creditCard);
-        System.out.println("Car: " + car);
-        System.out.println("Small Business: " + smallBusiness);
-        System.out.println("Other: " + other);
-        System.out.println("Wedding: " + wedding);
-        System.out.println("Debt Consolidation: " + debtConsolidation);
-        System.out.println("Home Improvement: " + homeImprovement);
-        System.out.println("Major Purchase: " + majorPurchase);
-        System.out.println("Medical: " + medical);
-        System.out.println("Vacation: " + vacation);
-        System.out.println("Buying House: " + buyingHouse);
+            System.out.println("CREDITS BY PURPOSE");
+            System.out.println("Credit Card: " + creditsByTypes.get(CreditsType.CREDIT_CARD).size());
+            System.out.println("Car: " + creditsByTypes.get(CreditsType.CAR).size());
+            System.out.println("Small Business: " + creditsByTypes.get(CreditsType.SMALL_BUSINESS).size());
+            System.out.println("Debt Consolidation: " + creditsByTypes.get(CreditsType.DEBT_CONSOLIDATION).size());
+            System.out.println("Home Improvement: " + creditsByTypes.get(CreditsType.HOME_IMPROVEMENT).size());
+            System.out.println("Major Purchase: " + creditsByTypes.get(CreditsType.MAJOR_PURCHASE).size());
+            System.out.println("Medical: " + creditsByTypes.get(CreditsType.MEDICAL).size());
+            System.out.println("All: " + creditsByTypes.get(CreditsType.ALL).size());
     }
 }
