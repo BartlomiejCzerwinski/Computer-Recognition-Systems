@@ -11,11 +11,6 @@ public class Initializer {
     "balance of all accounts"};
     private Double[] L = new Double[] {300.0, 5.32, 0.0, 0.0, 15.0, 0.0, 0.0, 0.0, 100.0, 0.0};
     private Double[] R = new Double[] {40000.0, 30.0, 950000.0, 35.0, 1500.0, 100.0, 3000000.0, 99950.0, 99999.0, 999999.0};
-    private UniverseOfDiscourse[] UNIVERSES_OF_DISCOURSES = new UniverseOfDiscourse[] {
-    UniverseOfDiscourse.CONTINUOUS, UniverseOfDiscourse.CONTINUOUS, UniverseOfDiscourse.CONTINUOUS, UniverseOfDiscourse.DISCRETE,
-            UniverseOfDiscourse.CONTINUOUS, UniverseOfDiscourse.DISCRETE, UniverseOfDiscourse.CONTINUOUS, UniverseOfDiscourse.CONTINUOUS,
-            UniverseOfDiscourse.CONTINUOUS, UniverseOfDiscourse.CONTINUOUS
-    };
 
     private ArrayList<ArrayList<Label>> LINGUISTIC_LABELS = new ArrayList<>();
 
