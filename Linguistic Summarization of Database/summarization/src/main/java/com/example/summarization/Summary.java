@@ -40,7 +40,7 @@ public class Summary {
                 case 1:
                     return quantifier + " " + subject1 + " credits compared to " + subject2 + " credits have " + summarizer;
                 case 2:
-                    return "TODO";
+                    return quantifier + " " + subject1 + " credits with " + qualifier + " compared to " + subject2 + " credits have " + summarizer;
                 case 3:
                     return "TODO";
                 case 4:
