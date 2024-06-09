@@ -153,7 +153,9 @@ public class HelloController {
 
         comboBoxType.setItems(FXCollections.observableArrayList(
                 "1",
-                "2"
+                "2",
+                "3",
+                "4"
         ));
         comboBoxType.setValue("1");
 
