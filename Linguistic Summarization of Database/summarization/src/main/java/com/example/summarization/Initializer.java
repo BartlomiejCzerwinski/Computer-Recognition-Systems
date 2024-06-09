@@ -24,7 +24,7 @@ public class Initializer {
         ArrayList<LinguisticVariable> linguisticVariables = new ArrayList<>();
         initLinguisticLabels();
         for (int i = 0; i < NUMBER_OF_VARIABLES; i++) {
-            linguisticVariables.add(new LinguisticVariable(LINGUISTIC_VARIABLE_NAMES[i], LINGUISTIC_LABELS.get(i), L[i], R[i], UNIVERSES_OF_DISCOURSES[i]));
+            linguisticVariables.add(new LinguisticVariable(LINGUISTIC_VARIABLE_NAMES[i], LINGUISTIC_LABELS.get(i), L[i], R[i]));
         }
         return linguisticVariables;
     }

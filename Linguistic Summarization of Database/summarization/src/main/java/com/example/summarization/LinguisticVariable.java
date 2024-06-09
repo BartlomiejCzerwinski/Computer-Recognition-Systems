@@ -7,14 +7,12 @@ public class LinguisticVariable {
     private ArrayList<Label> labels;
     private double domainL;
     private double domainR;
-    private UniverseOfDiscourse universeOfDiscourse;
 
-    public LinguisticVariable(String name, ArrayList<Label> labels, double domainL, double domainR, UniverseOfDiscourse universeOfDiscourse) {
+    public LinguisticVariable(String name, ArrayList<Label> labels, double domainL, double domainR) {
         this.name = name;
         this.labels = labels;
         this.domainL = domainL;
         this.domainR = domainR;
-        this.universeOfDiscourse = universeOfDiscourse;
     }
 
     public ArrayList<Label> getLabels() {
