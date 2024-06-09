@@ -45,6 +45,7 @@ public class GaussianFunction extends MembershipFunction{
             for (Credit credit : credits) {
                 sum += calculateMembershipDegree(credit.getValueByColumnIndex(columnIndex));
             }
+            return sum;
         }
         else {
             UnivariateIntegrator integrator = new SimpsonIntegrator();
@@ -57,6 +58,5 @@ public class GaussianFunction extends MembershipFunction{
             );
             return result;
         }
-        return 0.0;
     }
 }
