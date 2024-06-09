@@ -6,11 +6,18 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class DatabaseConnector {
     private static final String DATABASE_URL = "jdbc:sqlite:database.db";
-    private int LIMIT_OF_DATA_POINTS = 15000;//800000;
+    private int LIMIT_OF_DATA_POINTS = 5000;//800000;
+    private ArrayList<Credit> credits;
     private int NUMBER_OF_RECORDS = 0;
+
+    public DatabaseConnector() {
+        credits = fetchData();
+    }
+
     public ArrayList<Credit> fetchData() {
         Connection conn = null;
         Statement stmt = null;
@@ -67,6 +74,40 @@ public class DatabaseConnector {
         System.out.println("LOADED " + credits.size() + " CREDITS.");
         System.out.println("TESTTESTTEST: " + test);
         return credits;
+    }
+
+    private ArrayList<Credit> getCreditsByCategory(String category) {
+        int numOfCredits = 0;
+        ArrayList<Credit> result = new ArrayList<>();
+        for (Credit credit : credits) {
+            if (credit.getPurpose().equals(category)) {
+                result.add(credit);
+                numOfCredits ++;
+            }
+            if (numOfCredits >= LIMIT_OF_DATA_POINTS)
+                break;
+        }
+        return result;
+    }
+
+    public HashMap<CreditsType, ArrayList<Credit>> getAllCredits() {
+        HashMap<CreditsType, ArrayList<Credit>> result = new HashMap<>();
+        result.put(CreditsType.CREDIT_CARD, getCreditsByCategory("credit_card"));
+        result.put(CreditsType.CAR, getCreditsByCategory("car"));
+        result.put(CreditsType.SMALL_BUSINESS, getCreditsByCategory("small_business"));
+        result.put(CreditsType.DEBT_CONSOLIDATION, getCreditsByCategory("debt_consolidation"));
+        result.put(CreditsType.HOME_IMPROVEMENT, getCreditsByCategory("home_improvement"));
+        result.put(CreditsType.MAJOR_PURCHASE, getCreditsByCategory("major_purchase"));
+        result.put(CreditsType.MEDICAL, getCreditsByCategory("medical"));
+        ArrayList<Credit> all = getCreditsByCategory("credit_card");
+        all.addAll(getCreditsByCategory("car"));
+        all.addAll(getCreditsByCategory("small_business"));
+        all.addAll(getCreditsByCategory("debt_consolidation"));
+        all.addAll(getCreditsByCategory("home_improvement"));
+        all.addAll(getCreditsByCategory("major_purchase"));
+        all.addAll(getCreditsByCategory("medical"));
+        result.put(CreditsType.ALL, all);
+        return result;
     }
 
 
