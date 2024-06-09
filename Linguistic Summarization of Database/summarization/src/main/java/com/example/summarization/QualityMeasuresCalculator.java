@@ -105,10 +105,10 @@ public class QualityMeasuresCalculator {
         return result;
     }
 
-    //T7 !!!
-    public double degreeOfQuantifierCardinality(Label quantifier, ArrayList<Credit> credits, int columnIndex, boolean isAbsolute) {
-        double result = quantifier.getCardinality(credits, columnIndex);
-        result /= (double) credits.size();
+    public double degreeOfQuantifierCardinality(Quantifier quantifier, ArrayList<Credit> credits, int columnIndex) {
+        double result = quantifier.getLabel().getMembershipFunction().getCardinality(credits, columnIndex);
+        if (quantifier.isAbsolute())
+            result =  result / (double) credits.size();
         result = Math.round(result * 100.0) / 100.0;
         return result;
     }
@@ -117,7 +117,7 @@ public class QualityMeasuresCalculator {
     public double degreeOfSummarizerCardinality(LinguisticVariable summarizer, ArrayList<Credit> credits, int columnIndex) {
         double quotient = 1.0;
         for (Label label : summarizer.getLabels())
-            quotient *= (label.getCardinality(credits, columnIndex) / credits.size());
+            quotient *= (label.getMembershipFunction().getCardinality(credits, columnIndex) / credits.size());
         double result = 1 - Math.pow(quotient, 1.0 / summarizer.getLabels().size());
         result = Math.round(result * 100.0) / 100.0;
         return result;
@@ -139,7 +139,7 @@ public class QualityMeasuresCalculator {
         if (qualifier == null) {
             return 0.0;
         }
-        double result = 1.0 - (qualifier.getCardinality(credits, columnIndex) / credits.size());
+        double result = 1.0 - (qualifier.getMembershipFunction().getCardinality(credits, columnIndex) / credits.size());
         result = Math.round(result * 100.0) / 100.0;
         return result;
     }
