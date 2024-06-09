@@ -49,7 +49,7 @@ public class Initializer {
 
     public ArrayList<Label> initLinguisticLabels1() {
         Label label1 = new Label("a loan for less than 10000", new TrapezoidalFunction(300, 10000, UniverseOfDiscourse.CONTINUOUS, 300, 300, 10000, 10000), true, true);
-        Label label2 = new Label("loan for about 11000", new TrapezoidalFunction(9500, 12500, UniverseOfDiscourse.CONTINUOUS, 9500, 10500, 11500, 1250), true, true);
+        Label label2 = new Label("loan for about 11000", new TrapezoidalFunction(9500, 12500, UniverseOfDiscourse.CONTINUOUS, 9500, 10500, 11500, 12500), true, true);
         Label label3 = new Label("loan from 12000 to 18000", new TrapezoidalFunction(12000, 18000, UniverseOfDiscourse.CONTINUOUS, 12000, 12000, 18000, 18000), true, true);
         Label label4 = new Label("loan for about 20000", new TrapezoidalFunction(17000, 23000, UniverseOfDiscourse.CONTINUOUS, 17000, 19000, 21000, 23000), true, true);
         Label label5 = new Label("loan from 22000 to 30000", new TrapezoidalFunction(22000, 30000, UniverseOfDiscourse.CONTINUOUS, 22000, 22000, 30000, 30000), true, true);
