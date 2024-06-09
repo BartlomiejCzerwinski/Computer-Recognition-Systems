@@ -297,7 +297,9 @@ public class SummaryGenerator {
 
     public void generateSummariesMultipleKindType3() {
         for (CreditsType subject1 : creditsTypes) {
+            ArrayList<Credit> credits1 = creditsByTypes.get(subject1);
             for (CreditsType subject2 : creditsTypes) {
+                ArrayList<Credit> credits2 = creditsByTypes.get(subject2);
 
                 if (subject1 != subject2)
                     for (Quantifier quantifier : quantifiers) {
@@ -308,45 +310,21 @@ public class SummaryGenerator {
                                 for (LinguisticVariable summarizer : summarizers) {
                                     for (Label summarizerLabel : summarizer.getLabels()) {
 
-                                        double degreeOfTruth = qualityMeasuresCalculator.degreeOfTruth(quantifier, summarizerLabel, qualifierLabel, columnIndex);
-                                        double degreeOfImprecision = qualityMeasuresCalculator.degreeOfImprecision(summarizer, columnIndex);
-                                        double degreeOfCovering = qualityMeasuresCalculator.degreeOfCovering(qualifierLabel, summarizerLabel, credits, columnIndex);
-                                        double degreeOfAppropriateness = qualityMeasuresCalculator.degreeOfAppropriateness(summarizer, credits, qualifierLabel, columnIndex);
-                                        double lengthOfSummary = qualityMeasuresCalculator.lengthOfSummary(summarizer.getLabels());
-                                        double degreeOfQuantifierImprecision = qualityMeasuresCalculator.degreeOfQuantifierImprecision(quantifier, credits, columnIndex, quantifier.isAbsolute());
-                                        double degreeOfQuantifierCardinality = qualityMeasuresCalculator.degreeOfQuantifierCardinality(quantifier, credits, columnIndex);
-                                        double degreeOfSummarizerCardinality = qualityMeasuresCalculator.degreeOfSummarizerCardinality(summarizer, credits, columnIndex, summarizerLabel);
-                                        double degreeOfQualifierImprecision = qualityMeasuresCalculator.degreeOfQualifierImprecision(qualifierLabel, credits, columnIndex);
-                                        double degreeOfQualifierCardinality = qualityMeasuresCalculator.degreeOfQualifierCardinality(qualifierLabel, credits, columnIndex);
-                                        double lengthOfQualifier = qualityMeasuresCalculator.lengthOfQualifier(qualifierVariable);
-
-                                        double T = (
-                                                (degreeOfTruth * measuresWeights.get(0))
-                                                        + (degreeOfImprecision * measuresWeights.get(1))
-                                                        + (degreeOfCovering * measuresWeights.get(2))
-                                                        + (degreeOfAppropriateness * measuresWeights.get(3))
-                                                        + (lengthOfSummary * measuresWeights.get(4))
-                                                        + (degreeOfQuantifierImprecision * measuresWeights.get(5))
-                                                        + (degreeOfQuantifierCardinality * measuresWeights.get(6))
-                                                        + (degreeOfSummarizerCardinality * measuresWeights.get(7))
-                                                        + (degreeOfQualifierImprecision * measuresWeights.get(8))
-                                                        + (degreeOfQualifierCardinality * measuresWeights.get(9))
-                                                        + (lengthOfQualifier * measuresWeights.get(10))
-                                        );
-                                        T = Math.round(T * 100.0) / 100.0;
-
+                                        double up = ((1.0/credits1.size()) * new JoinLabels(summarizerLabel, qualifierLabel, credits1, columnIndex).sum());
+                                        double down = (up + ((1.0/credits2.size()) * summarizerLabel.getMembershipFunction().getAlphaCount(credits2, columnIndex)));
+                                        double T = quantifier.getLabel().getMembershipFunction().calculateMembershipDegree(up/down);
                                         ArrayList<Double> arr = new ArrayList<Double>(Arrays.asList(
-                                                degreeOfTruth,
-                                                degreeOfImprecision,
-                                                degreeOfCovering,
-                                                degreeOfAppropriateness,
-                                                lengthOfSummary,
-                                                degreeOfQuantifierImprecision,
-                                                degreeOfQuantifierCardinality,
-                                                degreeOfSummarizerCardinality,
-                                                degreeOfQualifierImprecision,
-                                                degreeOfQualifierCardinality,
-                                                lengthOfQualifier,
+                                                0.0,
+                                                0.0,
+                                                0.0,
+                                                0.0,
+                                                0.0,
+                                                0.0,
+                                                0.0,
+                                                0.0,
+                                                0.0,
+                                                0.0,
+                                                0.0,
                                                 T));
 
                                         Summary summary = new Summary(kind, type, creditsTypeToString(subject1), creditsTypeToString(subject2), arr, quantifier.getLabel().getName(), qualifierLabel.getName(), summarizerLabel.getName(), "");
