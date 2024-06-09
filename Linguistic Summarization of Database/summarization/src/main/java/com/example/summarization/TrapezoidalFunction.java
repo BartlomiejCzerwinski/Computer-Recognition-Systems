@@ -6,8 +6,8 @@ public class TrapezoidalFunction extends MembershipFunction {
     private double startDecrease;
     private double stopDecrease;
 
-    public TrapezoidalFunction(double domainL, double domainR, double startGrowth, double stopGrowth, double startDecrease, double stopDecrease) {
-        super(domainL, domainR);
+    public TrapezoidalFunction(double domainL, double domainR, UniverseOfDiscourse universeOfDiscourse, double startGrowth, double stopGrowth, double startDecrease, double stopDecrease) {
+        super(domainL, domainR, universeOfDiscourse);
         this.startGrowth = startGrowth;
         this.stopGrowth = stopGrowth;
         this.startDecrease = startDecrease;

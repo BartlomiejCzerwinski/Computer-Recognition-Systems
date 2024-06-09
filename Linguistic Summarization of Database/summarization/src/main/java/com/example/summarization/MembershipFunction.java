@@ -5,6 +5,7 @@ public abstract class MembershipFunction {
     private double alfaR;
     protected double domainL;
     protected double domainR;
+    protected UniverseOfDiscourse universeOfDiscourse;
 
     public abstract double calculateMembershipDegree(double value);
 
@@ -14,8 +15,9 @@ public abstract class MembershipFunction {
 
     public abstract double calculateAlphaCut();
 
-    public MembershipFunction(double domainL, double domainR) {
+    public MembershipFunction(double domainL, double domainR, UniverseOfDiscourse universeOfDiscourse) {
         this.domainL = domainL;
         this.domainR = domainR;
+        this.universeOfDiscourse = universeOfDiscourse;
     }
 }

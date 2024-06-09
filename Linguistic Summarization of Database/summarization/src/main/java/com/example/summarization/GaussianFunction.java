@@ -4,8 +4,8 @@ public class GaussianFunction extends MembershipFunction{
     private double mu; // https://en.wikipedia.org/wiki/Mu_(letter)
     private double omega; // https://en.wikipedia.org/wiki/Omega
 
-    public GaussianFunction(double domainL, double domainR, double mu, double omega) {
-        super(domainL, domainR);
+    public GaussianFunction(double domainL, double domainR, UniverseOfDiscourse universeOfDiscourse, double mu, double omega) {
+        super(domainL, domainR, universeOfDiscourse);
         this.mu = mu;
         this.omega = omega;
     }
