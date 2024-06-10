@@ -224,8 +224,8 @@ public class SummaryGenerator {
                            double up = (1.0/credits1.size()) * summarizerLabel.getMembershipFunction().getAlphaCountNonFuzzy(credits1, columnIndex);
                            double down = (up + ((1.0/credits2.size()) * summarizerLabel.getMembershipFunction().getAlphaCountNonFuzzy(credits2, columnIndex)));
                            double T = quantifier.getLabel().getMembershipFunction().calculateMembershipDegree(up/down);
-
-                            ArrayList<Double> arr = new ArrayList<Double>(Arrays.asList(
+                           T = Math.round(T * 100.0) / 100.0;
+                           ArrayList<Double> arr = new ArrayList<Double>(Arrays.asList(
                                     0.0,
                                     0.0,
                                     0.0,
@@ -268,6 +268,7 @@ public class SummaryGenerator {
                                         JoinLabels joinLabels = new JoinLabels(summarizerLabel, qualifierLabel, credits2, columnIndex);
                                         double down = (up + ((1.0/credits2.size()) * joinLabels.sum()));
                                         double T = quantifier.getLabel().getMembershipFunction().calculateMembershipDegree(up/down);
+                                        T = Math.round(T * 100.0) / 100.0;
                                         ArrayList<Double> arr = new ArrayList<Double>(Arrays.asList(
                                                 0.0,
                                                 0.0,
@@ -313,6 +314,7 @@ public class SummaryGenerator {
                                         double up = ((1.0/credits1.size()) * new JoinLabels(summarizerLabel, qualifierLabel, credits1, columnIndex).sum());
                                         double down = (up + ((1.0/credits2.size()) * summarizerLabel.getMembershipFunction().getAlphaCount(credits2, columnIndex)));
                                         double T = quantifier.getLabel().getMembershipFunction().calculateMembershipDegree(up/down);
+                                        T = Math.round(T * 100.0) / 100.0;
                                         ArrayList<Double> arr = new ArrayList<Double>(Arrays.asList(
                                                 0.0,
                                                 0.0,
@@ -358,6 +360,7 @@ public class SummaryGenerator {
                             }
                             sum /= summarizerLabel.getMembershipFunction().getAlphaCount(credits2, columnIndex);
                             double T = 1 - (sum / summarizerLabel.getMembershipFunction().getAlphaCount(credits2, columnIndex));
+                            T = Math.round(T * 100.0) / 100.0;
                             ArrayList<Double> arr = new ArrayList<Double>(Arrays.asList(0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, T));
                             Summary summary = new Summary(kind, type, creditsTypeToString(subject1), creditsTypeToString(subject2), arr, null, null, summarizerLabel.getName(), "");
                             summaries.add(summary);

@@ -131,14 +131,28 @@ public class HelloController {
         comboBoxSummarizer.setValue("----");
 
         comboBoxSubject1.setItems(FXCollections.observableArrayList(
-                "credit"
+                "----",
+                "credit card",
+                "car",
+                "small business",
+                "debt consolidation",
+                "home impovement",
+                "major purchase",
+                "medical"
         ));
-        comboBoxSubject1.setValue("credit");
+        comboBoxSubject1.setValue("----");
 
         comboBoxSubject2.setItems(FXCollections.observableArrayList(
-                "-"
+                "----",
+                "credit card",
+                "car",
+                "small business",
+                "debt consolidation",
+                "home impovement",
+                "major purchase",
+                "medical"
         ));
-        comboBoxSubject2.setValue("-");
+        comboBoxSubject2.setValue("----");
 
         comboBoxSummarizerMany.setItems(FXCollections.observableArrayList(
                 "-"
@@ -193,17 +207,20 @@ public class HelloController {
         summaryGenerator.generateSummaries();
         initResultTable();
         ArrayList<Summary> summaries = summaryGenerator.getSummaries();
-        ArrayList<Summary> filteredSummaries = filterSummaries(summaries, quantifier, qualifier, summarizer);
+        ArrayList<Summary> filteredSummaries = filterSummaries(summaries, quantifier, qualifier, summarizer, subject1, subject2);
         for (Summary summary : filteredSummaries) {
             addSummaryToTable(summary);
         }
     }
 
-    public ArrayList<Summary> filterSummaries(ArrayList<Summary> summaries, String quantifier, String qualifier, String summarizer) {
+    public ArrayList<Summary> filterSummaries(ArrayList<Summary> summaries, String quantifier, String qualifier,
+                                              String summarizer, String subject1, String subject2) {
         ArrayList<Summary> result = new ArrayList<>();
         System.out.println("quantifier: " + quantifier);
         System.out.println("qualifier: " + qualifier);
         System.out.println("summarizer: " + summarizer);
+        System.out.println("subject 1: " + subject1);
+        System.out.println("subject 2: " + subject2);
         if (!quantifier.equals("----")) {
             for (Summary summary : summaries) {
                 if (summary.getQuantifier().equals(quantifier))
@@ -227,14 +244,37 @@ public class HelloController {
         ArrayList<Summary> result3 = new ArrayList<>();
         if (!summarizer.equals("----")) {
             for (Summary summary : result2) {
-                if (summary.getSummarizer().equals(qualifier))
+                if (summary.getSummarizer().equals(summarizer))
                     result3.add(summary);
             }
         }
         else {
             result3 = new ArrayList<>(result2);
         }
-        return result3;
+
+        ArrayList<Summary> result4 = new ArrayList<>();
+        if (!subject1.equals("----")) {
+            for (Summary summary : result3) {
+                if (summary.getSubject1().equals(subject1))
+                    result4.add(summary);
+            }
+        }
+        else {
+            result4 = new ArrayList<>(result3);
+        }
+
+        ArrayList<Summary> result5 = new ArrayList<>();
+        if (!subject2.equals("----")) {
+            for (Summary summary : result4) {
+                if (summary.getSubject2().equals(subject2))
+                    result5.add(summary);
+            }
+        }
+        else {
+            result5 = new ArrayList<>(result2);
+        }
+
+        return result5;
     }
 
     public void addSummaryToTable(Summary summary) {
