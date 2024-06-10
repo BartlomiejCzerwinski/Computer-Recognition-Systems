@@ -42,9 +42,9 @@ public class Summary {
                 case 2:
                     return quantifier + " " + subject1 + " credits compared to " + subject2 + " credits with " + qualifier + " have " + summarizer;
                 case 3:
-                    return quantifier + " " + subject1 + " credits with " + qualifier +" compared to " + subject2 + " credits have " + summarizer;
+                    return quantifier + " " + subject1 + " credits with " + qualifier + " compared to " + subject2 + " credits have " + summarizer;
                 case 4:
-                    return "more " + subject1 + " credits than " + subject2 + " credits have" + summarizer;
+                    return "more " + subject1 + " credits than " + subject2 + " credits have " + summarizer;
             }
         }
         return null;
