@@ -18,7 +18,7 @@
       <ComboBox fx:id="comboBoxQualifier" layoutX="241.0" layoutY="106.0" prefWidth="150.0" />
       <ComboBox fx:id="comboBoxSummarizer" layoutX="445.0" layoutY="106.0" prefWidth="150.0" />
       <ComboBox fx:id="comboBoxSubject2" layoutX="241.0" layoutY="217.0" prefWidth="150.0" />
-      <ComboBox fx:id="comboBoxSummarizerMany" layoutX="445.0" layoutY="217.0" prefWidth="150.0" />
+      <ComboBox fx:id="comboBoxSummarizerMany" layoutX="445.0" layoutY="217.0" prefWidth="150.0" visible="false" />
       <ComboBox fx:id="comboBoxType" layoutX="241.0" layoutY="305.0" prefWidth="150.0" />
       <ComboBox fx:id="comboBoxSubject1" layoutX="33.0" layoutY="217.0" prefWidth="150.0" />
       <ComboBox fx:id="comboBoxSingleOrMany" layoutX="33.0" layoutY="305.0" prefWidth="150.0" />
@@ -131,7 +131,7 @@
             <Font size="10.0" />
          </font>
       </Label>
-      <Label layoutX="445.0" layoutY="191.0" prefHeight="26.0" prefWidth="150.0" text="Sumaryzator">
+      <Label layoutX="445.0" layoutY="191.0" prefHeight="26.0" prefWidth="150.0" text="Sumaryzator" visible="false">
          <font>
             <Font size="10.0" />
          </font>
