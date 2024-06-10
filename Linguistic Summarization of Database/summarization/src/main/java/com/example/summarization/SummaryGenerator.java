@@ -221,8 +221,8 @@ public class SummaryGenerator {
                     for (LinguisticVariable summarizer : summarizers) {
                         for (Label summarizerLabel : summarizer.getLabels()) {
 
-                           double up = (1.0/credits1.size()) * summarizerLabel.getMembershipFunction().getAlphaCount(credits1, columnIndex);
-                           double down = (up + ((1.0/credits2.size()) * summarizerLabel.getMembershipFunction().getAlphaCount(credits2, columnIndex)));
+                           double up = (1.0/credits1.size()) * summarizerLabel.getMembershipFunction().getAlphaCountNonFuzzy(credits1, columnIndex);
+                           double down = (up + ((1.0/credits2.size()) * summarizerLabel.getMembershipFunction().getAlphaCountNonFuzzy(credits2, columnIndex)));
                            double T = quantifier.getLabel().getMembershipFunction().calculateMembershipDegree(up/down);
 
                             ArrayList<Double> arr = new ArrayList<Double>(Arrays.asList(

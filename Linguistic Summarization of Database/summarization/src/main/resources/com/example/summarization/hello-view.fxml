@@ -153,7 +153,7 @@
       </Label>
       <TableView fx:id="summaryTable" layoutX="26.0" layoutY="410.0" prefHeight="262.0" prefWidth="1149.0">
         <columns>
-            <TableColumn fx:id="sentence" prefWidth="608.0" resizable="false" text="Zdanie" />
+            <TableColumn fx:id="sentence" prefWidth="808.0" resizable="false" text="Zdanie" />
             <TableColumn fx:id="measureT1" prefWidth="45.0" resizable="false" text="T1" />
             <TableColumn fx:id="measureT2" prefWidth="45.0" resizable="false" text="T2" />
             <TableColumn fx:id="measureT3" prefWidth="45.0" resizable="false" text="T3" />

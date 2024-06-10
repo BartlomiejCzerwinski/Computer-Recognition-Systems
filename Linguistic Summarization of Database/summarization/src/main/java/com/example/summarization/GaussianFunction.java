@@ -67,4 +67,13 @@ public class GaussianFunction extends MembershipFunction{
         }
         return sum;
     }
+
+    public double getAlphaCountNonFuzzy(ArrayList<Credit> credits, int columnIndex) {
+        double sum = 0.0;
+        for (Credit credit : credits) {
+            if (calculateMembershipDegree(credit.getValueByColumnIndex(columnIndex)) == 1)
+                sum += calculateMembershipDegree(credit.getValueByColumnIndex(columnIndex));
+        }
+        return sum;
+    }
 }
