@@ -193,9 +193,48 @@ public class HelloController {
         summaryGenerator.generateSummaries();
         initResultTable();
         ArrayList<Summary> summaries = summaryGenerator.getSummaries();
-        for (Summary summary : summaries) {
+        ArrayList<Summary> filteredSummaries = filterSummaries(summaries, quantifier, qualifier, summarizer);
+        for (Summary summary : filteredSummaries) {
             addSummaryToTable(summary);
         }
+    }
+
+    public ArrayList<Summary> filterSummaries(ArrayList<Summary> summaries, String quantifier, String qualifier, String summarizer) {
+        ArrayList<Summary> result = new ArrayList<>();
+        System.out.println("quantifier: " + quantifier);
+        System.out.println("qualifier: " + qualifier);
+        System.out.println("summarizer: " + summarizer);
+        if (!quantifier.equals("----")) {
+            for (Summary summary : summaries) {
+                if (summary.getQuantifier().equals(quantifier))
+                    result.add(summary);
+            }
+        }
+        else {
+            result = new ArrayList<>(summaries);
+            System.out.println("!!!");
+        }
+        ArrayList<Summary> result2 = new ArrayList<>();
+        if (!qualifier.equals("----")) {
+            for (Summary summary : result) {
+                if (summary.getQualifier().equals(qualifier))
+                    result2.add(summary);
+            }
+        }
+        else {
+            result2 = new ArrayList<>(result);
+        }
+        ArrayList<Summary> result3 = new ArrayList<>();
+        if (!summarizer.equals("----")) {
+            for (Summary summary : result2) {
+                if (summary.getSummarizer().equals(qualifier))
+                    result3.add(summary);
+            }
+        }
+        else {
+            result3 = new ArrayList<>(result2);
+        }
+        return result3;
     }
 
     public void addSummaryToTable(Summary summary) {

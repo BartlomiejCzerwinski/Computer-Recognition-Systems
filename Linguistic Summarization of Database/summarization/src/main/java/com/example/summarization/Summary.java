@@ -53,4 +53,36 @@ public class Summary {
     public ArrayList<Double> getMeasures() {
         return measures;
     }
+
+    public String getSubject1() {
+        return subject1;
+    }
+
+    public String getSubject2() {
+        return subject2;
+    }
+
+    public String getQuantifier() {
+        return quantifier;
+    }
+
+    public String getQualifier() {
+        return qualifier;
+    }
+
+    public String getSummarizer() {
+        return summarizer;
+    }
+
+    public String getSummarizerMany() {
+        return summarizerMany;
+    }
+
+    public String getKind() {
+        return kind;
+    }
+
+    public int getType() {
+        return type;
+    }
 }
