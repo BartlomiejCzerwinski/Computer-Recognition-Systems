@@ -18,6 +18,8 @@ public class JoinLabels {
     public double sum() {
         double sum = 0.0;
         for (Credit credit : credits) {
+            if ( labelA.getMembershipFunction().calculateMembershipDegree(credit.getValueByColumnIndex(columnIndex)) == 1 &&
+                    labelB.getMembershipFunction().calculateMembershipDegree(credit.getValueByColumnIndex(columnIndex)) == 1)
             sum += Math.min(labelA.getMembershipFunction().calculateMembershipDegree(credit.getValueByColumnIndex(columnIndex)),
                     labelB.getMembershipFunction().calculateMembershipDegree(credit.getValueByColumnIndex(columnIndex)));
         }
