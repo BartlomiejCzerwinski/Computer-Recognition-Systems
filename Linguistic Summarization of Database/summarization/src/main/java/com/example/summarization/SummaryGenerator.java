@@ -99,7 +99,7 @@ public class SummaryGenerator {
                 for (Label summarizerLabel : summarizer.getLabels()) {
 
                     double degreeOfTruth = qualityMeasuresCalculator.degreeOfTruth(quantifier, summarizerLabel, null, columnIndex);
-                    double degreeOfImprecision = qualityMeasuresCalculator.degreeOfImprecision(summarizer, columnIndex);
+                    double degreeOfImprecision = qualityMeasuresCalculator.degreeOfImprecision(summarizerLabel, columnIndex);
                     double degreeOfCovering = qualityMeasuresCalculator.degreeOfCovering(null, summarizerLabel, credits, columnIndex);
                     double degreeOfAppropriateness = qualityMeasuresCalculator.degreeOfAppropriateness(summarizer, credits, null, columnIndex);
                     double lengthOfSummary = qualityMeasuresCalculator.lengthOfSummary(new ArrayList<>(Arrays.asList(summarizerLabel)));
@@ -159,7 +159,7 @@ public class SummaryGenerator {
                         for (Label labelSummarizer : summarizer.getLabels()) {
 
                                 double degreeOfTruth = qualityMeasuresCalculator.degreeOfTruth(quantifier, labelSummarizer, qualifierLabel, columnIndex);
-                                double degreeOfImprecision = qualityMeasuresCalculator.degreeOfImprecision(summarizer, columnIndex);
+                                double degreeOfImprecision = qualityMeasuresCalculator.degreeOfImprecision(labelSummarizer, columnIndex);
                                 double degreeOfCovering = qualityMeasuresCalculator.degreeOfCovering(qualifierLabel, labelSummarizer, credits, columnIndex);
                                 double degreeOfAppropriateness = qualityMeasuresCalculator.degreeOfAppropriateness(summarizer, credits, qualifierLabel, columnIndex);
                                 double lengthOfSummary = qualityMeasuresCalculator.lengthOfSummary(new ArrayList<>(Arrays.asList(labelSummarizer)));

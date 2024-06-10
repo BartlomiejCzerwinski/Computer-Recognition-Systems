@@ -131,7 +131,7 @@ public class HelloController {
         comboBoxSummarizer.setValue("----");
 
         comboBoxSubject1.setItems(FXCollections.observableArrayList(
-                "----",
+                "credit",
                 "credit card",
                 "car",
                 "small business",
@@ -140,7 +140,7 @@ public class HelloController {
                 "major purchase",
                 "medical"
         ));
-        comboBoxSubject1.setValue("----");
+        comboBoxSubject1.setValue("credit");
 
         comboBoxSubject2.setItems(FXCollections.observableArrayList(
                 "----",
@@ -253,7 +253,7 @@ public class HelloController {
         }
 
         ArrayList<Summary> result4 = new ArrayList<>();
-        if (!subject1.equals("----")) {
+        if (!subject1.equals("credit")) {
             for (Summary summary : result3) {
                 if (summary.getSubject1().equals(subject1))
                     result4.add(summary);

@@ -38,13 +38,8 @@ public class QualityMeasuresCalculator {
     }
 
     // T2
-    public double degreeOfImprecision(LinguisticVariable summarizer, int columIndex) {
-        double quotient = 1.0;
-        for (Label label : summarizer.getLabels()) {
-            double degreeOfFuzziness = label.getSupport(credits, columIndex) / (double) credits.size();
-            quotient *= degreeOfFuzziness;
-        }
-        double result = 1.0 - Math.pow(quotient, 1.0 / summarizer.getLabels().size());
+        public double degreeOfImprecision(Label summarizer, int columIndex) {
+        double result = summarizer.getSupport(credits, columIndex) / (double) credits.size();
         result = Math.round(result * 100.0) / 100.0;
         return result;
     }
@@ -118,15 +113,10 @@ public class QualityMeasuresCalculator {
 
     //T8 //TODO
     public double degreeOfSummarizerCardinality(LinguisticVariable summarizer, ArrayList<Credit> credits, int columnIndex, Label summarizerLabel) {
-        double product = 1.0;
-
         double cardinality = summarizerLabel.getMembershipFunction().getCardinality(credits, columnIndex);
         double normalizedCardinality = cardinality / credits.size();
-        product *= normalizedCardinality;
 
-        double nthRoot = Math.pow(product, 1.0 / summarizer.getLabels().size());
-
-        double result = 1 - nthRoot;
+        double result = 1 - normalizedCardinality;
 
         result = Math.round(result * 100.0) / 100.0;
 
@@ -135,29 +125,20 @@ public class QualityMeasuresCalculator {
 
     //T9
     public double degreeOfQualifierImprecision(Label qualifier, ArrayList<Credit> credits, int columnIndex) {
-        if (qualifier == null) {
-            return 0.0;
-        }
-
-        double degreeOfFuzziness = qualifier.getSupport(credits, columnIndex) / credits.size();
-        double result = 1.0 - degreeOfFuzziness;
-
+        double result = qualifier.getSupport(credits, columnIndex) / (double) credits.size();
         result = Math.round(result * 100.0) / 100.0;
         return result;
     }
 
     //T10 !!! - forma 2
     public double degreeOfQualifierCardinality(Label qualifier, ArrayList<Credit> credits, int columnIndex) {
-        if (qualifier == null) {
-            return 0.0;
-        }
-
         double cardinality = qualifier.getMembershipFunction().getCardinality(credits, columnIndex);
         double normalizedCardinality = cardinality / credits.size();
 
-        double result = 1.0 - normalizedCardinality;
+        double result = 1 - normalizedCardinality;
 
         result = Math.round(result * 100.0) / 100.0;
+
         return result < 0 ? 0 : result;
     }
 
