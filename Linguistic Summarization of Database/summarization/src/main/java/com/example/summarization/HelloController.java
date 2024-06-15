@@ -112,6 +112,9 @@ public class HelloController {
     @FXML
     private TableColumn<ObservableList<String>, Double> measureT;
 
+    @FXML
+    private ComboBox<String> variableNameComboBox;
+
 
     private ArrayList<Double> measuresWeights = new ArrayList<Double>(Arrays.asList(
             0.09, 0.09, 0.09, 0.09, 0.09, 0.09, 0.09, 0.09, 0.09, 0.09, 0.09
@@ -191,6 +194,14 @@ public class HelloController {
         t9.setText("0");
         t10.setText("0");
         t11.setText("0");
+
+        ArrayList<String> variablesNames = new ArrayList<>();
+        for (ColumnVariableEnum columnVariableEnum : ColumnVariableEnum.values()) {
+            variablesNames.add(columnVariableEnum.getValue());
+        }
+
+        variableNameComboBox.setItems(FXCollections.observableArrayList(variablesNames));
+        variableNameComboBox.setValue(variablesNames.get(0));
 
     }
 
