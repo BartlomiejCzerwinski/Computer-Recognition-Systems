@@ -172,6 +172,93 @@
          </columnResizePolicy>
       </TableView>
       <Button fx:id="modeButton" layoutX="20.0" layoutY="5.0" mnemonicParsing="false" onAction="#onModeButtonClick" prefHeight="29.0" prefWidth="126.0" text="Tryb zaawansowany" />
-      <AnchorPane fx:id="advancedView" layoutX="20.0" layoutY="38.0" prefHeight="642.0" prefWidth="1162.0" style="-fx-background-color: dodgerblue;" visible="false" />
+      <AnchorPane fx:id="advancedView" layoutX="20.0" layoutY="38.0" prefHeight="642.0" prefWidth="1162.0" style="-fx-background-color: dodgerblue;" styleClass="str" visible="false">
+         <children>
+            <TextField layoutX="526.0" layoutY="52.0" prefHeight="25.0" prefWidth="253.0" />
+            <Label layoutX="376.0" layoutY="52.0" prefHeight="26.0" prefWidth="150.0" text="Etykieta:">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="376.0" layoutY="107.0" prefHeight="26.0" prefWidth="176.0" text="Funkcja przynależności:">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <ComboBox layoutX="578.0" layoutY="108.0" prefWidth="150.0" />
+            <Label layoutX="376.0" layoutY="168.0" prefHeight="26.0" prefWidth="164.0" text="Parametry funkcji:">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <AnchorPane layoutX="525.0" layoutY="168.0" prefHeight="200.0" prefWidth="253.0">
+               <children>
+                  <Label layoutX="14.0" layoutY="20.0" prefHeight="26.0" prefWidth="26.0" text="a:">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="14.0" layoutY="53.0" prefHeight="26.0" prefWidth="26.0" text="b:">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="14.0" layoutY="87.0" prefHeight="26.0" prefWidth="26.0" text="c:">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="14.0" layoutY="121.0" prefHeight="26.0" prefWidth="26.0" text="d:">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <TextField layoutX="76.0" layoutY="21.0" prefHeight="25.0" prefWidth="126.0" />
+                  <TextField layoutX="76.0" layoutY="54.0" prefHeight="25.0" prefWidth="126.0" />
+                  <TextField layoutX="76.0" layoutY="88.0" prefHeight="25.0" prefWidth="126.0" />
+                  <TextField layoutX="76.0" layoutY="122.0" prefHeight="25.0" prefWidth="126.0" />
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="525.0" layoutY="168.0" prefHeight="200.0" prefWidth="253.0" visible="false">
+               <children>
+                  <Label layoutX="14.0" layoutY="20.0" prefHeight="26.0" prefWidth="26.0" text="μ:">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="14.0" layoutY="53.0" prefHeight="26.0" prefWidth="26.0" text="Ω:">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <TextField layoutX="76.0" layoutY="21.0" prefHeight="25.0" prefWidth="126.0" />
+                  <TextField layoutX="76.0" layoutY="54.0" prefHeight="25.0" prefWidth="126.0" />
+               </children>
+            </AnchorPane>
+            <Label layoutX="132.0" layoutY="356.0" prefHeight="26.0" prefWidth="164.0" text="Kwantyfikator:">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="817.0" layoutY="358.0" prefHeight="26.0" prefWidth="214.0" text="Sumaruzator/kwalifikator:">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="17.0" layoutY="402.0" prefHeight="26.0" prefWidth="76.0" text="Rodzaj:">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="720.0" layoutY="402.0" prefHeight="26.0" prefWidth="126.0" text="Nazwa zmiennej:">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <ComboBox layoutX="93.0" layoutY="403.0" prefWidth="150.0" />
+            <ComboBox layoutX="873.0" layoutY="404.0" prefWidth="150.0" />
+            <Button fx:id="modeButton1" layoutX="107.0" layoutY="514.0" mnemonicParsing="false" onAction="#onModeButtonClick" prefHeight="29.0" prefWidth="126.0" text="Dodaj kwantyfikator" />
+            <Button fx:id="modeButton2" layoutX="845.0" layoutY="514.0" mnemonicParsing="false" onAction="#onModeButtonClick" prefHeight="29.0" prefWidth="207.0" text="Dodaj sumaryzator/kwalifikator" />
+         </children></AnchorPane>
    </children>
 </AnchorPane>
