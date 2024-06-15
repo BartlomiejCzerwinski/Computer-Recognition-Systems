@@ -127,6 +127,21 @@ public class HelloController {
     @FXML
     private ComboBox quantifierTypeComboBox;
 
+    @FXML
+    private TextField formLabelName;
+    @FXML
+    private TextField formA;
+    @FXML
+    private TextField formB;
+    @FXML
+    private TextField formC;
+    @FXML
+    private TextField formD;
+    @FXML
+    private TextField formMu;
+    @FXML
+    private TextField formOmega;
+
 
     private ArrayList<Double> measuresWeights = new ArrayList<Double>(Arrays.asList(
             0.09, 0.09, 0.09, 0.09, 0.09, 0.09, 0.09, 0.09, 0.09, 0.09, 0.09
