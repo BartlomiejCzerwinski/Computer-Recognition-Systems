@@ -8,12 +8,14 @@ public class Label {
     private MembershipFunction membershipFunction;
     private boolean isNormal;
     private boolean isConvex;
+    private int columnIndex;
 
-    public Label(String name, MembershipFunction membershipFunction, boolean isNormal, boolean isConvex) {
+    public Label(String name, MembershipFunction membershipFunction, boolean isNormal, boolean isConvex, int columnIndex) {
         this.name = name;
         this.membershipFunction = membershipFunction;
         this.isNormal = isNormal;
         this.isConvex = isConvex;
+        this.columnIndex = columnIndex;
     }
 
     public String getName() {
@@ -44,4 +46,7 @@ public class Label {
         return max;
     }
 
+    public int getColumnIndex() {
+        return columnIndex;
+    }
 }
