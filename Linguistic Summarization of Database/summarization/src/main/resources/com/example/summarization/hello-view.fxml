@@ -146,7 +146,7 @@
             <Font size="10.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" layoutX="19.0" layoutY="5.0" prefHeight="26.0" prefWidth="1162.0" style="-fx-background-color: #86c2fc; -fx-background-radius: 50px; -fx-border-color: #1e90ff; -fx-border-radius: 50px; -fx-border-width: 2px;">
+      <Label alignment="CENTER" layoutX="173.0" layoutY="5.0" prefHeight="29.0" prefWidth="1008.0" style="-fx-background-color: #86c2fc; -fx-background-radius: 50px; -fx-border-color: #1e90ff; -fx-border-radius: 50px; -fx-border-width: 2px;">
          <font>
             <Font size="16.0" />
          </font>
@@ -171,5 +171,6 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
+      <Button layoutX="20.0" layoutY="5.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="126.0" text="Tryb zaawansowany" />
    </children>
 </AnchorPane>
