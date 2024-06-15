@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.Label;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.layout.AnchorPane;
 import javafx.util.converter.DoubleStringConverter;
 
 import java.math.BigDecimal;
@@ -75,6 +76,12 @@ public class HelloController {
 
     @FXML
     private Button confirmWeights;
+
+    @FXML
+    private Button modeButton;
+
+    @FXML
+    private AnchorPane advancedView;
 
     @FXML
     private TableView<ObservableList<Object>> summaryTable;
@@ -185,8 +192,6 @@ public class HelloController {
         t10.setText("0");
         t11.setText("0");
 
-
-
     }
 
     @FXML
@@ -210,6 +215,21 @@ public class HelloController {
         ArrayList<Summary> filteredSummaries = filterSummaries(summaries, quantifier, qualifier, summarizer, subject1, subject2);
         for (Summary summary : filteredSummaries) {
             addSummaryToTable(summary);
+        }
+    }
+
+    @FXML
+    public void onModeButtonClick() {
+        String MODE_ADVANCED = "Tryb zaawansowany";
+        String MODE_BASIC = "Tryb podstawowy";
+        String mode = modeButton.getText();
+        if (mode.equals(MODE_ADVANCED)) {
+            modeButton.setText(MODE_BASIC);
+            advancedView.setVisible(true);
+        }
+        else {
+            modeButton.setText(MODE_ADVANCED);
+            advancedView.setVisible(false);
         }
     }
 

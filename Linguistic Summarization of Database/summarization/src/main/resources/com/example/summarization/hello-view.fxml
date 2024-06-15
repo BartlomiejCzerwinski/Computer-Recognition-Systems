@@ -171,6 +171,7 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
-      <Button layoutX="20.0" layoutY="5.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="126.0" text="Tryb zaawansowany" />
+      <Button fx:id="modeButton" layoutX="20.0" layoutY="5.0" mnemonicParsing="false" onAction="#onModeButtonClick" prefHeight="29.0" prefWidth="126.0" text="Tryb zaawansowany" />
+      <AnchorPane fx:id="advancedView" layoutX="20.0" layoutY="38.0" prefHeight="642.0" prefWidth="1162.0" style="-fx-background-color: dodgerblue;" visible="false" />
    </children>
 </AnchorPane>
