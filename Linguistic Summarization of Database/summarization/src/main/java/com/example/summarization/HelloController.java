@@ -142,6 +142,11 @@ public class HelloController {
     @FXML
     private TextField formOmega;
 
+    @FXML
+    private Button addQuantifierButton;
+    @FXML
+    private Button addSummarizerOrQualifierButton;
+
 
     private ArrayList<Double> measuresWeights = new ArrayList<Double>(Arrays.asList(
             0.09, 0.09, 0.09, 0.09, 0.09, 0.09, 0.09, 0.09, 0.09, 0.09, 0.09
