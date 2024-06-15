@@ -115,6 +115,16 @@ public class HelloController {
     @FXML
     private ComboBox<String> variableNameComboBox;
 
+    @FXML
+    private ComboBox<String> membershipFunctionTypeComboBox;
+
+    @FXML
+    private AnchorPane formTrapezoidalFunction;
+
+
+    @FXML
+    private AnchorPane formGaussianFunction;
+
 
     private ArrayList<Double> measuresWeights = new ArrayList<Double>(Arrays.asList(
             0.09, 0.09, 0.09, 0.09, 0.09, 0.09, 0.09, 0.09, 0.09, 0.09, 0.09
@@ -202,6 +212,13 @@ public class HelloController {
 
         variableNameComboBox.setItems(FXCollections.observableArrayList(variablesNames));
         variableNameComboBox.setValue(variablesNames.get(0));
+
+        membershipFunctionTypeComboBox.setItems(FXCollections.observableArrayList(
+                "Trapezoidalna",
+                "Gaussowska"
+        ));
+
+        membershipFunctionTypeComboBox.setValue("Trapezoidalna");
 
     }
 
@@ -440,6 +457,18 @@ public class HelloController {
         measureT10.setCellFactory(TextFieldTableCell.forTableColumn(new DoubleStringConverter()));
         measureT11.setCellFactory(TextFieldTableCell.forTableColumn(new DoubleStringConverter()));
         measureT.setCellFactory(TextFieldTableCell.forTableColumn(new DoubleStringConverter()));
+    }
+
+    public void onMembershipFunctionTypeChange() {
+        String functionType = membershipFunctionTypeComboBox.getValue();
+        if (functionType.equals("Trapezoidalna")) {
+            formGaussianFunction.setVisible(false);
+            formTrapezoidalFunction.setVisible(true);
+        }
+        else {
+            formGaussianFunction.setVisible(true);
+            formTrapezoidalFunction.setVisible(false);
+        }
     }
 
 }
