@@ -124,6 +124,8 @@ public class HelloController {
 
     @FXML
     private AnchorPane formGaussianFunction;
+    @FXML
+    private ComboBox quantifierTypeComboBox;
 
 
     private ArrayList<Double> measuresWeights = new ArrayList<Double>(Arrays.asList(
@@ -219,6 +221,12 @@ public class HelloController {
         ));
 
         membershipFunctionTypeComboBox.setValue("Trapezoidalna");
+
+        quantifierTypeComboBox.setItems(FXCollections.observableArrayList(
+                "absolutny",
+                "względny"
+        ));
+        quantifierTypeComboBox.setValue("absolutny");
 
     }
 

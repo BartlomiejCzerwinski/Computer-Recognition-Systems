@@ -185,7 +185,7 @@
                   <Font size="16.0" />
                </font>
             </Label>
-            <ComboBox fx:id="membershipFunctionTypeComboBox" onAction="#onMembershipFunctionTypeChange" layoutX="578.0" layoutY="108.0" prefWidth="150.0" />
+            <ComboBox fx:id="membershipFunctionTypeComboBox" layoutX="578.0" layoutY="108.0" onAction="#onMembershipFunctionTypeChange" prefWidth="150.0" />
             <Label layoutX="376.0" layoutY="168.0" prefHeight="26.0" prefWidth="164.0" text="Parametry funkcji:">
                <font>
                   <Font size="16.0" />
@@ -255,7 +255,7 @@
                   <Font size="16.0" />
                </font>
             </Label>
-            <ComboBox layoutX="93.0" layoutY="403.0" prefWidth="150.0" />
+            <ComboBox fx:id="quantifierTypeComboBox" layoutX="93.0" layoutY="403.0" prefWidth="150.0" />
             <ComboBox fx:id="variableNameComboBox" layoutX="873.0" layoutY="404.0" prefWidth="150.0" />
             <Button fx:id="modeButton1" layoutX="107.0" layoutY="514.0" mnemonicParsing="false" onAction="#onModeButtonClick" prefHeight="29.0" prefWidth="126.0" text="Dodaj kwantyfikator" />
             <Button fx:id="modeButton2" layoutX="845.0" layoutY="514.0" mnemonicParsing="false" onAction="#onModeButtonClick" prefHeight="29.0" prefWidth="207.0" text="Dodaj sumaryzator/kwalifikator" />
