@@ -229,7 +229,6 @@ public class HelloController {
         }
         else {
             result = new ArrayList<>(summaries);
-            System.out.println("!!!");
         }
         ArrayList<Summary> result2 = new ArrayList<>();
         if (!qualifier.equals("----")) {
@@ -244,8 +243,9 @@ public class HelloController {
         ArrayList<Summary> result3 = new ArrayList<>();
         if (!summarizer.equals("----")) {
             for (Summary summary : result2) {
-                if (summary.getSummarizer().equals(summarizer))
+                if (summary.getSummarizer().equals(summarizer)) {
                     result3.add(summary);
+                }
             }
         }
         else {
@@ -271,7 +271,7 @@ public class HelloController {
             }
         }
         else {
-            result5 = new ArrayList<>(result2);
+            result5 = new ArrayList<>(result4);
         }
 
         return result5;
