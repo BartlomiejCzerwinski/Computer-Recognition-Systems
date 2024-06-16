@@ -341,7 +341,7 @@ public class SummaryGenerator {
                 {
                     for (LinguisticVariable summarizer : summarizers) {
                         for (Label summarizerLabel : summarizer.getLabels()) {
-                            double sum = 0.0;
+                            /*double sum = 0.0;
                             for (int i = 0; i < credits1.size(); i++) {
                                 double a = summarizerLabel.getMembershipFunction().calculateMembershipDegree(credits2.get(i).getValueByColumnIndex(summarizerLabel.getColumnIndex()));
                                 double b = summarizerLabel.getMembershipFunction().calculateMembershipDegree(credits1.get(i).getValueByColumnIndex(summarizerLabel.getColumnIndex()));
@@ -349,7 +349,18 @@ public class SummaryGenerator {
                             }
                             sum /= summarizerLabel.getMembershipFunction().getAlphaCount(credits2, summarizerLabel.getColumnIndex());
                             double T = 1 - (sum / summarizerLabel.getMembershipFunction().getAlphaCount(credits2, summarizerLabel.getColumnIndex()));
-                            T = Math.round(T * 100.0) / 100.0;
+                            T = Math.round(T * 100.0) / 100.0;*/
+                            //double[] I = new double[credits1.size()];
+                            double T = 1.0;
+                            for (int i = 0; i < credits1.size(); i++) {
+                                double mu1 = summarizerLabel.getMembershipFunction().calculateMembershipDegree(credits2.get(i).getValueByColumnIndex(summarizerLabel.getColumnIndex()));
+                                double mu2 = summarizerLabel.getMembershipFunction().calculateMembershipDegree(credits1.get(i).getValueByColumnIndex(summarizerLabel.getColumnIndex()));
+                                double value = Math.min(1, 1 - mu1 + mu2);
+                                if (value < T ){
+                                    T = value;
+                                }
+                            }
+                            T = Math.round((T * 100.0) / 100.0);
                             ArrayList<Double> arr = new ArrayList<Double>(Arrays.asList(0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, T));
                             Summary summary = new Summary(kind, type, creditsTypeToString(subject1), creditsTypeToString(subject2), arr, null, null, summarizerLabel.getName(), "");
                             summaries.add(summary);
