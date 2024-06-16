@@ -102,11 +102,11 @@ public class SummaryGenerator {
                     double degreeOfCovering = qualityMeasuresCalculator.degreeOfCovering(null, summarizerLabel, credits, summarizerLabel.getColumnIndex());
                     double degreeOfAppropriateness = qualityMeasuresCalculator.degreeOfAppropriateness(summarizer, credits, null, summarizerLabel.getColumnIndex());
                     double lengthOfSummary = qualityMeasuresCalculator.lengthOfSummary(new ArrayList<>(Arrays.asList(summarizerLabel)));
-                    double degreeOfQuantifierImprecision = qualityMeasuresCalculator.degreeOfQuantifierImprecision(quantifier, credits, summarizerLabel.getColumnIndex(), quantifier.isAbsolute());
+                    double degreeOfQuantifierImprecision = qualityMeasuresCalculator.degreeOfQuantifierImprecision(quantifier, credits);
                     double degreeOfQuantifierCardinality = qualityMeasuresCalculator.degreeOfQuantifierCardinality(quantifier, credits, summarizerLabel.getColumnIndex());
-                    double degreeOfSummarizerCardinality = qualityMeasuresCalculator.degreeOfSummarizerCardinality(summarizer, credits, summarizerLabel.getColumnIndex(), summarizerLabel);
-                    double degreeOfQualifierImprecision = qualityMeasuresCalculator.degreeOfQualifierImprecision(null, null, 0);
-                    double degreeOfQualifierCardinality = qualityMeasuresCalculator.degreeOfQualifierCardinality(null, null, 0);
+                    double degreeOfSummarizerCardinality = qualityMeasuresCalculator.degreeOfSummarizerCardinality(summarizerLabel, summarizerLabel.getColumnIndex());
+                    double degreeOfQualifierImprecision = qualityMeasuresCalculator.degreeOfQualifierImprecision(null, 0);
+                    double degreeOfQualifierCardinality = qualityMeasuresCalculator.degreeOfQualifierCardinality(null, 0);
                     double lengthOfQualifier = qualityMeasuresCalculator.lengthOfQualifier(null);
 
                     double T = (
@@ -158,13 +158,13 @@ public class SummaryGenerator {
                                 double degreeOfTruth = qualityMeasuresCalculator.degreeOfTruth(quantifier, summarizerLabel, qualifierLabel, summarizerLabel.getColumnIndex());
                                 double degreeOfImprecision = qualityMeasuresCalculator.degreeOfImprecision(summarizerLabel, summarizerLabel.getColumnIndex());
                                 double degreeOfCovering = qualityMeasuresCalculator.degreeOfCovering(qualifierLabel, summarizerLabel, credits, summarizerLabel.getColumnIndex());
-                                double degreeOfAppropriateness = qualityMeasuresCalculator.degreeOfAppropriateness(summarizer, credits, qualifierLabel, summarizerLabel.getColumnIndex());
+                                double degreeOfAppropriateness = qualityMeasuresCalculator.degreeOfAppropriateness(summarizer, credits, qualifierLabel, qualifierLabel.getColumnIndex());
                                 double lengthOfSummary = qualityMeasuresCalculator.lengthOfSummary(new ArrayList<>(Arrays.asList(summarizerLabel)));
-                                double degreeOfQuantifierImprecision = qualityMeasuresCalculator.degreeOfQuantifierImprecision(quantifier, credits, summarizerLabel.getColumnIndex(), quantifier.isAbsolute());
+                                double degreeOfQuantifierImprecision = qualityMeasuresCalculator.degreeOfQuantifierImprecision(quantifier, credits);
                                 double degreeOfQuantifierCardinality = qualityMeasuresCalculator.degreeOfQuantifierCardinality(quantifier, credits, summarizerLabel.getColumnIndex());
-                                double degreeOfSummarizerCardinality = qualityMeasuresCalculator.degreeOfSummarizerCardinality(summarizer, credits, summarizerLabel.getColumnIndex(), summarizerLabel);
-                                double degreeOfQualifierImprecision = qualityMeasuresCalculator.degreeOfQualifierImprecision(qualifierLabel, credits, summarizerLabel.getColumnIndex());
-                                double degreeOfQualifierCardinality = qualityMeasuresCalculator.degreeOfQualifierCardinality(qualifierLabel, credits, summarizerLabel.getColumnIndex());
+                                double degreeOfSummarizerCardinality = qualityMeasuresCalculator.degreeOfSummarizerCardinality(summarizerLabel, summarizerLabel.getColumnIndex());
+                                double degreeOfQualifierImprecision = qualityMeasuresCalculator.degreeOfQualifierImprecision(qualifierLabel, qualifierLabel.getColumnIndex());
+                                double degreeOfQualifierCardinality = qualityMeasuresCalculator.degreeOfQualifierCardinality(qualifierLabel, qualifierLabel.getColumnIndex());
                                 double lengthOfQualifier = qualityMeasuresCalculator.lengthOfQualifier(null);
 
                                 double T = (

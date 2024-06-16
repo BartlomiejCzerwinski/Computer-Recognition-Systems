@@ -1,8 +1,6 @@
 package com.example.summarization;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 public class QualityMeasuresCalculator {
     private ArrayList<Credit> credits;
@@ -92,7 +90,7 @@ public class QualityMeasuresCalculator {
     }
 
     // T6
-    public double degreeOfQuantifierImprecision(Quantifier quantifier, ArrayList<Credit> credits, int columnIndex, boolean isAbsolute) {
+    public double degreeOfQuantifierImprecision(Quantifier quantifier, ArrayList<Credit> credits) {
         double result = quantifier.getLabel().getMembershipFunction().domainR - quantifier.getLabel().getMembershipFunction().domainL;
         if (quantifier.isAbsolute())
             result /= (double) credits.size();
@@ -112,7 +110,7 @@ public class QualityMeasuresCalculator {
     }
 
     //T8 //TODO
-    public double degreeOfSummarizerCardinality(LinguisticVariable summarizer, ArrayList<Credit> credits, int columnIndex, Label summarizerLabel) {
+    public double degreeOfSummarizerCardinality(Label summarizerLabel, int columnIndex) {
         double cardinality = summarizerLabel.getMembershipFunction().getCardinality(credits, columnIndex);
         double normalizedCardinality = cardinality / credits.size();
 
@@ -124,7 +122,7 @@ public class QualityMeasuresCalculator {
     }
 
     //T9
-    public double degreeOfQualifierImprecision(Label qualifier, ArrayList<Credit> credits, int columnIndex) {
+    public double degreeOfQualifierImprecision(Label qualifier, int columnIndex) {
         if(qualifier == null)
             return 0.0;
         double result = qualifier.getSupport(credits, columnIndex) / (double) credits.size();
@@ -133,7 +131,7 @@ public class QualityMeasuresCalculator {
     }
 
     //T10 !!! - forma 2
-    public double degreeOfQualifierCardinality(Label qualifier, ArrayList<Credit> credits, int columnIndex) {
+    public double degreeOfQualifierCardinality(Label qualifier, int columnIndex) {
         if (qualifier == null)
             return 0.0;
         double cardinality = qualifier.getMembershipFunction().getCardinality(credits, columnIndex);
