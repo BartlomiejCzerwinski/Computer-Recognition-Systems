@@ -27,27 +27,51 @@ public class Summary {
     }
 
     public String getSentence(){
+        String sentence = "";
         if (kind == "single subject") {
             switch (type) {
                 case 1:
-                    return quantifier + " " + subject1 + "s have " + summarizer;
+                    sentence = quantifier + " " + subject1 + "s have\n " + summarizer;
+                    break;
                 case 2:
-                    return quantifier + " " + subject1 + "s with " + qualifier + " have " + summarizer;
+                    sentence = quantifier + " " + subject1 + "s with " + qualifier + " have " + summarizer;
+                    break;
             }
         }
         else {
             switch (type) {
                 case 1:
-                    return quantifier + " " + subject1 + " credits compared to " + subject2 + " credits have " + summarizer;
+                    sentence = quantifier + " " + subject1 + " credits compared to " + subject2 + " credits have " + summarizer;
+                    break;
                 case 2:
-                    return quantifier + " " + subject1 + " credits compared to " + subject2 + " credits with " + qualifier + " have " + summarizer;
+                    sentence = quantifier + " " + subject1 + " credits compared to " + subject2 + " credits with " + qualifier + " have " + summarizer;
+                    break;
                 case 3:
-                    return quantifier + " " + subject1 + " credits with " + qualifier + " compared to " + subject2 + " credits have " + summarizer;
+                    sentence = quantifier + " " + subject1 + " credits with " + qualifier + " compared to " + subject2 + " credits have " + summarizer;
+                    break;
                 case 4:
-                    return "more " + subject1 + " credits than " + subject2 + " credits have " + summarizer;
+                    sentence = "more " + subject1 + " credits than " + subject2 + " credits have " + summarizer;
+                    break;
             }
         }
-        return null;
+        return splitSentence(sentence, 12);
+    }
+
+    public static String splitSentence(String sentence, int wordsPerLine) {
+        String[] words = sentence.split("\\s+");
+        StringBuilder result = new StringBuilder();
+
+        for (int i = 0; i < words.length; i++) {
+            if (i > 0 && i % wordsPerLine == 0) {
+                result.append("\n");
+            }
+            result.append(words[i]);
+            if (i < words.length - 1) {
+                result.append(" ");
+            }
+        }
+
+        return result.toString();
     }
 
     public ArrayList<Double> getMeasures() {
