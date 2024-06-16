@@ -124,7 +124,7 @@ public class QualityMeasuresCalculator {
     }
 
     //T9
-    public double degreeOfQualifierImprecision(Label qualifier, ArrayList<Credit> credits, int columnIndex) {
+    public double degreeOfQualifierImprecision(Label qualifier, int columnIndex) {
         if(qualifier == null)
             return 0.0;
         double result = qualifier.getSupport(credits, columnIndex) / (double) credits.size();
@@ -133,7 +133,7 @@ public class QualityMeasuresCalculator {
     }
 
     //T10 !!! - forma 2
-    public double degreeOfQualifierCardinality(Label qualifier, ArrayList<Credit> credits, int columnIndex) {
+    public double degreeOfQualifierCardinality(Label qualifier, int columnIndex) {
         if (qualifier == null)
             return 0.0;
         double cardinality = qualifier.getMembershipFunction().getCardinality(credits, columnIndex);
