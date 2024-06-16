@@ -257,7 +257,7 @@
             </Label>
             <ComboBox fx:id="quantifierTypeComboBox" layoutX="93.0" layoutY="403.0" prefWidth="150.0" />
             <ComboBox fx:id="variableNameComboBox" layoutX="873.0" layoutY="404.0" prefWidth="150.0" />
-            <Button fx:id="addQuantifierButton" layoutX="107.0" layoutY="514.0" mnemonicParsing="false" onAction="#onModeButtonClick" prefHeight="29.0" prefWidth="126.0" text="Dodaj kwantyfikator" />
+            <Button fx:id="addQuantifierButton" layoutX="107.0" layoutY="514.0" mnemonicParsing="false" onAction="#onAddQuantifierClick" prefHeight="29.0" prefWidth="126.0" text="Dodaj kwantyfikator" />
             <Button fx:id="addSummarizerOrQualifierButton" layoutX="845.0" layoutY="514.0" mnemonicParsing="false" onAction="#onModeButtonClick" prefHeight="29.0" prefWidth="207.0" text="Dodaj sumaryzator/kwalifikator" />
          </children></AnchorPane>
    </children>

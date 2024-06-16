@@ -6,7 +6,6 @@ import javafx.collections.ObservableArray;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.control.Label;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.converter.DoubleStringConverter;
@@ -147,18 +146,23 @@ public class HelloController {
     @FXML
     private Button addSummarizerOrQualifierButton;
 
+    private Initializer initializer = new Initializer();
+
+    private ArrayList<Quantifier> quantifiers = initializer.createQuantifiers();
+
+    private ArrayList<String> quantifiersLabels = getQuantifiersLabels(initializer.createQuantifiers());
+
 
     private ArrayList<Double> measuresWeights = new ArrayList<Double>(Arrays.asList(
             0.09, 0.09, 0.09, 0.09, 0.09, 0.09, 0.09, 0.09, 0.09, 0.09, 0.09
     ));
 
-    private Initializer initializer = new Initializer();
 
 
     @FXML
     public void initialize() {
         comboBoxQuantifier.setItems(FXCollections.observableArrayList(
-                getQuantifiersLabels(initializer.createQuantifiers())
+                quantifiersLabels
         ));
         comboBoxQuantifier.setValue("----");
 
@@ -261,7 +265,7 @@ public class HelloController {
         String kind = comboBoxSingleOrMany.getValue().toString();
         int type = Integer.valueOf(comboBoxType.getValue().toString());
 
-        SummaryGenerator summaryGenerator = new SummaryGenerator(kind, type, initializer.createQuantifiers(),
+        SummaryGenerator summaryGenerator = new SummaryGenerator(kind, type, quantifiers,
                 initializer.getAllLinguisticVariables(), initializer.getAllLinguisticVariables(), subject1, subject2,
                 measuresWeights, quantifier, qualifier, summarizer);
         summaryGenerator.getCreditsPurposeInfo();
@@ -497,6 +501,43 @@ public class HelloController {
             formGaussianFunction.setVisible(true);
             formTrapezoidalFunction.setVisible(false);
         }
+    }
+
+    public MembershipFunction getMembershipFunction() {
+        String membershipFunctionType = membershipFunctionTypeComboBox.getValue();
+        MembershipFunction membershipFunction;
+        if (membershipFunctionType.equals("Trapezoidalna")) {
+            double a = Double.parseDouble(formA.getCharacters().toString());
+            double b = Double.parseDouble(formB.getCharacters().toString());
+            double c = Double.parseDouble(formC.getCharacters().toString());
+            double d = Double.parseDouble(formD.getCharacters().toString());
+            membershipFunction = new TrapezoidalFunction(a, d, UniverseOfDiscourse.CONTINUOUS, a, b, c, d);
+        }
+        else {
+            double mu = Double.parseDouble(formMu.getCharacters().toString());
+            double omega = Double.parseDouble(formOmega.getCharacters().toString());
+            Double epsilon = 0.01;
+            double lnTerm = Math.log(epsilon * omega * Math.sqrt(2 * Math.PI));
+            double sqrtTerm = Math.sqrt(-2 * omega * omega * lnTerm);
+            double leftBound = mu - sqrtTerm;
+            double rightBound = mu + sqrtTerm;
+            membershipFunction = new GaussianFunction(leftBound, rightBound, UniverseOfDiscourse.CONTINUOUS, mu, omega);
+        }
+        return membershipFunction;
+    }
+
+    @FXML
+    public void onAddQuantifierClick() {
+        String labelName = formLabelName.getText();
+        MembershipFunction membershipFunction = getMembershipFunction();
+        boolean isAbsolute = false;
+        if (quantifierTypeComboBox.getValue().toString().equals("absolutny"))
+            isAbsolute = true;
+        Label label = new Label(labelName, membershipFunction, true, true, -1);
+        Quantifier quantifier = new Quantifier(labelName, label, isAbsolute);
+        this.quantifiers.add(quantifier);
+        this.quantifiersLabels.add(labelName);
+        comboBoxQuantifier.setItems(FXCollections.observableArrayList(this.quantifiersLabels));
     }
 
 }
