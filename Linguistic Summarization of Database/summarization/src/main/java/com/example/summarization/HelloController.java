@@ -507,7 +507,11 @@ public class HelloController {
         }
     }
 
-    public MembershipFunction getMembershipFunction() {
+    public MembershipFunction getMembershipFunction(String variableName) {
+        UniverseOfDiscourse universeOfDiscourse = UniverseOfDiscourse.CONTINUOUS;
+        if (variableName.equals("liczba zapytań"))
+            universeOfDiscourse = UniverseOfDiscourse.DISCRETE;
+
         String membershipFunctionType = membershipFunctionTypeComboBox.getValue();
         MembershipFunction membershipFunction;
         if (membershipFunctionType.equals("Trapezoidalna")) {
@@ -515,7 +519,7 @@ public class HelloController {
             double b = Double.parseDouble(formB.getCharacters().toString());
             double c = Double.parseDouble(formC.getCharacters().toString());
             double d = Double.parseDouble(formD.getCharacters().toString());
-            membershipFunction = new TrapezoidalFunction(a, d, UniverseOfDiscourse.CONTINUOUS, a, b, c, d);
+            membershipFunction = new TrapezoidalFunction(a, d, universeOfDiscourse, a, b, c, d);
         }
         else {
             double mu = Double.parseDouble(formMu.getCharacters().toString());
@@ -525,7 +529,7 @@ public class HelloController {
             double sqrtTerm = Math.sqrt(-2 * omega * omega * lnTerm);
             double leftBound = mu - sqrtTerm;
             double rightBound = mu + sqrtTerm;
-            membershipFunction = new GaussianFunction(leftBound, rightBound, UniverseOfDiscourse.CONTINUOUS, mu, omega);
+            membershipFunction = new GaussianFunction(leftBound, rightBound, universeOfDiscourse, mu, omega);
         }
         return membershipFunction;
     }
@@ -533,7 +537,7 @@ public class HelloController {
     @FXML
     public void onAddQuantifierClick() {
         String labelName = formLabelName.getText();
-        MembershipFunction membershipFunction = getMembershipFunction();
+        MembershipFunction membershipFunction = getMembershipFunction("");
         boolean isAbsolute = false;
         if (quantifierTypeComboBox.getValue().toString().equals("absolutny"))
             isAbsolute = true;
@@ -546,9 +550,9 @@ public class HelloController {
 
     @FXML
     public void onAddSummarizerOrQualifierClick() {
-        String labelName = formLabelName.getText();
-        MembershipFunction membershipFunction = getMembershipFunction();
         String variableName = variableNameComboBox.getValue();
+        String labelName = formLabelName.getText();
+        MembershipFunction membershipFunction = getMembershipFunction(variableName);
         ColumnVariableEnum columnVariableEnum = ColumnVariableEnum.fromString(variableName);
         int columnIndex = columnVariableEnum.getColumnIndex(columnVariableEnum);
         Label label = new Label(labelName, membershipFunction, true, true, columnIndex);
