@@ -257,7 +257,7 @@ public class SummaryGenerator {
                                 for (LinguisticVariable summarizer : summarizers) {
                                     for (Label summarizerLabel : summarizer.getLabels()) {
 
-                                        double up = (1.0/credits1.size()) * summarizerLabel.getMembershipFunction().getAlphaCount(credits1, summarizerLabel.getColumnIndex());
+                                        double up = (1.0/credits1.size()) * summarizerLabel.getMembershipFunction().getAlphaCountNonFuzzy(credits1, summarizerLabel.getColumnIndex());
                                         JoinLabels joinLabels = new JoinLabels(summarizerLabel, qualifierLabel, credits2, summarizerLabel.getColumnIndex());
                                         double down = (up + ((1.0/credits2.size()) * joinLabels.sum()));
                                         double T = quantifier.getLabel().getMembershipFunction().calculateMembershipDegree(up/down);
@@ -303,7 +303,7 @@ public class SummaryGenerator {
                                     for (Label summarizerLabel : summarizer.getLabels()) {
 
                                         double up = ((1.0/credits1.size()) * new JoinLabels(summarizerLabel, qualifierLabel, credits1, summarizerLabel.getColumnIndex()).sum());
-                                        double down = (up + ((1.0/credits2.size()) * summarizerLabel.getMembershipFunction().getAlphaCount(credits2, summarizerLabel.getColumnIndex())));
+                                        double down = (up + ((1.0/credits2.size()) * summarizerLabel.getMembershipFunction().getAlphaCountNonFuzzy(credits2, summarizerLabel.getColumnIndex())));
                                         double T = quantifier.getLabel().getMembershipFunction().calculateMembershipDegree(up/down);
                                         T = Math.round(T * 100.0) / 100.0;
                                         ArrayList<Double> arr = new ArrayList<Double>(Arrays.asList(
