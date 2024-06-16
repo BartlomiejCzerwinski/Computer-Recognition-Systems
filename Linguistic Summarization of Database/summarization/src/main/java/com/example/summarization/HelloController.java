@@ -152,6 +152,10 @@ public class HelloController {
 
     private ArrayList<String> quantifiersLabels = getQuantifiersLabels(initializer.createQuantifiers());
 
+    private ArrayList<LinguisticVariable> linguisticVariables = initializer.getAllLinguisticVariables();
+
+    private ArrayList<String> linguisticVariablesNames = initializer.getLinguisticLabelsNamesList();
+
 
     private ArrayList<Double> measuresWeights = new ArrayList<Double>(Arrays.asList(
             0.09, 0.09, 0.09, 0.09, 0.09, 0.09, 0.09, 0.09, 0.09, 0.09, 0.09
@@ -167,12 +171,12 @@ public class HelloController {
         comboBoxQuantifier.setValue("----");
 
         comboBoxQualifier.setItems(FXCollections.observableArrayList(
-                initializer.getLinguisticLabelsNamesList()
+                linguisticVariablesNames
         ));
         comboBoxQualifier.setValue("----");
 
         comboBoxSummarizer.setItems(FXCollections.observableArrayList(
-                initializer.getLinguisticLabelsNamesList()
+                linguisticVariablesNames
         ));
         comboBoxSummarizer.setValue("----");
 
@@ -266,7 +270,7 @@ public class HelloController {
         int type = Integer.valueOf(comboBoxType.getValue().toString());
 
         SummaryGenerator summaryGenerator = new SummaryGenerator(kind, type, quantifiers,
-                initializer.getAllLinguisticVariables(), initializer.getAllLinguisticVariables(), subject1, subject2,
+                linguisticVariables, linguisticVariables, subject1, subject2,
                 measuresWeights, quantifier, qualifier, summarizer);
         summaryGenerator.getCreditsPurposeInfo();
         summaryGenerator.generateSummaries();
@@ -538,6 +542,25 @@ public class HelloController {
         this.quantifiers.add(quantifier);
         this.quantifiersLabels.add(labelName);
         comboBoxQuantifier.setItems(FXCollections.observableArrayList(this.quantifiersLabels));
+    }
+
+    @FXML
+    public void onAddSummarizerOrQualifierClick() {
+        String labelName = formLabelName.getText();
+        MembershipFunction membershipFunction = getMembershipFunction();
+        String variableName = variableNameComboBox.getValue();
+        ColumnVariableEnum columnVariableEnum = ColumnVariableEnum.fromString(variableName);
+        int columnIndex = columnVariableEnum.getColumnIndex(columnVariableEnum);
+        Label label = new Label(labelName, membershipFunction, true, true, columnIndex);
+        LinguisticVariable linguisticVariable = new LinguisticVariable(labelName, new ArrayList<>(Arrays.asList(label)), label.getMembershipFunction().domainL, label.getMembershipFunction().domainR);
+        this.linguisticVariables.add(linguisticVariable);
+        linguisticVariablesNames.add(labelName);
+        comboBoxSummarizer.setItems(FXCollections.observableArrayList(
+                linguisticVariablesNames
+        ));
+        comboBoxQualifier.setItems(FXCollections.observableArrayList(
+                linguisticVariablesNames
+        ));
     }
 
 }
