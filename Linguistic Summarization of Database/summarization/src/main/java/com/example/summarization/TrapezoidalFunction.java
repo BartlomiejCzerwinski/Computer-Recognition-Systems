@@ -25,7 +25,7 @@ public class TrapezoidalFunction extends MembershipFunction {
         else if (stopGrowth <= value && value <= startDecrease)
             return 1.0;
         else if (startDecrease < value && value <= stopDecrease)
-            return 1.0;
+            return (stopDecrease - value) / (stopDecrease - startDecrease);
         else
             return 0.0;
     }
