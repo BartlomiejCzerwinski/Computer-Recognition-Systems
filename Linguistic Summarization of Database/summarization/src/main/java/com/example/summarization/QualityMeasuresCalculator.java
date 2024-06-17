@@ -36,10 +36,23 @@ public class QualityMeasuresCalculator {
     }
 
     // T2
-        public double degreeOfImprecision(Label summarizer, int columIndex) {
-        double result = summarizer.getSupport(credits, columIndex) / (double) credits.size();
-        result = Math.round(result * 100.0) / 100.0;
-        return result;
+        public double degreeOfImprecision(Label summarizer, int columIndex, Label qualificator) {
+        double result = 0;
+        if (qualificator == null) {
+            result = summarizer.getSupport(credits, columIndex) / (double) credits.size();
+            result = Math.round(result * 100.0) / 100.0;
+            return result;
+        } else {
+            double supp = 0;
+            for(Credit credit: credits) {
+                if (qualificator.getMembershipFunction().calculateMembershipDegree(credit.getValueByColumnIndex(columIndex)) > 0) {
+                    supp++;
+                }
+            }
+            supp /=- credits.size();
+            result = Math.round(result * 100.0) / 100.0;
+            return result;
+        }
     }
 
     // T3
@@ -75,7 +88,10 @@ public class QualityMeasuresCalculator {
     public double degreeOfAppropriateness(LinguisticVariable summarizer, ArrayList<Credit> credits, Label qualifier, int columIndex) {
         double quotient = 1.0;
         for (Label label : summarizer.getLabels()) {
-            double sum = label.getSupport(credits, columIndex) / (double) credits.size();
+            double sum = 0;
+            for (Credit credit : credits) {
+                sum += label.getSupport(credits, columIndex) / (double) credits.size();
+            }
             double t3 = degreeOfCovering(qualifier, label, credits, columIndex);
             quotient *= (sum - t3);
         }

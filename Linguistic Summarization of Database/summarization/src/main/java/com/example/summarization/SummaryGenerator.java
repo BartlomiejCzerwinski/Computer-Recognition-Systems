@@ -98,7 +98,7 @@ public class SummaryGenerator {
                 for (Label summarizerLabel : summarizer.getLabels()) {
 
                     double degreeOfTruth = qualityMeasuresCalculator.degreeOfTruth(quantifier, summarizerLabel, null, summarizerLabel.getColumnIndex());
-                    double degreeOfImprecision = qualityMeasuresCalculator.degreeOfImprecision(summarizerLabel, summarizerLabel.getColumnIndex());
+                    double degreeOfImprecision = qualityMeasuresCalculator.degreeOfImprecision(summarizerLabel, summarizerLabel.getColumnIndex(), null);
                     double degreeOfCovering = qualityMeasuresCalculator.degreeOfCovering(null, summarizerLabel, credits, summarizerLabel.getColumnIndex());
                     double degreeOfAppropriateness = qualityMeasuresCalculator.degreeOfAppropriateness(summarizer, credits, null, summarizerLabel.getColumnIndex());
                     double lengthOfSummary = qualityMeasuresCalculator.lengthOfSummary(new ArrayList<>(Arrays.asList(summarizerLabel)));
@@ -156,7 +156,7 @@ public class SummaryGenerator {
                         for (Label summarizerLabel : summarizer.getLabels()) {
 
                                 double degreeOfTruth = qualityMeasuresCalculator.degreeOfTruth(quantifier, summarizerLabel, qualifierLabel, summarizerLabel.getColumnIndex());
-                                double degreeOfImprecision = qualityMeasuresCalculator.degreeOfImprecision(summarizerLabel, summarizerLabel.getColumnIndex());
+                                double degreeOfImprecision = qualityMeasuresCalculator.degreeOfImprecision(summarizerLabel, summarizerLabel.getColumnIndex(), qualifierLabel);
                                 double degreeOfCovering = qualityMeasuresCalculator.degreeOfCovering(qualifierLabel, summarizerLabel, credits, summarizerLabel.getColumnIndex());
                                 double degreeOfAppropriateness = qualityMeasuresCalculator.degreeOfAppropriateness(summarizer, credits, qualifierLabel, qualifierLabel.getColumnIndex());
                                 double lengthOfSummary = qualityMeasuresCalculator.lengthOfSummary(new ArrayList<>(Arrays.asList(summarizerLabel)));
@@ -356,6 +356,12 @@ public class SummaryGenerator {
                                 double mu1 = summarizerLabel.getMembershipFunction().calculateMembershipDegree(credits2.get(i).getValueByColumnIndex(summarizerLabel.getColumnIndex()));
                                 double mu2 = summarizerLabel.getMembershipFunction().calculateMembershipDegree(credits1.get(i).getValueByColumnIndex(summarizerLabel.getColumnIndex()));
                                 double value = Math.min(1, 1 - mu1 + mu2);
+                                if (summarizerLabel.getName().equals("very high DTI")) {
+                                    System.out.println(summarizerLabel.getName() + "Mu1: " + mu1 + ". Mu2: " + mu2);
+                                }
+                                if (mu1 > mu2 && summarizerLabel.getName().equals("very high DTI")) {
+                                    System.out.println(summarizerLabel.getName() + "Mu1: " + mu1 + ". Mu2: " + mu2);
+                                }
                                 if (value < T ){
                                     T = value;
                                 }
