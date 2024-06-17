@@ -44,12 +44,16 @@ public class QualityMeasuresCalculator {
             return result;
         } else {
             double supp = 0;
+            double qualifierSetSize = 0;
             for(Credit credit: credits) {
                 if (qualificator.getMembershipFunction().calculateMembershipDegree(credit.getValueByColumnIndex(columIndex)) > 0) {
-                    supp++;
+                    qualifierSetSize ++;
+                    if (summarizer.getMembershipFunction().calculateMembershipDegree(credit.getValueByColumnIndex(columIndex)) > 0) {
+                        supp++;
+                    }
                 }
             }
-            supp /=- credits.size();
+            result = (double) supp / (double) qualifierSetSize;
             result = Math.round(result * 100.0) / 100.0;
             return result;
         }
