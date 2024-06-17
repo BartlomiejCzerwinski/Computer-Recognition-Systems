@@ -53,7 +53,7 @@ public class QualityMeasuresCalculator {
                     }
                 }
             }
-            result = (double) supp / (double) qualifierSetSize;
+            result = 1 - ((double) supp / (double) qualifierSetSize);
             result = Math.round(result * 100.0) / 100.0;
             return result;
         }
@@ -143,7 +143,7 @@ public class QualityMeasuresCalculator {
         if(qualifier == null)
             return 0.0;
         double result = qualifier.getSupport(credits, columnIndex) / (double) credits.size();
-        result = Math.round(result * 100.0) / 100.0;
+        result = 1 - (Math.round(result * 100.0) / 100.0);
         return result;
     }
 
